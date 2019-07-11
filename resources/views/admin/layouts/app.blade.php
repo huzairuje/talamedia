@@ -19,6 +19,6 @@
     @include('admin.layouts.wrapper')
     @include('admin.layouts.footer')
     @include('admin.layouts.scripts')
-
+</div>
 </body>
 </html>

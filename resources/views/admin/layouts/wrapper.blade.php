@@ -1,6 +1,6 @@
-<!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains pages content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+    <!-- Content Header (Pages header) -->
     <section class="content-header">
         <h1>
             Dashboard
