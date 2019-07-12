@@ -36,4 +36,9 @@ class Role extends Model
     {
         return $this->hasMany(MenuRole::class);
     }
+
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
 }
