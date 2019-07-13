@@ -22,8 +22,8 @@
       options = $.extend({
         inClass               :   'fade-in',
         outClass              :   'fade-out',
-        inDuration            :    1500,
-        outDuration           :    800,
+        inDuration            :    500,
+        outDuration           :    500,
         linkElement           :   '.animsition-link',
         // e.g. linkElement   :   'a:not([target="_blank"]):not([href^="#"])'
         loading               :    true,
@@ -243,7 +243,7 @@
         .animateCallback(function(){
           $this
             .removeClass(inClass)
-            .css({ 'opacity' : 1 })
+            .css({ 'opacity' : 0.5 })
             .trigger(__.settings.events.inEnd);
         });
     },
@@ -253,7 +253,7 @@
       var options = $this.data(namespace).options;
 
       $this
-        .css({ 'opacity' : 1 })
+        .css({ 'opacity' : 0.5 })
         .trigger(__.settings.events.inStart);
 
       $(options.overlayParentElement)
@@ -330,7 +330,7 @@
         var $this = $(this);
         $(window).off('.'+ namespace);
         $this
-          .css({'opacity': 1})
+          .css({'opacity': 0.5})
           .removeData(namespace);
       });
     }

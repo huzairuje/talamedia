@@ -17,6 +17,9 @@ class CreateArticleCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 191);
             $table->boolean('status')->default(1);
+            $table->string('instagram_access_token_1')->nullable();
+            $table->string('instagram_access_token_2')->nullable();
+            $table->string('instagram_access_token_3')->nullable();
             $table->integer('created_by')->unsigned();
             $table->integer('updated_by')->unsigned()->nullable();
             $table->softDeletes();

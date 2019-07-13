@@ -8,8 +8,8 @@
         $(".animsition").animsition({
             inClass: 'fade-in',
             outClass: 'fade-out',
-            inDuration: 1500,
-            outDuration: 800,
+            inDuration: 50,
+            outDuration: 50,
             linkElement: '.animsition-link',
             loading: true,
             loadingParentElement: 'html',
@@ -198,8 +198,8 @@
             $('.video-mo-01').children('iframe')[0].src += "&autoplay=1";
 
             setTimeout(function(){
-                $('.video-mo-01').css('opacity','1');
-            },300);      
+                $('.video-mo-01').css('opacity','0.5');
+            },30);
         });
 
         $('[data-dismiss="modal"]').on('click',function(){
