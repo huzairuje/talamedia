@@ -11,14 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Auth::routes();
 
+Route::get('/', 'Frontend\FrontendController@index')->name('front');
 Route::get('/home', 'HomeController@index')->name('home');
-
 
 # RoleController
 Route::get('role', ['as' => 'role.index','uses' => 'Backend\RoleController@index']);
