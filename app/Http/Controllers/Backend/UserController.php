@@ -77,8 +77,10 @@ class UserController extends Controller
      * @param User $data
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(User $data)
+    public function show($id)
     {
+        $user = new User();
+        $data = $user->findOrFail($id);
         return view('admin.backend.users.show',compact('data'));
     }
 
@@ -86,8 +88,10 @@ class UserController extends Controller
      * @param User $user
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(User $data)
+    public function edit($id)
     {
+        $user = new User();
+        $data = $user->findOrFail($id);
         return view('admin.backend.users.edit',compact('data'));
     }
 

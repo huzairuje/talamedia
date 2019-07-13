@@ -42,8 +42,38 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="user"><i class="fa fa-circle-o"></i> User </a></li>
-                    <li><a href="role"><i class="fa fa-circle-o"></i> Role </a></li>
+                    <li class="active"><a href="{{route('user.index')}}"><i class="fa fa-circle-o"></i> User </a></li>
+                    <li><a href="{{route('role.index')}}"><i class="fa fa-circle-o"></i> Role </a></li>
+                </ul>
+            </li>
+
+            <li class="active treeview">
+                <a href="#">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Article</span>
+                    <span class="pull-right-container">
+{{--              <span class="label label-primary pull-right">4</span>--}}
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('article.index')}}"><i class="fa fa-circle-o"></i> Article Management</a></li>
+                    <li><a href="{{route('articletag.index')}}"><i class="fa fa-circle-o"></i> Article Tag</a></li>
+                    <li><a href="{{route('articlecategory.index')}}"><i class="fa fa-circle-o"></i> Article Category </a></li>
+                </ul>
+            </li>
+
+            <li class="active treeview">
+                <a href="#">
+                    <i class="fas fa-ad"></i>
+                    <span>Advertisement</span>
+                    <span class="pull-right-container">
+{{--              <span class="label label-primary pull-right">4</span>--}}
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('advert.index')}}"><i class="fa fa-circle-o"></i> Advertisement Management</a></li>
+{{--                    <li><a href="advert"><i class="fa fa-circle-o"></i> Advertisement Management</a></li>--}}
+                    <li><a href="{{route('advertcategory.index')}}"><i class="fa fa-circle-o"></i> Advertisement Category </a></li>
                 </ul>
             </li>
         </ul>

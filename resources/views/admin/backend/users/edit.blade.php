@@ -32,7 +32,8 @@
             <div class="col-lg-7">
                 <div class="form-group">
                     <strong> Name:</strong>
-                    <input type="text" name="name" value="{{ old('name')!==null ? old('name') : $data->name }}" class="form-control" placeholder="Name">
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Name" value="{{ $data->name }}">
+                    </input>
                 </div>
             </div>
             <div class="col-lg-7">

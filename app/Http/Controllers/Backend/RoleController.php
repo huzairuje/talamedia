@@ -51,18 +51,32 @@ class RoleController extends Controller
      */
     public function store(CreateRoleRequest $request)
     {
-        $this->roleService->storeRole($request);
-        return redirect()->route('role.index')
-            ->with('success','role created successfully.');
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+
+        $data = new Role([
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+        ]);
+
+        $data->save();
+
+        return redirect()->route('user.index')
+            ->with('user created successfully.');
     }
 
     /**
      * @param Role $role
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Role $role)
+    public function show($id)
     {
-        return view('admin.backend.roles.show',compact('role'));
+        $user = new Role();
+        $data = $user->findOrFail($id);
+        return view('admin.backend.roles.show',compact('data'));
     }
 
     /**

@@ -75,9 +75,11 @@ class MenuController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show(Menu $menu)
+    public function show($id)
     {
-        return view('admin.backend.menus.show',compact('menu'));
+        $menu = new menu();
+        $data = $menu->findOrFail($id);
+        return view('admin.backend.menus.show',compact('data'));
     }
 
     /**
@@ -86,9 +88,11 @@ class MenuController extends Controller
      * @param  \App\Aov  $aov
      * @return \Illuminate\Http\Response
      */
-    public function edit(Menu $menu)
+    public function edit($id)
     {
-        return view('admin.backend.menus.edit',compact('menu'));
+        $menu = new menu();
+        $data = $menu->findOrFail($id);
+        return view('admin.backend.menus.edit',compact('data'));
     }
 
     /**
