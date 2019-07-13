@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\ArticleCategory;
 use App\Models\Role;
 
 class ArticleCategoriesTableDataSeeder extends Seeder

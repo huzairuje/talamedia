@@ -1,4 +1,3 @@
-
 <!--  -->
 {{--        <div class="wrap-logo container">--}}
 {{--            <!-- Logo desktop -->--}}
@@ -1897,148 +1896,148 @@
                     </div>
                 </li>
 
-                <li class="mega-menu-item">
-                    <a href="category-02.html">#Gigs</a>
+                {{--                <li class="mega-menu-item">--}}
+                {{--                    <a href="category-02.html">#Gigs</a>--}}
 
-                    <div class="sub-mega-menu">
-                        <div class="nav flex-column nav-pills" role="tablist">
-                            <a class="nav-link active" data-toggle="pill" href="#video-1" role="tab">All</a>
-                        </div>
+                {{--                    <div class="sub-mega-menu">--}}
+                {{--                        <div class="nav flex-column nav-pills" role="tablist">--}}
+                {{--                            <a class="nav-link active" data-toggle="pill" href="#video-1" role="tab">All</a>--}}
+                {{--                        </div>--}}
 
-                        <div class="tab-content">
-                            <div class="tab-pane show active" id="video-1" role="tabpanel">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <!-- Item post -->
-                                        <div>
-                                            <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-                                                <img src="images/post-50.jpg" alt="IMG">
-                                            </a>
+                {{--                        <div class="tab-content">--}}
+                {{--                            <div class="tab-pane show active" id="video-1" role="tabpanel">--}}
+                {{--                                <div class="row">--}}
+                {{--                                    <div class="col-3">--}}
+                {{--                                        <!-- Item post -->--}}
+                {{--                                        <div>--}}
+                {{--                                            <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">--}}
+                {{--                                                <img src="images/post-50.jpg" alt="IMG">--}}
+                {{--                                            </a>--}}
 
-                                            <div class="p-t-10">
-                                                <h5 class="p-b-5">
-                                                    <a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                        Donec metus orci, malesuada et lectus vitae
-                                                    </a>
-                                                </h5>
+                {{--                                            <div class="p-t-10">--}}
+                {{--                                                <h5 class="p-b-5">--}}
+                {{--                                                    <a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">--}}
+                {{--                                                        Donec metus orci, malesuada et lectus vitae--}}
+                {{--                                                    </a>--}}
+                {{--                                                </h5>--}}
 
-                                                <span class="cl8">
-																<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-																	Music
-																</a>
+                {{--                                                <span class="cl8">--}}
+                {{--																<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">--}}
+                {{--																	Music--}}
+                {{--																</a>--}}
 
-																<span class="f1-s-3 m-rl-3">
-																	-
-																</span>
+                {{--																<span class="f1-s-3 m-rl-3">--}}
+                {{--																	---}}
+                {{--																</span>--}}
 
-																<span class="f1-s-3">
-																	Feb 18
-																</span>
-															</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                {{--																<span class="f1-s-3">--}}
+                {{--																	Feb 18--}}
+                {{--																</span>--}}
+                {{--															</span>--}}
+                {{--                                            </div>--}}
+                {{--                                        </div>--}}
+                {{--                                    </div>--}}
 
-                                    <div class="col-3">
-                                        <!-- Item post -->
-                                        <div>
-                                            <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-                                                <img src="images/post-08.jpg" alt="IMG">
-                                            </a>
+                {{--                                    <div class="col-3">--}}
+                {{--                                        <!-- Item post -->--}}
+                {{--                                        <div>--}}
+                {{--                                            <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">--}}
+                {{--                                                <img src="images/post-08.jpg" alt="IMG">--}}
+                {{--                                            </a>--}}
 
-                                            <div class="p-t-10">
-                                                <h5 class="p-b-5">
-                                                    <a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                        Donec metus orci, malesuada et lectus vitae
-                                                    </a>
-                                                </h5>
+                {{--                                            <div class="p-t-10">--}}
+                {{--                                                <h5 class="p-b-5">--}}
+                {{--                                                    <a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">--}}
+                {{--                                                        Donec metus orci, malesuada et lectus vitae--}}
+                {{--                                                    </a>--}}
+                {{--                                                </h5>--}}
 
-                                                <span class="cl8">
-																<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-																	Music
-																</a>
+                {{--                                                <span class="cl8">--}}
+                {{--																<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">--}}
+                {{--																	Music--}}
+                {{--																</a>--}}
 
-																<span class="f1-s-3 m-rl-3">
-																	-
-																</span>
+                {{--																<span class="f1-s-3 m-rl-3">--}}
+                {{--																	---}}
+                {{--																</span>--}}
 
-																<span class="f1-s-3">
-																	Feb 12
-																</span>
-															</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                {{--																<span class="f1-s-3">--}}
+                {{--																	Feb 12--}}
+                {{--																</span>--}}
+                {{--															</span>--}}
+                {{--                                            </div>--}}
+                {{--                                        </div>--}}
+                {{--                                    </div>--}}
 
-                                    <div class="col-3">
-                                        <!-- Item post -->
-                                        <div>
-                                            <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-                                                <img src="images/post-07.jpg" alt="IMG">
-                                            </a>
+                {{--                                    <div class="col-3">--}}
+                {{--                                        <!-- Item post -->--}}
+                {{--                                        <div>--}}
+                {{--                                            <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">--}}
+                {{--                                                <img src="images/post-07.jpg" alt="IMG">--}}
+                {{--                                            </a>--}}
 
-                                            <div class="p-t-10">
-                                                <h5 class="p-b-5">
-                                                    <a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                        Donec metus orci, malesuada et lectus vitae
-                                                    </a>
-                                                </h5>
+                {{--                                            <div class="p-t-10">--}}
+                {{--                                                <h5 class="p-b-5">--}}
+                {{--                                                    <a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">--}}
+                {{--                                                        Donec metus orci, malesuada et lectus vitae--}}
+                {{--                                                    </a>--}}
+                {{--                                                </h5>--}}
 
-                                                <span class="cl8">
-																<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-																	Music
-																</a>
+                {{--                                                <span class="cl8">--}}
+                {{--																<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">--}}
+                {{--																	Music--}}
+                {{--																</a>--}}
 
-																<span class="f1-s-3 m-rl-3">
-																	-
-																</span>
+                {{--																<span class="f1-s-3 m-rl-3">--}}
+                {{--																	---}}
+                {{--																</span>--}}
 
-																<span class="f1-s-3">
-																	Jan 20
-																</span>
-															</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                {{--																<span class="f1-s-3">--}}
+                {{--																	Jan 20--}}
+                {{--																</span>--}}
+                {{--															</span>--}}
+                {{--                                            </div>--}}
+                {{--                                        </div>--}}
+                {{--                                    </div>--}}
 
-                                    <div class="col-3">
-                                        <!-- Item post -->
-                                        <div>
-                                            <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-                                                <img src="images/post-06.jpg" alt="IMG">
-                                            </a>
+                {{--                                    <div class="col-3">--}}
+                {{--                                        <!-- Item post -->--}}
+                {{--                                        <div>--}}
+                {{--                                            <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">--}}
+                {{--                                                <img src="images/post-06.jpg" alt="IMG">--}}
+                {{--                                            </a>--}}
 
-                                            <div class="p-t-10">
-                                                <h5 class="p-b-5">
-                                                    <a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-                                                        Donec metus orci, malesuada et lectus vitae
-                                                    </a>
-                                                </h5>
+                {{--                                            <div class="p-t-10">--}}
+                {{--                                                <h5 class="p-b-5">--}}
+                {{--                                                    <a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">--}}
+                {{--                                                        Donec metus orci, malesuada et lectus vitae--}}
+                {{--                                                    </a>--}}
+                {{--                                                </h5>--}}
 
-                                                <span class="cl8">
-																<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-																	Music
-																</a>
+                {{--                                                <span class="cl8">--}}
+                {{--																<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">--}}
+                {{--																	Music--}}
+                {{--																</a>--}}
 
-																<span class="f1-s-3 m-rl-3">
-																	-
-																</span>
+                {{--																<span class="f1-s-3 m-rl-3">--}}
+                {{--																	---}}
+                {{--																</span>--}}
 
-																<span class="f1-s-3">
-																	Jan 15
-																</span>
-															</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+                {{--																<span class="f1-s-3">--}}
+                {{--																	Jan 15--}}
+                {{--																</span>--}}
+                {{--															</span>--}}
+                {{--                                            </div>--}}
+                {{--                                        </div>--}}
+                {{--                                    </div>--}}
+                {{--                                </div>--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                </li>--}}
 
                 <li>
-                    <a href="#">#Videos</a>
+                    <a href="#">#Kerjasama</a>
                     <ul class="sub-menu">
                         <li><a href="category-01.html">Category Page v1</a></li>
                         <li><a href="category-02.html">Category Page v2</a></li>
@@ -2053,16 +2052,18 @@
                 </li>
 
                 <div class="right-topbar">
+                    <a href="https://www.instagram.com/talamedia.id/">
+                        <span class="fab fa-instagram"></span>
+                    </a>
+                    <a href="https://line.me/R/ti/p/@rvn6239a">
+                        <span class="fab fa-line"></span>
+                    </a>
                     <a href="https://www.facebook.com/talamedia.id/">
                         <span class="fab fa-facebook-f"></span>
                     </a>
 
                     <a href="https://twitter.com/talamediaID">
                         <span class="fab fa-twitter"></span>
-                    </a>
-
-                    <a href="https://www.instagram.com/talamedia.id/">
-                        <span class="fab fa-instagram"></span>
                     </a>
 
                     <a href="https://www.youtube.com/channel/UCkKBUvs4azMDb-DQLAquUDQ?fbclid=IwAR35xjd9Zahl_a4eiPr9VtUrwyPY9KQ8ikdkNxfsstQtIedFzj5nUnvsvKs">

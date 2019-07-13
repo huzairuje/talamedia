@@ -20,6 +20,7 @@ class CreateArticleCategoriesTable extends Migration
             $table->string('instagram_access_token_1')->nullable();
             $table->string('instagram_access_token_2')->nullable();
             $table->string('instagram_access_token_3')->nullable();
+            $table->string('slug')->nullable();
             $table->integer('created_by')->unsigned();
             $table->integer('updated_by')->unsigned()->nullable();
             $table->softDeletes();

@@ -18,6 +18,7 @@
 Auth::routes();
 
 Route::get('/', 'Frontend\FrontendController@index')->name('front');
+//Route::get('/{slug}', 'Frontend\FrontendController@findBySlug')->name('category');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function() {

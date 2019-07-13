@@ -20,12 +20,12 @@
             <a href="category-01.html">#Event</a>
         </li>
 
-        <li>
-            <a href="category-02.html">#Gigs</a>
-        </li>
+{{--        <li>--}}
+{{--            <a href="category-02.html">#Gigs</a>--}}
+{{--        </li>--}}
 
         <li>
-            <a href="category-02.html">#Videos</a>
+            <a href="category-02.html">#Kerjasama</a>
         </li>
     </ul>
 </div>
