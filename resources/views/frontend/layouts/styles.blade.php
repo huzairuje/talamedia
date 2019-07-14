@@ -13,8 +13,6 @@
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="css/util.min.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="css/main.css">

@@ -19,7 +19,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header"></li>
             <li class="active treeview">
-                <a href="/home">
+                <a href="{{route('dashboard')}}">
                     <i class="fas fa-tachometer-alt"></i> <span>Dashboard</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>

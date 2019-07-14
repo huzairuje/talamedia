@@ -11,19 +11,15 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Auth::routes();
 
 Route::get('/', 'Frontend\FrontendController@index')->name('front');
-//Route::get('/{slug}', 'Frontend\FrontendController@findBySlug')->name('category');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/{slug}', 'Frontend\FrontendController@findBySlug')->name('category');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['prefix' => 'admin' ,'middleware' => 'auth'], function() {
 
 
+    Route::get('dashboard', 'HomeController@index')->name('dashboard');
 # RoleController
     Route::get('role', ['as' => 'role.index', 'uses' => 'Backend\RoleController@index']);
     Route::get('role/datatables', ['as' => 'role.datatables', 'uses' => 'Backend\RoleController@dataTables']);
