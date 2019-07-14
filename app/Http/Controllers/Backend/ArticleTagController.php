@@ -68,7 +68,7 @@ class ArticleTagController extends Controller
 
         $data = $this->model;
         $data->name = $request->get('name');
-        $data->status = isset($input['status']) ? 1 : 0;
+        $data->status = $request->get('status');
         $data->created_by= Auth::id();
         $data->save();
 

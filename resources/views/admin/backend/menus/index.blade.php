@@ -3,8 +3,8 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h2 class="float-left">Menu</h2>
-            <a class="btn btn-primary float-right"  href="{{ route('menu.create') }}"> Create </a>
+            <h2 class="pull-left">Menu</h2>
+            <a class="btn btn-primary pull-right"  href="{{ route('menu.create') }}"> Create </a>
         </div>
     </div>
     <div class="row">

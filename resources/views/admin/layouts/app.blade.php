@@ -22,4 +22,12 @@
     @include('admin.layouts.footer')
 
 </body>
+
+<script>
+    $(document).ready(function(){
+        $('input:checkbox').click(function() {
+            $('input:checkbox').not(this).prop('checked', false);
+        });
+    });
+</script>
 </html>

@@ -25,20 +25,22 @@
 <form action="{{ route('advertcategory.store') }}" method="POST">
     @csrf
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <strong>Name:</strong>
                 <input type="text" name="name" class="form-control" placeholder="Name">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <select class="status form-control select2" name="status" data-placeholder="Status" id="status">
-                    <option>---Status---</option>
-                    <option value=1>Active</option>
-                    <option value=0>InActive</option>
-                </select>
-            </div>
+        <div class="col-md-6">
+            <label class="container">Active
+                <input type="checkbox" name="status" value=1>
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="container">InActive
+                <input type="checkbox" name="status" value=0>
+                <span class="checkmark"></span>
+            </label>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -118,7 +118,7 @@ class ArticleCategoryController extends Controller
         ]);
         $data->update([
             'name' => $request->name,
-            'bank_id' => $request->status,
+            'status' => $request->status,
         ]);
         return redirect('/articlecategory')->with( 'Category has been updated');
     }

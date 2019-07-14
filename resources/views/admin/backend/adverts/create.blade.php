@@ -25,7 +25,7 @@
 <form action="{{ route('advert.store') }}" method="POST">
     @csrf
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <strong>Name:</strong>
                 <input type="text" name="name" class="form-control" placeholder="Name">
@@ -37,13 +37,13 @@
 {{--                <input type="date" name="publish_datetime" class="form-control">--}}
 {{--            </div>--}}
 {{--        </div>--}}
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <strong>Picture:</strong>
                 <input type="file" class="form-control" name="featured_image" placeholder="Image">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-12">
             <div class="form-group" data-provide="content">
                 <strong>Content :</strong>
                 <textarea name="content" id="ckview"> </textarea>
@@ -52,37 +52,37 @@
                 <script>tinymce.init({selector: '#ckview'});</script>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <strong>Title :</strong>
                 <input type="text" name="meta_title"  class="form-control" placeholder="Title">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <strong>Cannocial Link :</strong>
                 <input type="text" name="cannonical_link"  class="form-control" placeholder="Cannonical Link">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <strong>Slug :</strong>
                 <input type="text" name="slug"  class="form-control" placeholder="Slug">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <strong>Description :</strong>
                 <input type="text" name="meta_description"  class="form-control" placeholder="Description">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <strong>Keywords :</strong>
                 <input type="text" name="meta_keywords"  class="form-control" placeholder="Keywords">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <strong>Status :</strong>
 
@@ -95,7 +95,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <strong>Category :</strong>
                 <select class="form-control" name="advert_category_id" id="advert_category_id">

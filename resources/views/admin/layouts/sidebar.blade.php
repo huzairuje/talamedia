@@ -8,24 +8,16 @@
                 <img src="{{asset('themes/image/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p>{{ auth()->user()->name }}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
         <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-        </form>
+
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">MAIN NAVIGATION</li>
+            <li class="header"></li>
             <li class="active treeview">
                 <a href="/home">
                     <i class="fas fa-tachometer-alt"></i> <span>Dashboard</span>
@@ -34,19 +26,22 @@
             </span>
                 </a>
             </li>
-            <li class="active treeview">
+{{--            @if (checkGroupAccess(['users', 'roles', 'menus']) )--}}
+{{--                @if (checkAccess('users') )--}}
+                <li class="active treeview">
                 <a href="#">
                     <i class="fas fa-users"></i> <span>User Management</span>
                     <span class="pull-right-container">
-              <i class="fa fa-user-left pull-right"></i>
+{{--              <i class="fas fa-user-left pull-right"></i>--}}
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="{{route('user.index')}}"><i class="fa fa-circle-o"></i> User </a></li>
-                    <li><a href="{{route('role.index')}}"><i class="fa fa-circle-o"></i> Role </a></li>
+                    <li class="active"><a href="{{route('user.index')}}"><i class="fas fa-user-circle"></i> User </a></li>
+                    <li><a href="{{route('role.index')}}"><i class="fas fa-user-tag"></i> Role </a></li>
+                    <li><a href="{{route('menu.index')}}"><i class="fas fa-link"></i> Menu </a></li>
                 </ul>
             </li>
-
+{{--                @endif--}}
             <li class="active treeview">
                 <a href="#">
                     <i class="fas fa-newspaper"></i>
@@ -56,9 +51,9 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('article.index')}}"><i class="fa fa-circle-o"></i> Article Management</a></li>
-                    <li><a href="{{route('articletag.index')}}"><i class="fa fa-circle-o"></i> Article Tag</a></li>
-                    <li><a href="{{route('articlecategory.index')}}"><i class="fa fa-circle-o"></i> Article Category </a></li>
+                    <li><a href="{{route('article.index')}}"><i class="fas fa-file-alt"></i> Article Management</a></li>
+                    <li><a href="{{route('articletag.index')}}"><i class="fas fa-tag"></i> Article Tag</a></li>
+                    <li><a href="{{route('articlecategory.index')}}"><i class="fas fa-clone"></i> Article Category </a></li>
                 </ul>
             </li>
 
@@ -71,13 +66,13 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('advert.index')}}"><i class="fa fa-circle-o"></i> Advertisement Management</a></li>
+                    <li><a href="{{route('advert.index')}}"><i class="fab fa-adversal"></i> Advertisement Management</a></li>
 {{--                    <li><a href="advert"><i class="fa fa-circle-o"></i> Advertisement Management</a></li>--}}
-                    <li><a href="{{route('advertcategory.index')}}"><i class="fa fa-circle-o"></i> Advertisement Category </a></li>
+                    <li><a href="{{route('advertcategory.index')}}"><i class="fas fa-copy"></i> Advertisement Category </a></li>
                 </ul>
             </li>
         </ul>
-
+{{--@endif--}}
     </section>
     <!-- /.sidebar -->
 </aside>

@@ -5,6 +5,7 @@
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 
 <link href="{{ asset('themes/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('themes/AdminLTE/bower_components/bootstrap/dist/css/checkbox.css') }}" rel="stylesheet" type="text/css">
 {{--<link href="{{ asset('themes/AdminLTE/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">--}}
 {{--<link href="{{ asset('themes/AdminLTE/Ionicons/css/ionicons.min.css') }}" rel="stylesheet" type="text/css">--}}
 <link href="{{ asset('themes/AdminLTE/dist/css/AdminLTE.min.css') }}" rel="stylesheet" type="text/css">
