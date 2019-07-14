@@ -42,6 +42,9 @@ class ArticleController extends Controller
             ->editColumn('created_by', function ($data){
                 return $data->user->name;
             })
+            ->editColumn('is_featured_article', function ($data){
+                return $data->is_featured_article == 1 ? 'Yes' : 'No';
+            })
             ->make(true);
     }
 
@@ -73,6 +76,7 @@ class ArticleController extends Controller
         $request->validate([
             'name' => 'required',
             'featured_image' => 'required',
+            'is_featured_article' => 'required',
             'content' => 'required',
             'meta_title' => 'required',
             'slug' => 'required',
@@ -94,6 +98,7 @@ class ArticleController extends Controller
         $data->meta_description = $request->get('meta_description');
         $data->meta_keywords = $request->get('meta_keywords');
         $data->status = $request->get('status');
+        $data->is_featured_article = $request->get('is_featured_article');
         $data->article_category_id = $request->get('article_category_id');
         $data->article_tag_id = $request->get('article_tag_id');
         $data->created_by= Auth::id();

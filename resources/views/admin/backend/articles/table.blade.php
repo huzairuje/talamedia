@@ -10,6 +10,7 @@
                     <th>Name</th>
                     <th>Date</th>
                     <th>Created By</th>
+                    <th>Featured Article</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -30,6 +31,7 @@
                 { data: 'name', name: 'name' },
                 { data: 'publish_datetime', name: 'publish_datetime' },
                 { data: 'created_by', name: 'created_by' },
+                { data: 'is_featured_article', name: 'is_featured_article' },
                 { data: 'status', name: 'status' },
                 { data: 'action', orderable: false, searchable: false, width: '15%', className: 'center action'},
             ]

@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\ArticleCategory;
 use App\Repositories\Frontend\ArticleCategoriesRepositories;
 use App\Services\Frontend\InstagramService;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Vinkla\Instagram\Instagram;
 
@@ -26,21 +24,7 @@ class FrontendController extends Controller
     {
         $instagrams = $this->instagramService->getRecentPostTalamedia();
 
-        $infoUnpadRecentPost = $this->instagramService->getRecentPostInfoUnpad();
-
-        $infoItbRecentPost = $this->instagramService->getRecentPostInfoItb();
-
-        $bdgNetRecentPost = $this->instagramService->getRecentPostBdgNet();
-
-        $nangorInfoRecentPost = $this->instagramService->getRecentPostNangorInfo();
-
-        $trifantasiaRecentPost = $this->instagramService->getRecentPostTrifantasia();
-
         $categoryName = $this->articleCategoriesRepositories->getArticleCategory();
-
-//        $category = $this->articleCategoriesRepositories->getArticleCategory();
-
-//        dd($categoryName);
 
         return view('frontend.index', compact('categoryName', 'instagrams'));
     }
@@ -85,7 +69,6 @@ class FrontendController extends Controller
 
         }
 
-//        return view('frontend.pages.index', compact('pageCategory', 'categoryName'));
     }
 
 }

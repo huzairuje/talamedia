@@ -25,6 +25,7 @@
 <form action="{{ route('article.store') }}" method="POST">
     @csrf
     <div class="row">
+
         <div class="col-md-6">
             <div class="form-group">
                 <strong>Name:</strong>
@@ -48,7 +49,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <strong>Tittle :</strong>
+                <strong>Title :</strong>
                 <input type="text" name="meta_title"  class="form-control" placeholder="Title">
             </div>
         </div>
@@ -101,6 +102,16 @@
                 @foreach($tags as $tag)
                     <option value="{{ $tag->id }}"{{ old('article_tag')==$tag->id ? ' selected' : '' }}>{{ $tag->name }}</option>
                 @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <strong>Is Featured Article :</strong>
+                <select class="status form-control select2" name="is_featured_article" data-placeholder="is_featured_article" id="is_featured_article">
+                    <option>---Status---</option>
+                    <option value=1>YES</option>
+                    <option value=0>NO</option>
                 </select>
             </div>
         </div>
