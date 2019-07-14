@@ -8,8 +8,8 @@ use App\Models\AdvertCategory;
 use App\Models\Article;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use DataTables;
-use Auth;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 

@@ -3,7 +3,7 @@
 
 namespace App\Repositories\Frontend;
 
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\Article;
 
 class ArticleRepositories
@@ -36,7 +36,6 @@ class ArticleRepositories
     public function getArticleByCategory($category_id)
     {
         $article = $this->article->category();
-        dd($article);
         return $article;
     }
 

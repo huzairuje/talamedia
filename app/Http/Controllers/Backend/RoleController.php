@@ -8,7 +8,7 @@ use App\Models\Role;
 use App\Services\Backend\Role\RoleService;
 use function foo\func;
 use Illuminate\Http\Request;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class RoleController extends Controller
 {

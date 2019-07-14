@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\User;
-use App\Services\Backend\User\UserService;
+//use App\Services\Backend\User\UserService;
 use function foo\func;
 use Illuminate\Http\Request;
-use DataTables;
+use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {

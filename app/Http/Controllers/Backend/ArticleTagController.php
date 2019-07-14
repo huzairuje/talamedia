@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ArticleCategory;
 use App\Models\ArticleTag;
 use Illuminate\Http\Request;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Auth;
 
 class ArticleTagController extends Controller
