@@ -11,6 +11,7 @@
                 <th>Date</th>
                 <th>Created By</th>
                 <th>Status</th>
+                <th>Featured</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -31,6 +32,7 @@
                 { data: 'publish_datetime', name: 'publish_datetime' },
                 { data: 'created_by', name: 'created_by' },
                 { data: 'status', name: 'status' },
+                { data: 'is_featured_advert', name: 'is_featured_advert' },
                 { data: 'action', orderable: false, searchable: false, width: '15%', className: 'center action'},
             ]
         });

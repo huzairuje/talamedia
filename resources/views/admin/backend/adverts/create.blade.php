@@ -106,6 +106,16 @@
                 </select>
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <strong>Is Featured Advert :</strong>
+                <select class="status form-control select2" name="is_featured_advert" data-placeholder="is_featured_advert" id="is_featured_advert">
+                    <option>---Status---</option>
+                    <option value=1>YES</option>
+                    <option value=0>NO</option>
+                </select>
+            </div>
+        </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>

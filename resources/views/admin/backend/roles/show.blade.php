@@ -18,7 +18,7 @@
             <div class="form-group">
                 <label class="col-form-label">
                     <strong>Name:</strong>
-                    {{ $role->name }}
+                    {{ $data->name }}
                 </label>
             </div>
         </div>
@@ -26,8 +26,8 @@
             <div class="form-group">
                 <label class="col-form-label">
                     <strong>Description:</strong>
-                    {{ $role->description }}
-                <label class="col-form-label">
+                    {{ $data->description }}
+                </label>
             </div>
         </div>
     </div>

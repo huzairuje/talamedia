@@ -36,6 +36,12 @@ class AdvertController extends Controller
                 <a href="'.route('advert.edit', $data->id).'" class="btn btn-success btn-circle btn-sm"><i class="fas fa-edit"></i></a>
                 <a href="'.route('advert.delete', $data->id).'" class="btn btn-danger btn-circle btn-sm "><i class="fas fa-trash"></i></a>';
             })
+            ->editColumn('created_by', function ($data){
+                return $data->user->name;
+            })
+            ->editColumn('is_featured_advert', function ($data){
+                return $data->is_featured_advert == 1 ? 'Yes' : 'No';
+            })
             ->make(true);
     }
 
@@ -73,6 +79,7 @@ class AdvertController extends Controller
             'meta_description' => 'required',
             'meta_keywords' => 'required',
             'status' => 'required',
+            'is_featured_advert' => 'required',
             'advert_category_id' => 'required',
         ]);
 
@@ -88,6 +95,7 @@ class AdvertController extends Controller
         $data->meta_description = $request->get('meta_description');
         $data->meta_keywords = $request->get('meta_keywords');
         $data->status = $request->get('status');
+        $data->is_featured_advert = $request->get('is_featured_advert');
         $data->advert_category_id = $request->get('advert_category_id');
         $data->created_by= Auth::id();
 
