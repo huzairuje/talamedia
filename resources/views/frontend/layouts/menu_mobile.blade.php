@@ -1,31 +1,9 @@
 <div class="menu-mobile">
     <ul class="main-menu-m">
+        @foreach($categoryName as $categoryNames)
         <li>
-            <a href="category-01.html">#Berita baik</a>
+            <a href="{{route('category', $categoryNames->name)}}">#{{ $categoryNames->name }}</a>
         </li>
-
-        <li>
-            <a href="category-02.html">#Info Kampus</a>
-        </li>
-
-        <li>
-            <a href="category-01.html">#Ruang Kota</a>
-        </li>
-
-        <li>
-            <a href="category-02.html">#Podcast</a>
-        </li>
-
-        <li>
-            <a href="category-01.html">#Event</a>
-        </li>
-
-{{--        <li>--}}
-{{--            <a href="category-02.html">#Gigs</a>--}}
-{{--        </li>--}}
-
-        <li>
-            <a href="category-02.html">#Kerjasama</a>
-        </li>
+        @endforeach
     </ul>
 </div>

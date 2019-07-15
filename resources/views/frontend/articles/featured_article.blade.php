@@ -10,24 +10,24 @@
                 </div>
 
                 <div class="row p-t-35">
-                    @foreach($articleByCategory as $articleByCategories)
-                    <div class="col-sm-6 p-r-25 p-r-15-sr991">
-                        <!-- Item latest -->
-                        <div class="m-b-45">
-                            <a href="{{route('article', $articleByCategories->id)}}" class="wrap-pic-w hov1 trans-03">
-                                <img src="images/latest-01.jpg" alt="IMG">
-                            </a>
+                    @foreach($featuredArticle->take(6) as $articleByCategories)
+                        <div class="col-sm-6 p-r-25 p-r-15-sr991">
+                            <!-- Item latest -->
+                            <div class="m-b-45">
+                                <a href="{{route('article', $articleByCategories->id)}}" class="wrap-pic-w hov1 trans-03">
+                                    <img src="images/latest-01.jpg" alt="IMG">
+                                </a>
 
-                            <div class="p-t-16">
-                                <h5 class="p-b-5">
-                                    <a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
+                                <div class="p-t-16">
+                                    <h5 class="p-b-5">
+                                        <a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
                                             <a href="{{route('article', $articleByCategories->id)}}" class="f1-m-3 cl2 hov-cl10 trans-03">
                                                 {{$articleByCategories->name}}
                                             </a>
-                                    </a>
-                                </h5>
+                                        </a>
+                                    </h5>
 
-                                <span class="cl8">
+                                    <span class="cl8">
 										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
 											by {{ $articleByCategories->user->name }}
 										</a>
@@ -40,9 +40,9 @@
 											{{ $articleByCategories->created_at }}
 										</span>
 									</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
 
                 </div>

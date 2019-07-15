@@ -15,9 +15,14 @@ class ArticleRepositories
         $this->article = $article;
     }
 
+//    public function getArticle()
+//    {
+//        $category = DB::table('articles')->select('*')->get();
+//        return $category;
+//    }
     public function getArticle()
     {
-        $category = DB::table('articles')->select('*')->get();
+        $category = Article::all();
         return $category;
     }
 
@@ -33,9 +38,9 @@ class ArticleRepositories
         return $articlePageId;
     }
 
-    public function getArticleByCategory($category_id)
+    public function getArticleFeatured()
     {
-        $article = $this->article->category();
+        $article = Article::where('is_featured_article', '=', 1)->get();
         return $article;
     }
 

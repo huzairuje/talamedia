@@ -7,6 +7,4 @@
     @else
         @include('frontend.layouts.latest')
     @endif
-{{--    @include('frontend.instagram.category_feed_instagram')--}}
-{{--    @include('frontend.layouts.latest')--}}
 @endsection

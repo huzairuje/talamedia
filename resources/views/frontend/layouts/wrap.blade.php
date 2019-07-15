@@ -5,7 +5,7 @@
         <nav class="menu-desktop">
             <ul class="main-menu">
                 <li class="main-menu">
-                    <a class="logo-stick" href="/">
+                    <a class="logo-stick" href="{{route('front')}}">
                         <img src="{{asset('images/icons/Background.jpg')}}" alt="LOGO">
                     </a>
                 </li>

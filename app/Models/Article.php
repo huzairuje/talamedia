@@ -38,12 +38,17 @@ class Article extends Authenticatable
 
     public function category()
     {
-        return $this->belongsTo(ArticleCategory::class);
+        return $this->belongsTo(ArticleCategory::class, 'article_category_id', 'id');
     }
 
     public function user()
     {
         return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+
+    public function scopeIsFeaturedArticle($query)
+    {
+        return $query->where('is_featured_article', 1);
     }
 
 }
