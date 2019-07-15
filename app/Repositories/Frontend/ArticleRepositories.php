@@ -28,7 +28,7 @@ class ArticleRepositories
 
     public function getArticleBySlug($slug)
     {
-        $articlePage = Article::where('name', '=', $slug)->firstOrFail();
+        $articlePage = Article::where('slug', '=', $slug)->firstOrFail();
         return $articlePage;
     }
 

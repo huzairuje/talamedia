@@ -90,7 +90,7 @@ class FrontendController extends Controller
 
     }
 
-    public function findArticle($id)
+    public function findArticleById($id)
     {
         $article = $this->articleRepositories->getArticleById($id);
         $categoryName = $this->articleCategoriesRepositories->getArticleCategory();
@@ -98,9 +98,25 @@ class FrontendController extends Controller
         return view('frontend.articles.index', compact('article', 'categoryName'));
     }
 
-    public function findAdvert($id)
+    public function findArticleBySlug($slug)
+    {
+        $article = $this->articleRepositories->getArticleBySlug($slug);
+        $categoryName = $this->articleCategoriesRepositories->getArticleCategory();
+
+        return view('frontend.articles.index', compact('article', 'categoryName'));
+    }
+
+    public function findAdvertById($id)
     {
         $advert = $this->advertRepositories->getAdvertById($id);
+        $categoryName = $this->articleCategoriesRepositories->getArticleCategory();
+
+        return view('frontend.adverts.index', compact('advert', 'categoryName'));
+    }
+
+    public function findAdvertBySlug($slug)
+    {
+        $advert = $this->advertRepositories->getAdvertBySlug($slug);
         $categoryName = $this->articleCategoriesRepositories->getArticleCategory();
 
         return view('frontend.adverts.index', compact('advert', 'categoryName'));

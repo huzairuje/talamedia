@@ -19,8 +19,11 @@ Route::get('/{slug}', 'Frontend\FrontendController@findCategoryBySlug')->name('c
 
 
 #Article Front
-    Route::get('article/{id}', 'Frontend\FrontendController@findArticle')->name('article');
-    Route::get('advert/{id}', 'Frontend\FrontendController@findAdvert')->name('advert');
+    Route::get('article/{id}', 'Frontend\FrontendController@findArticleById')->name('article');
+    Route::get('articleSlug/{slug}', 'Frontend\FrontendController@findArticleBySlug')->name('articleSlug');
+
+    Route::get('advert/{id}', 'Frontend\FrontendController@findAdvertById')->name('advert');
+    Route::get('advertSlug/{slug}', 'Frontend\FrontendController@findAdvertBySlug')->name('advertSlug');
 
 
 Route::group(['prefix' => 'admin' ,'middleware' => 'auth'], function() {
