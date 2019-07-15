@@ -8,7 +8,7 @@
                         <a href="{{route('article', $featuredArticles->id)}}" class="dis-block how1-child1 trans-03"></a>
 
                         <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
-                            <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+                            <a href="{{route('category', $featuredArticles->category->name)}}" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
                                 {{$featuredArticles->category->name}}
                             </a>
 
