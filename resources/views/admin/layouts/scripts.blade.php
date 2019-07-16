@@ -38,5 +38,8 @@
 {{--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>--}}
 {{--<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />--}}
 
+<script src="{{ asset('plugins/select2/dist/js/select2.full.js')}}"></script>
+<script src="{{ asset('global/js/scripts.js')}}"></script>
+
 @yield('scripts')
 @stack('scripts')

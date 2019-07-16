@@ -78,7 +78,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <strong>Status :</strong>
-                        <select class="status form-control select2" name="status" data-placeholder="Status" id="status" value="{{$data->status}}">
+                        <select class="status form-control" name="status" data-placeholder="Status" id="status" value="{{$data->status}}">
                             <option></option>
                             <option value="Published">Published</option>
                             <option value="Draft">Draft</option>
@@ -93,7 +93,7 @@
                         <select class="form-control" name="article_category_id" value="{{$data->article_category_id}}">
                             <option></option>
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}"{{ old('article_category')==$category->id ? ' selected' : '' }}>{{ $category->name }}</option>
+                                <option value="{{ $category->id }}"{{ old('article_category_id') ? (old('article_category_id') == $category->id ? ' selected' : '') : ($data->article_category_id == $category->id ? ' selected' : '') }}>{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -101,11 +101,21 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <strong>Tag :</strong>
-                        <select class="form-control" name="article_tag_id" value="{{$data->article_tag_id}}">
+                        <select class="form-control select2" name="article_tag_id" value="{{$data->article_tag_id}}" multiple data-placeholder="ini placeholder">
                             <option></option>
                             @foreach($tags as $tag)
-                                <option value="{{ $tag->id }}"{{ old('article_tag')==$tag->id ? ' selected' : '' }}>{{ $tag->name }}</option>
+                                <option value="{{ $tag->id }}"{{ old('article_tag_id') ? (old('article_tag_id') == $tag->id ? ' selected' : '') : ($data->article_tag_id == $tag->id ? ' selected' : '') }}>{{ $tag->name }}</option>
                             @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <strong>Is Featured Article :</strong>
+                        <select class="status form-control select2" name="is_featured_article" data-placeholder="is_featured_article" id="is_featured_article">
+                            <option>---Status---</option>
+                            <option value=1>YES</option>
+                            <option value=0>NO</option>
                         </select>
                     </div>
                 </div>

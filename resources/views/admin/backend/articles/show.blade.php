@@ -107,8 +107,9 @@
                                         <div class="form-group">
                                             <label class="col-form-label">
                                                 <strong>Tag :</strong>
-                                                {{ $data->article_tag_id }}
-                                                <label class="col-form-label">
+                                                    @foreach($tags as $tag)
+                                                        <div value="{{ $tag->id }}"{{ old('article_tag_id') ? (old('article_tag_id') == $tag->id ? ' selected' : '') : ($data->article_tag_id == $tag->id ? ' selected' : '') }}>{{ $tag->name }}</div>
+                                                    @endforeach
                                                 </label>
                                             </label>
                                         </div>

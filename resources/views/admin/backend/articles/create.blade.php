@@ -97,10 +97,10 @@
         <div class="col-md-6">
             <div class="form-group">
                 <strong>Tag :</strong>
-                <select class="form-control" name="article_tag_id">
+                <select multiple="true" class="form-control select2" data-placeholder="ini placeholder" name="article_tag_id[]">
                 <option></option>
                 @foreach($tags as $tag)
-                    <option value="{{ $tag->id }}"{{ old('article_tag')==$tag->id ? ' selected' : '' }}>{{ $tag->name }}</option>
+                    <option value="{{$tag->id}}">{{ $tag->name }}</option>
                 @endforeach
                 </select>
             </div>

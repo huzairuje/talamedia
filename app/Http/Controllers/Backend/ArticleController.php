@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\ArticleArticletag;
 use App\Models\ArticleCategory;
 use App\Models\ArticleTag;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,17 +23,18 @@ class ArticleController extends Controller
      * @return mixed
      */
     protected $model;
+    protected $articletag;
+
 
     public function __construct(Article $model)
     {
         $this->model = $model;
-        $this->user = new User();
+        $this->articletag = new ArticleArticletag;
     }
 
     public function dataTables()
     {
         $data = numrows(Article::all());
-        $user = User::all();
         return DataTables::of($data)
             ->addColumn('action', function ($data) {
                 return
@@ -71,6 +74,8 @@ class ArticleController extends Controller
      * @param CreateUserRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
+    public $DEFAULT_LANGUAGE = 1;
+
     public function store(Request $request)
     {
         $request->validate([
@@ -84,10 +89,10 @@ class ArticleController extends Controller
             'meta_keywords' => 'required',
             'status' => 'required',
             'article_category_id' => 'required',
-            'article_tag_id' => 'required',
         ]);
 
-
+//        $datas = new ArticleArticletag();
+        DB::beginTransaction();
         $data = $this->model;
         $data->name = $request->get('name');
         $data->publish_datetime = Carbon::now();
@@ -100,11 +105,20 @@ class ArticleController extends Controller
         $data->status = $request->get('status');
         $data->is_featured_article = $request->get('is_featured_article');
         $data->article_category_id = $request->get('article_category_id');
-        $data->article_tag_id = $request->get('article_tag_id');
         $data->created_by= Auth::id();
-
         $data->save();
+        DB::commit();
 
+        $articletags = $this->articletag;
+        foreach ($articletags as $articletag){
+            $articletags = $request['article_tag_id'];
+            $article = ArticleTag::findOrFail($articletags);
+            $count = count($article);
+            if ($count == 0){
+                return redirect()->route('article.index')->with(['error' => 'Pesan Error']);
+            }
+        }
+        $data->articleTags()->attach($articletags);
         return redirect()->route('article.index')
             ->with('article created successfully.');
     }
@@ -117,7 +131,8 @@ class ArticleController extends Controller
     {
         $article = new Article();
         $data = $article->findOrFail($id);
-        return view('admin.backend.articles.show',compact('data'));
+        $tags = ArticleTag::all();
+        return view('admin.backend.articles.show',compact('data','tags'));
     }
 
     /**
@@ -128,9 +143,7 @@ class ArticleController extends Controller
     {
         $categories = ArticleCategory::all();
         $tags = ArticleTag::all();
-//        $article = new Article();
         $data = Article::findOrFail($id);
-//        dd($data);
         return view('admin.backend.articles.edit',compact('data','tags','categories'));
     }
 
@@ -157,17 +170,32 @@ class ArticleController extends Controller
             'article_category_id' => 'required',
             'article_tag_id' => 'required',
         ]);
-        $data->update([
-            'name' => $request->name,
-            'featured_image' => $request->featured_image,
-            'meta_title' => $request->meta_title,
-            'slug' => $request->slug,
-            'content' => $request->get('content'),
-            'meta_description' => $request->meta_description,
-            'meta_keywords' => $request->meta_keywords,
-            'article_category_id' => $request->article_category_id,
-            'article_tag_id' => $request->article_tag_id,
-        ]);
+        DB::beginTransaction();
+        $data = $this->model;
+        $data->name = $request->get('name');
+        $data->publish_datetime = Carbon::now();
+        $data->featured_image = $request->get('featured_image');
+        $data->content = $request->get('content');
+        $data->meta_title = $request->get('meta_title');
+        $data->slug = $request->get('slug');
+        $data->meta_description = $request->get('meta_description');
+        $data->meta_keywords = $request->get('meta_keywords');
+        $data->status = $request->get('status');
+        $data->is_featured_article = $request->get('is_featured_article');
+        $data->article_category_id = $request->get('article_category_id');
+        $data->created_by= Auth::id();
+        $data->save();
+        DB::commit();
+        $articletags = $this->articletag;
+        foreach ($articletags as $articletag){
+            $articletags = $request['article_tag_id'];
+            $article = ArticleTag::findOrFail($articletags);
+//            $count = count($article);
+//            if ($count == 0){
+//                return redirect()->route('article.index')->with(['error' => 'Pesan Error']);
+//            }
+        }
+        $data->articleTags()->attach($articletags);
 
         return redirect('/article')->with('Article has been updated');
     }

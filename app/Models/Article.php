@@ -28,12 +28,11 @@ class Article extends Authenticatable
         'meta_description',
         'meta_keywords',
         'status',
-        'article_category_id',
-        'article_tag_id'
+        'article_category_id'
     ];
     public function tag()
     {
-        return $this->belongsTo(ArticleCategory::class);
+       return $this->belongsToMany(ArticleTag::class);
     }
 
     public function category()
@@ -44,6 +43,11 @@ class Article extends Authenticatable
     public function user()
     {
         return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+
+    public function articleTags()
+    {
+        return $this->belongsToMany(ArticleTag::class, 'article_articletags');
     }
 
 }

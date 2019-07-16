@@ -24,4 +24,8 @@ class ArticleTag extends Authenticatable
                 $this->table.'.status'
             );
     }
+    public function article()
+    {
+        return $this->belongsToMany(Article::class);
+    }
 }
