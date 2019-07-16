@@ -25,4 +25,9 @@ class ArticleCategory extends Authenticatable
                 $this->table.'.name'
             );
     }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
 }

@@ -41,4 +41,9 @@ class Advert extends Authenticatable
         return $this->belongsTo(User::class, 'created_by', 'id');
     }
 
+    public function scopeIsFeaturedAdvert($query)
+    {
+        return $query->where('is_featured_advert', 1);
+    }
+
 }

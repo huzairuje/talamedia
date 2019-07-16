@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,11 +15,18 @@
 Auth::routes();
 
 Route::get('/', 'Frontend\FrontendController@index')->name('front');
-Route::get('/{slug}', 'Frontend\FrontendController@findBySlug')->name('category');
+Route::get('/{slug}', 'Frontend\FrontendController@findCategoryBySlug')->name('category');
+
+
+#Article Front
+    Route::get('article/{id}', 'Frontend\FrontendController@findArticleById')->name('article');
+    Route::get('articleSlug/{slug}', 'Frontend\FrontendController@findArticleBySlug')->name('articleSlug');
+
+    Route::get('advert/{id}', 'Frontend\FrontendController@findAdvertById')->name('advert');
+    Route::get('advertSlug/{slug}', 'Frontend\FrontendController@findAdvertBySlug')->name('advertSlug');
+
 
 Route::group(['prefix' => 'admin' ,'middleware' => 'auth'], function() {
-
-
     Route::get('dashboard', 'HomeController@index')->name('dashboard');
 # RoleController
     Route::get('role', ['as' => 'role.index', 'uses' => 'Backend\RoleController@index']);

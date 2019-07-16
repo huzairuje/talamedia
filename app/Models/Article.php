@@ -37,7 +37,7 @@ class Article extends Authenticatable
 
     public function category()
     {
-        return $this->belongsTo(ArticleCategory::class);
+        return $this->belongsTo(ArticleCategory::class, 'article_category_id', 'id');
     }
 
     public function user()
@@ -48,6 +48,11 @@ class Article extends Authenticatable
     public function articleTags()
     {
         return $this->belongsToMany(ArticleTag::class, 'article_articletags');
+    }
+
+    public function scopeIsFeaturedArticle($query)
+    {
+        return $query->where('is_featured_article', 1);
     }
 
 }

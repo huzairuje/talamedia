@@ -6,5 +6,5 @@
     @include('frontend.instagram.feature_feed_instagram')
     @include('frontend.layouts.post')
     @include('frontend.layouts.banner')
-    @include('frontend.layouts.latest')
+    @include('frontend.articles.featured_article')
 @endsection
