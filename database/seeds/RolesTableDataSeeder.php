@@ -20,8 +20,12 @@ class RolesTableDataSeeder extends Seeder
                 'description' => 'Can Edit Everythings'
             ],
             [
-                'name' => 'admin',
-                'description' => 'Can Edit thing'
+                'name' => 'admin_article',
+                'description' => 'Can Edit Article'
+            ],
+            [
+                'name' => 'admin_advert',
+                'description' => 'Can Edit Advertisement'
             ],
 
         ];

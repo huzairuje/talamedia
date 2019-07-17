@@ -26,22 +26,34 @@
             </span>
                 </a>
             </li>
-{{--            @if (checkGroupAccess(['users', 'roles', 'menus']) )--}}
-{{--                @if (checkAccess('users') )--}}
+            @admin
                 <li class="active treeview">
-                <a href="#">
-                    <i class="fas fa-users"></i> <span>User Management</span>
-                    <span class="pull-right-container">
+                    <a href="#">
+                        <i class="fas fa-users"></i> <span>User Management</span>
+                        <span class="pull-right-container"></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="active"><a href="{{route('user.index')}}"><i class="fas fa-user-circle"></i> User </a></li>
+                        <li><a href="{{route('role.index')}}"><i class="fas fa-user-tag"></i> Role </a></li>
+                        <li><a href="{{route('menu.index')}}"><i class="fas fa-link"></i> Menu </a></li>
+                    </ul>
+                </li>
+            @endadmin
+{{--            <li class="active treeview">--}}
+{{--                <a href="#">--}}
+{{--                    <i class="fas fa-users"></i> <span>User Management</span>--}}
+{{--                    <span class="pull-right-container">--}}
 {{--              <i class="fas fa-user-left pull-right"></i>--}}
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="active"><a href="{{route('user.index')}}"><i class="fas fa-user-circle"></i> User </a></li>
-                    <li><a href="{{route('role.index')}}"><i class="fas fa-user-tag"></i> Role </a></li>
-                    <li><a href="{{route('menu.index')}}"><i class="fas fa-link"></i> Menu </a></li>
-                </ul>
-            </li>
+{{--            </span>--}}
+{{--                </a>--}}
+{{--                <ul class="treeview-menu">--}}
+{{--                    <li class="active"><a href="{{route('user.index')}}"><i class="fas fa-user-circle"></i> User </a></li>--}}
+{{--                    <li><a href="{{route('role.index')}}"><i class="fas fa-user-tag"></i> Role </a></li>--}}
+{{--                    <li><a href="{{route('menu.index')}}"><i class="fas fa-link"></i> Menu </a></li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
 {{--                @endif--}}
+            @article
             <li class="active treeview">
                 <a href="#">
                     <i class="fas fa-newspaper"></i>
@@ -52,11 +64,14 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('article.index')}}"><i class="fas fa-file-alt"></i> Article Management</a></li>
+                    @admin
                     <li><a href="{{route('articletag.index')}}"><i class="fas fa-tag"></i> Article Tag</a></li>
                     <li><a href="{{route('articlecategory.index')}}"><i class="fas fa-clone"></i> Article Category </a></li>
+                    @endadmin
                 </ul>
             </li>
-
+            @endarticle
+            @advert
             <li class="active treeview">
                 <a href="#">
                     <i class="fas fa-ad"></i>
@@ -71,6 +86,7 @@
                     <li><a href="{{route('advertcategory.index')}}"><i class="fas fa-copy"></i> Advertisement Category </a></li>
                 </ul>
             </li>
+            @endadvert
         </ul>
 {{--@endif--}}
     </section>

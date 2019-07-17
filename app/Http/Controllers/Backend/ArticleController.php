@@ -80,7 +80,7 @@ class ArticleController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'featured_image' => 'required',
+            'featured_image' => 'required|max:2048',
             'is_featured_article' => 'required',
             'content' => 'required',
             'meta_title' => 'required',
@@ -91,12 +91,13 @@ class ArticleController extends Controller
             'article_category_id' => 'required',
         ]);
 
+        $image = $request->file('featured_image')->store('public/images');
 //        $datas = new ArticleArticletag();
         DB::beginTransaction();
         $data = $this->model;
         $data->name = $request->get('name');
         $data->publish_datetime = Carbon::now();
-        $data->featured_image = $request->get('featured_image');
+        $data->featured_image = $image;
         $data->content = $request->get('content');
         $data->meta_title = $request->get('meta_title');
         $data->slug = $request->get('slug');
