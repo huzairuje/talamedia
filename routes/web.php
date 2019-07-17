@@ -19,12 +19,11 @@ Route::get('/{slug}', 'Frontend\FrontendController@findCategoryBySlug')->name('c
 
 
 #Article Front
-    Route::get('article/{id}', 'Frontend\FrontendController@findArticleById')->name('article');
-    Route::get('articleSlug/{slug}', 'Frontend\FrontendController@findArticleBySlug')->name('articleSlug');
+    Route::get('article/{id}', 'Frontend\ArticleController@findArticleById')->name('article');
+    Route::get('articleSlug/{slug}', 'Frontend\ArticleController@findArticleBySlug')->name('articleSlug');
 
-    Route::get('advert/{id}', 'Frontend\FrontendController@findAdvertById')->name('advert');
-    Route::get('advertSlug/{slug}', 'Frontend\FrontendController@findAdvertBySlug')->name('advertSlug');
-
+    Route::get('advert/{id}', 'Frontend\AdvertController@findAdvertById')->name('advert');
+//    Route::get('advertSlug/{slug}', 'Frontend\AdvertController@findAdvertBySlug')->name('advertSlug');
 
 Route::group(['prefix' => 'admin' ,'middleware' => 'auth'], function() {
     Route::get('dashboard', 'HomeController@index')->name('dashboard');

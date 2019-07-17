@@ -3,7 +3,7 @@
 @section('content')
     <section class="bg0 p-b-70 p-t-5">
         <!-- Title -->
-        <div class="bg-img1 size-a-18 how-overlay1" style="background-image: url(images/blog-detail-01.jpg);">
+        <div class="bg-img1 size-a-18 how-overlay1" style="background-image: url({{Storage::url($article->featured_image)}});">
             <div class="container h-full flex-col-e-c p-b-58">
                 <a href="#" class="f1-s-10 cl0 hov-cl10 trans-03 text-uppercase txt-center m-b-33">
                     {{$article->category->name}}
@@ -16,23 +16,23 @@
                 <div class="flex-wr-c-s">
 					<span class="f1-s-3 cl8 m-rl-7 txt-center">
 						<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-							by John Alvarado
+							by {{$article->user->name}}
 						</a>
 
 						<span class="m-rl-3">-</span>
 
 						<span>
-							Feb 18
+							{{$article->created_at}}
 						</span>
 					</span>
 
-                    <span class="f1-s-3 cl8 m-rl-7 txt-center">
-						5239 Views
-					</span>
+{{--                    <span class="f1-s-3 cl8 m-rl-7 txt-center">--}}
+{{--						5239 Views--}}
+{{--					</span>--}}
 
-                    <a href="" class="f1-s-3 cl8 m-rl-7 txt-center hov-cl10 trans-03">
-                        0 Comment
-                    </a>
+{{--                    <a href="" class="f1-s-3 cl8 m-rl-7 txt-center hov-cl10 trans-03">--}}
+{{--                        0 Comment--}}
+{{--                    </a>--}}
                 </div>
             </div>
         </div>

@@ -92,7 +92,6 @@ class ArticleController extends Controller
         ]);
 
         $image = $request->file('featured_image')->store('public/images');
-//        $datas = new ArticleArticletag();
         DB::beginTransaction();
         $data = $this->model;
         $data->name = $request->get('name');
