@@ -14,7 +14,7 @@
                         <div class="col-sm-6 p-r-25 p-r-15-sr991">
                             <!-- Item latest -->
                             <div class="m-b-45">
-                                <a href="{{route('article', $articleByCategories->id)}}" class="wrap-pic-w hov1 trans-03">
+                                <a href="{{route('articleSlug', $articleByCategories->slug)}}" class="wrap-pic-w hov1 trans-03">
                                     <img src="{{url(Storage::url($articleByCategories->featured_image))}}" alt="IMG">
                                 </a>
 

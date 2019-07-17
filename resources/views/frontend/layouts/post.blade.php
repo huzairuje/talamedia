@@ -11,7 +11,7 @@
                             <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                 <!-- Item latest -->
                                 <div class="m-b-45">
-                                    <a href="{{route('article', $getAllArticles->id)}}" class="wrap-pic-w hov1 trans-03">
+                                    <a href="{{route('articleSlug', $getAllArticles->slug)}}" class="wrap-pic-w hov1 trans-03">
                                         <img src="{{url(Storage::url($getAllArticles->featured_image))}}" alt="IMG">
                                     </a>
 
@@ -59,7 +59,7 @@
                             <li class="flex-wr-sb-s p-b-22">
                                 <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
                                 </div>
-                                <a href="{{route('article' , $getAllArticles->id)}}" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
+                                <a href="{{route('articleSlug' , $getAllArticles->slug)}}" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
                                     {{$getAllArticles->name}}
                                 </a>
                             </li>
