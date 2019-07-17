@@ -186,18 +186,19 @@ class ArticleController extends Controller
         $data->created_by= Auth::id();
         $data->save();
         DB::commit();
+
         $articletags = $this->articletag;
         foreach ($articletags as $articletag){
             $articletags = $request['article_tag_id'];
             $article = ArticleTag::findOrFail($articletags);
-//            $count = count($article);
-//            if ($count == 0){
-//                return redirect()->route('article.index')->with(['error' => 'Pesan Error']);
-//            }
+            $count = count($article);
+            if ($count == 0){
+                return redirect()->route('article.index')->with(['error' => 'Pesan Error']);
+            }
         }
         $data->articleTags()->attach($articletags);
 
-        return redirect('/article')->with('Article has been updated');
+        return redirect()->route('article.index')->with('Article has been updated');
     }
 
     /**
