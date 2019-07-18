@@ -1,0 +1,11 @@
+.input-file-pk {
+    display: inline-block;
+    position: relative;
+}
+.input-file-pk input[type="file"]{
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    top: 0;
+    bottom:0;
+}

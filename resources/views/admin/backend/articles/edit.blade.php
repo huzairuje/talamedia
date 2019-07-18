@@ -23,7 +23,7 @@
         </div>
     @endif
   
-    <form action="{{ route('article.update', $data) }}" method="POST">
+    <form action="{{ route('article.update', $data) }}" method="POST"  enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="card shadow mb-4">
@@ -37,8 +37,16 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <strong>Picture:</strong>
-                        <input type="file" class="form-control" name="featured_image" placeholder="Image" value="{{$data->image}}">
+                        <input type="file" class="hidden img-responsive" name="featured_image" id="featured_image"
+                               value="{{ old($data->featured_image) }}"
+                               placeholder="Foto"  accept="image/*">
+                        <div class="input-file-pk">
+                            <input type="file" name="featured_image" value="{{ $data->featured_image}}">
+                            <input type="hidden" name="featured_image" value="{{ $data->featured_image}}">
+                        <img id="preview-foto" width="150" height="150"
+                             class="img-responsive"{!! $data->featured_image!=null ? ' src="'.asset(Storage::url($data->featured_image)).'"' : ' data-src="holder.js/150x150?text=Klik untuk meng-upload gambar"' !!}>
+                        </div>
+                        <p>Klik gambar untuk mengedit</p>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -79,7 +87,7 @@
                     <div class="form-group">
                         <strong>Status :</strong>
                         <select class="status form-control" name="status" data-placeholder="Status" id="status" value="{{$data->status}}">
-                            <option></option>
+                            <option value="{{$data->status}}">{{$data->status}}</option>
                             <option value="Published">Published</option>
                             <option value="Draft">Draft</option>
                             <option value="InActive">InActive</option>
@@ -101,8 +109,8 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <strong>Tag :</strong>
-                        <select class="form-control select2" name="article_tag_id" value="{{$data->article_tag_id}}" multiple data-placeholder="ini placeholder">
-                            <option></option>
+                        <select class="form-control select2" name="article_tag_id" value="{{$data->article_tag_id}}" multiple data-placeholder="Tag">
+{{--                            <option></option>--}}
                             @foreach($tags as $tag)
                                 <option value="{{ $tag->id }}"{{ old('article_tag_id') ? (old('article_tag_id') == $tag->id ? ' selected' : '') : ($data->article_tag_id == $tag->id ? ' selected' : '') }}>{{ $tag->name }}</option>
                             @endforeach
@@ -112,8 +120,8 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <strong>Is Featured Article :</strong>
-                        <select class="status form-control select2" name="is_featured_article" data-placeholder="is_featured_article" id="is_featured_article">
-                            <option>---Status---</option>
+                        <select class="status form-control" name="is_featured_article" data-placeholder="is_featured_article" id="is_featured_article">
+                            <option value="{{$data->is_featured_article}}">{{$data->is_featured_article == 1 ? 'YES' : 'NO'}}</option>
                             <option value=1>YES</option>
                             <option value=0>NO</option>
                         </select>

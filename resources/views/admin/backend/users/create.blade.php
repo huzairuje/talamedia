@@ -26,31 +26,36 @@
     @csrf
 
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <strong>Name:</strong>
                 <input type="text" name="name" class="form-control" placeholder="Name">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <strong>Email:</strong>
                 <input type="email" name="email" class="form-control" placeholder="Email">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <strong>Password:</strong>
                 <input type="password" class="form-control" name="password" placeholder="Password">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-md-6">
+            <strong>Confirmed Password:</strong>
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+        </div>
+        <div class="col-md-12">
             <div class="form-group">
                 <strong>Role:</strong>
                 <select class="form-control" name="role_id">
                     <option>---Role---</option>
                     <option value="1">Super Admin</option>
-                    <option value="2">Admin </option>
+                    <option value="2">Admin Article </option>
+                    <option value="3">Admin Advert</option>
                 </select>
             </div>
         </div>

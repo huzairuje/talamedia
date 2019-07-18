@@ -74,8 +74,6 @@ class ArticleController extends Controller
      * @param CreateUserRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public $DEFAULT_LANGUAGE = 1;
-
     public function store(Request $request)
     {
         $request->validate([
@@ -156,11 +154,9 @@ class ArticleController extends Controller
     {
         $data = $this->model->findOrFail($id);
 
-//        dd($data);
-
         $request->validate([
             'name' => 'required',
-            'featured_image' => 'required',
+//            'featured_image' => 'required|max:2048',
             'content' => 'required',
             'meta_title' => 'required',
             'slug' => 'required',
@@ -170,11 +166,13 @@ class ArticleController extends Controller
             'article_category_id' => 'required',
             'article_tag_id' => 'required',
         ]);
-        DB::beginTransaction();
-        $data = $this->model;
+
+
+
+        $image = $request->hasFile('featured_image')->store('public/images');
         $data->name = $request->get('name');
         $data->publish_datetime = Carbon::now();
-        $data->featured_image = $request->get('featured_image');
+        $data->featured_image = $image;
         $data->content = $request->get('content');
         $data->meta_title = $request->get('meta_title');
         $data->slug = $request->get('slug');
@@ -184,20 +182,16 @@ class ArticleController extends Controller
         $data->is_featured_article = $request->get('is_featured_article');
         $data->article_category_id = $request->get('article_category_id');
         $data->created_by= Auth::id();
-        $data->save();
-        DB::commit();
-
+        $data->update();
         $articletags = $this->articletag;
         foreach ($articletags as $articletag){
             $articletags = $request['article_tag_id'];
             $article = ArticleTag::findOrFail($articletags);
-            $count = count($article);
-            if ($count == 0){
-                return redirect()->route('article.index')->with(['error' => 'Pesan Error']);
-            }
+//            $count = count($article);
+//            if ($count == 0){
+//                return redirect()->route('article.index')->with(['error' => 'Pesan Error']);
+//            }
         }
-        $data->articleTags()->attach($articletags);
-
         return redirect()->route('article.index')->with('Article has been updated');
     }
 
