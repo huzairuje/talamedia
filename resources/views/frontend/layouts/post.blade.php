@@ -12,7 +12,7 @@
                                 <!-- Item latest -->
                                 <div class="m-b-45">
                                     <a href="{{route('articleSlug', $getAllArticles->slug)}}" class="wrap-pic-w hov1 trans-03">
-                                        <img src="{{url(Storage::url('/images/'.$getAllArticles->featured_image))}}" alt="IMG">
+                                        <img src="{{url(Storage::url('images/'.$getAllArticles->featured_image))}}" alt="IMG">
                                     </a>
 
                                     <div class="p-t-16">
