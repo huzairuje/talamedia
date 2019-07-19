@@ -44,7 +44,7 @@
                             <input type="file" name="featured_image" value="{{ $data->featured_image}}">
                             <input type="hidden" name="featured_image" value="{{ $data->featured_image}}">
                         <img id="preview-foto" width="150" height="150"
-                             class="img-responsive"{!! $data->featured_image!=null ? ' src="'.asset(Storage::url($data->featured_image)).'"' : ' data-src="holder.js/150x150?text=Klik untuk meng-upload gambar"' !!}>
+                             class="img-responsive"{!! $data->featured_image!=null ? ' src="'.asset(Storage::url('/images/'.$data->featured_image)).'"' : ' data-src="holder.js/150x150?text=Klik untuk meng-upload gambar"' !!}>
                         </div>
                         <p>Klik gambar untuk mengedit</p>
                     </div>

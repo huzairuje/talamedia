@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
 
@@ -89,12 +90,16 @@ class ArticleController extends Controller
             'article_category_id' => 'required',
         ]);
 
-        $image = $request->file('featured_image')->store('public/images');
+//        $image = $request->file('featured_image')->store('public/images');
+
         DB::beginTransaction();
         $data = $this->model;
         $data->name = $request->get('name');
         $data->publish_datetime = Carbon::now();
-        $data->featured_image = $image;
+        if ($request->hasFile('featured_image')) {
+            $data->featured_image = $this->uploadFeaturedImage($request);
+        }
+//        $data->featured_image = ;
         $data->content = $request->get('content');
         $data->meta_title = $request->get('meta_title');
         $data->slug = $request->get('slug');
@@ -156,7 +161,6 @@ class ArticleController extends Controller
 
         $request->validate([
             'name' => 'required',
-//            'featured_image' => 'required|max:2048',
             'content' => 'required',
             'meta_title' => 'required',
             'slug' => 'required',
@@ -168,11 +172,16 @@ class ArticleController extends Controller
         ]);
 
 
-
-        $image = $request->hasFile('featured_image')->store('public/images');
+//        $image = $request->hasFile('featured_image')->store('public/images');
         $data->name = $request->get('name');
         $data->publish_datetime = Carbon::now();
-        $data->featured_image = $image;
+
+        if ($request->hasFile('featured_image')) {
+            File::delete('public/images/'.$data->featured_image);
+            $data->featured_image = $this->uploadFeaturedImage($request);
+        }
+
+//        $data->featured_image = $image;
         $data->content = $request->get('content');
         $data->meta_title = $request->get('meta_title');
         $data->slug = $request->get('slug');
@@ -187,10 +196,6 @@ class ArticleController extends Controller
         foreach ($articletags as $articletag){
             $articletags = $request['article_tag_id'];
             $article = ArticleTag::findOrFail($articletags);
-//            $count = count($article);
-//            if ($count == 0){
-//                return redirect()->route('article.index')->with(['error' => 'Pesan Error']);
-//            }
         }
         return redirect()->route('article.index')->with('Article has been updated');
     }
@@ -207,4 +212,15 @@ class ArticleController extends Controller
         return redirect()->route('article.index')
             ->with('article deleted successfully');
     }
+
+    public function uploadFeaturedImage(Request $request)
+    {
+        $featuredImage = $request->file('featured_image');
+        $initialImageName = $featuredImage->getClientOriginalName();
+        $getDate = Carbon::now();
+        $imageName = $getDate.$initialImageName;
+        $request->file('featured_image')->storeAs('public/images/', $imageName);
+        return $imageName;
+    }
+
 }

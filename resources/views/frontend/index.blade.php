@@ -7,4 +7,5 @@
     @include('frontend.layouts.post')
     @include('frontend.layouts.banner')
     @include('frontend.articles.featured_article')
+    @include('frontend.layouts.modal_video')
 @endsection

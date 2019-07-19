@@ -15,13 +15,13 @@
                             <!-- Item latest -->
                             <div class="m-b-45">
                                 <a href="{{route('articleSlug', $articleByCategories->slug)}}" class="wrap-pic-w hov1 trans-03">
-                                    <img src="{{url(Storage::url($articleByCategories->featured_image))}}" alt="IMG">
+                                    <img src="{{url(Storage::url('/images/'.$articleByCategories->featured_image))}}" alt="IMG">
                                 </a>
 
                                 <div class="p-t-16">
                                     <h5 class="p-b-5">
-                                        <a href="{{route('article', $articleByCategories->id)}}" class="f1-m-3 cl2 hov-cl10 trans-03">
-                                            <a href="{{route('article', $articleByCategories->id)}}" class="f1-m-3 cl2 hov-cl10 trans-03">
+                                        <a href="{{route('articleSlug', $articleByCategories->slug)}}" class="f1-m-3 cl2 hov-cl10 trans-03">
+                                            <a href="{{route('articleSlug', $articleByCategories->slug)}}" class="f1-m-3 cl2 hov-cl10 trans-03">
                                                 {{$articleByCategories->name}}
                                             </a>
                                         </a>

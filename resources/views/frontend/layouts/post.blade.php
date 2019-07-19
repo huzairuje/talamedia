@@ -12,13 +12,13 @@
                                 <!-- Item latest -->
                                 <div class="m-b-45">
                                     <a href="{{route('articleSlug', $getAllArticles->slug)}}" class="wrap-pic-w hov1 trans-03">
-                                        <img src="{{url(Storage::url($getAllArticles->featured_image))}}" alt="IMG">
+                                        <img src="{{url(Storage::url('/images/'.$getAllArticles->featured_image))}}" alt="IMG">
                                     </a>
 
                                     <div class="p-t-16">
                                         <h5 class="p-b-5">
-                                            <a href="{{route('article', $getAllArticles->id)}}" class="f1-m-3 cl2 hov-cl10 trans-03">
-                                                <a href="{{route('article', $getAllArticles->id)}}" class="f1-m-3 cl2 hov-cl10 trans-03">
+                                            <a href="{{route('articleSlug', $getAllArticles->slug)}}" class="f1-m-3 cl2 hov-cl10 trans-03">
+                                                <a href="{{route('articleSlug', $getAllArticles->slug)}}" class="f1-m-3 cl2 hov-cl10 trans-03">
                                                     {{$getAllArticles->name}}
                                                 </a>
                                             </a>

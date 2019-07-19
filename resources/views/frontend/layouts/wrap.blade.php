@@ -3,12 +3,10 @@
     <div class="main-nav">
         <!-- Menu desktop -->
         <nav class="menu-desktop">
+                <a class="logo-stick" href="{{route('front')}}">
+                    <img src="{{asset('images/icons/Background.jpg')}}" alt="LOGO">
+                </a>
             <ul class="main-menu">
-                <li class="main-menu">
-                    <a class="logo-stick" href="{{route('front')}}">
-                        <img src="{{asset('images/icons/Background.jpg')}}" alt="LOGO">
-                    </a>
-                </li>
                 @foreach($categoryName as $categoryNames)
                 <li class="mega-menu-item">
                     <a href="{{route('category', $categoryNames->name)}}">#{{ $categoryNames->name }}</a>
@@ -948,27 +946,30 @@
 {{--                    </ul>--}}
 {{--                </li>--}}
                 @endforeach
-
-                <div class="right-topbar">
-                    <a href="https://www.instagram.com/talamedia.id/">
-                        <span class="fab fa-instagram"></span>
-                    </a>
-                    <a href="https://line.me/R/ti/p/@rvn6239a">
-                        <span class="fab fa-line"></span>
-                    </a>
-                    <a href="https://www.facebook.com/talamedia.id/">
-                        <span class="fab fa-facebook-f"></span>
-                    </a>
-
-                    <a href="https://twitter.com/talamediaID">
-                        <span class="fab fa-twitter"></span>
-                    </a>
-
-                    <a href="https://www.youtube.com/channel/UCkKBUvs4azMDb-DQLAquUDQ?fbclid=IwAR35xjd9Zahl_a4eiPr9VtUrwyPY9KQ8ikdkNxfsstQtIedFzj5nUnvsvKs">
-                        <span class="fab fa-youtube"></span>
-                    </a>
-                </div>
             </ul>
+            <div class="right-topbar">
+                <a href="https://www.instagram.com/talamedia.id/">
+                    <span class="fab fa-instagram"></span>
+                </a>
+                <a href="https://line.me/R/ti/p/@rvn6239a">
+                    <span class="fab fa-line"></span>
+                </a>
+                <a href="https://www.facebook.com/talamedia.id/">
+                    <span class="fab fa-facebook-f"></span>
+                </a>
+
+                <a href="https://twitter.com/talamediaID">
+                    <span class="fab fa-twitter"></span>
+                </a>
+
+                <a href="https://www.linkedin.com/company/talamedia-networks/">
+                    <span class="fab fa-linkedin"></span>
+                </a>
+
+                <a href="https://www.youtube.com/channel/UCkKBUvs4azMDb-DQLAquUDQ?fbclid=IwAR35xjd9Zahl_a4eiPr9VtUrwyPY9KQ8ikdkNxfsstQtIedFzj5nUnvsvKs">
+                    <span class="fab fa-youtube"></span>
+                </a>
+            </div>
         </nav>
     </div>
 </div>
