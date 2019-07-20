@@ -17,6 +17,12 @@ Auth::routes();
 Route::get('/', 'Frontend\FrontendController@index')->name('front');
 Route::get('/{slug}', 'Frontend\FrontendController@findCategoryBySlug')->name('category');
 
+#Static Page
+Route::group(['prefix' => 'pages'], function () {
+    Route::get('faq', 'Frontend\FAQController@index')->name('faq');
+    Route::get('privacy-policy', 'Frontend\PrivacyPolicyController@index')->name('privacyPolicy');
+    Route::get('tentang-kami', 'Frontend\TentangKamiController@index')->name('tentangKami');
+});
 
 #Article Front
     Route::get('article/{id}', 'Frontend\ArticleController@findArticleById')->name('article');

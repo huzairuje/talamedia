@@ -56,7 +56,14 @@
                         <textarea name="content" id="ckview">{{$data->content}}</textarea>
                         <script src="{{url('themes/tinymce/jquery.tinymce.min.js')}}"></script>
                         <script src="{{url('themes/tinymce/tinymce.min.js')}}"></script>
-                        <script>tinymce.init({selector: '#ckview'});</script>
+                        <script>
+                            tinymce.init({
+                                selector: '#ckview',
+                                height: 300,
+                                plugins:'wordcount fullscreen link image code preview media',
+                                toolbar1:'preview code',
+                            });
+                        </script>
                     </div>
                 </div>
                 <div class="col-md-6">
