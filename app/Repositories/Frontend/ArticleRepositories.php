@@ -15,14 +15,9 @@ class ArticleRepositories
         $this->article = $article;
     }
 
-//    public function getArticle()
-//    {
-//        $category = DB::table('articles')->select('*')->get();
-//        return $category;
-//    }
     public function getArticle()
     {
-        $category = Article::all();
+        $category = Article::orderBy('created_at', 'desc')->get();
         return $category;
     }
 
@@ -40,7 +35,7 @@ class ArticleRepositories
 
     public function getArticleFeatured()
     {
-        $article = Article::where('is_featured_article', '=', 1)->get();
+        $article = Article::where('is_featured_article', '=', 1)->orderBy('created_at', 'desc')->get();
         return $article;
     }
 

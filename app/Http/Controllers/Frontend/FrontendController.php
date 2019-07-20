@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Repositories\Frontend\AdvertRepositories;
 use App\Repositories\Frontend\ArticleCategoriesRepositories;
 use App\Repositories\Frontend\ArticleRepositories;
+use App\Repositories\Frontend\TagRepositories;
 use App\Services\Frontend\InstagramService;
 use App\Http\Controllers\Controller;
 use Vinkla\Instagram\Instagram;
@@ -18,10 +19,12 @@ class FrontendController extends Controller
     protected $article;
     protected $articleRepositories;
     protected $advertRepositories;
+    protected $tagRepositories;
 
     public function __construct(InstagramService $instagramService,
                                 Article $article,
                                 ArticleRepositories $articleRepositories,
+                                TagRepositories $tagRepositories,
                                 AdvertRepositories $advertRepositories,
                                 ArticleCategoriesRepositories $articleCategoriesRepositories)
     {
@@ -30,6 +33,7 @@ class FrontendController extends Controller
         $this->articleRepositories = $articleRepositories;
         $this->advertRepositories = $advertRepositories;
         $this->article = $article;
+        $this->tagRepositories = $tagRepositories;
     }
 
     public function index()
@@ -42,15 +46,21 @@ class FrontendController extends Controller
 
         $getAllArticle = $this->articleRepositories->getArticle();
 
+        $getAllTags = $this->tagRepositories->getAllArticleTag();
+//        dd($getAllTags);
 
-        return view('frontend.index', compact('categoryName', 'instagrams', 'featuredArticle', 'getAllArticle'));
+
+        return view('frontend.index', compact('categoryName', 'instagrams', 'featuredArticle', 'getAllArticle', 'getAllTags'));
     }
 
     public function findCategoryBySlug($slug)
     {
         $pageCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug);
 
-        $articleByCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug)->articles()->isfeaturedarticle()->get();
+        $articleByCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug)
+            ->articles()->isfeaturedarticle()->orderBy('created_at', 'desc')->get();
+
+        $getAllTags = $this->tagRepositories->getAllArticleTag();
 
         /**
          * get Category Navbar Name
@@ -63,7 +73,7 @@ class FrontendController extends Controller
         if (empty($pageCategory->instagram_access_token_1)) {
 
             return view('frontend.pages.index',
-                compact('pageCategory', 'categoryName' , 'articleByCategory'));
+                compact('pageCategory', 'categoryName' , 'articleByCategory', 'getAllTags'));
 
         }elseif (empty($pageCategory->instagram_access_token_2)) {
 
@@ -71,7 +81,7 @@ class FrontendController extends Controller
             $imageInstagramFirst = $contentInstagramFirst->media(['count' => 14]);
 
             return view('frontend.pages.index',
-                compact('pageCategory', 'categoryName', 'imageInstagramFirst' , 'articleByCategory'));
+                compact('pageCategory', 'categoryName', 'imageInstagramFirst' , 'articleByCategory', 'getAllTags'));
 
         } else {
 
@@ -84,7 +94,7 @@ class FrontendController extends Controller
             $imageInstagramSecond = $contentInstagramSecond->media(['count' => 14]);
 
             return view('frontend.pages.index',
-                compact('pageCategory', 'categoryName', 'imageInstagramFirst', 'imageInstagramSecond', 'articleByCategory'));
+                compact('pageCategory', 'categoryName', 'imageInstagramFirst', 'imageInstagramSecond', 'articleByCategory', 'getAllTags'));
 
         }
 

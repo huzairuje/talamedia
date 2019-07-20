@@ -5,7 +5,8 @@
 
         <div class="wrap-video-mo-01">
             <div class="video-mo-01">
-                <iframe src="https://www.youtube.com/embed/wJnBTPUQS5A?rel=0" allowfullscreen></iframe>
+                <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                </iframe>
             </div>
         </div>
     </div>

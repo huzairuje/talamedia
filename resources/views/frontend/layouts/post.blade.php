@@ -76,6 +76,38 @@
 
                         <ul class="p-t-35">
                             <li class="flex-wr-sb-c p-b-20">
+                                <a href="https://www.instagram.com/talamedia.id/" class="size-a-8 flex-c-c borad-3 size-a-8 bg-instagram fs-16 cl0 hov-cl0">
+                                    <span class="fab fa-instagram"></span>
+                                </a>
+
+                                <div class="size-w-3 flex-wr-sb-c">
+										<span class="f1-s-8 cl3 p-r-20">
+											@talamedia.id
+										</span>
+
+                                    <a href="https://www.instagram.com/talamedia.id/" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
+                                        Follow
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="flex-wr-sb-c p-b-20">
+                                <a href="https://line.me/R/ti/p/@rvn6239a" class="size-a-8 flex-c-c borad-3 size-a-8 bg-line fs-16 cl0 hov-cl0">
+                                    <span class="fab fa-line"></span>
+                                </a>
+
+                                <div class="size-w-3 flex-wr-sb-c">
+										<span class="f1-s-8 cl3 p-r-20">
+											Talamedia
+										</span>
+
+                                    <a href="https://www.instagram.com/talamedia.id/" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
+                                        Add
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="flex-wr-sb-c p-b-20">
                                 <a href="https://www.facebook.com/talamedia.id/" class="size-a-8 flex-c-c borad-3 size-a-8 bg-facebook fs-16 cl0 hov-cl0">
                                     <span class="fab fa-facebook-f"></span>
                                 </a>
@@ -99,6 +131,21 @@
                                 <div class="size-w-3 flex-wr-sb-c">
 										<span class="f1-s-8 cl3 p-r-20">
 											@talamediaID
+										</span>
+
+                                    <a href="https://twitter.com/talamediaID" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
+                                        Follow
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="flex-wr-sb-c p-b-20">
+                                <a href="https://twitter.com/talamediaID" class="size-a-8 flex-c-c borad-3 size-a-8 bg-linkedin fs-16 cl0 hov-cl0">
+                                    <span class="fab fa-linkedin"></span>
+                                </a>
+
+                                <div class="size-w-3 flex-wr-sb-c">
+										<span class="f1-s-8 cl3 p-r-20">
+											Talamedia Networks
 										</span>
 
                                     <a href="https://twitter.com/talamediaID" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
