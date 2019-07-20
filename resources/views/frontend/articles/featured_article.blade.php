@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="row p-t-35">
-                    @foreach($featuredArticle->take(6) as $articleByCategories)
+                    @foreach($getAllArticle->take(6) as $articleByCategories)
                         <div class="col-sm-6 p-r-25 p-r-15-sr991">
                             <!-- Item latest -->
                             <div class="m-b-45">

@@ -56,7 +56,7 @@ class FrontendController extends Controller
         $pageCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug);
 
         $articleByCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug)
-            ->articles()->isfeaturedarticle()->orderBy('created_at', 'desc')->get();
+            ->articles()->orderBy('created_at', 'desc')->get();
 
         $getAllTags = $this->tagRepositories->getAllArticleTag();
 

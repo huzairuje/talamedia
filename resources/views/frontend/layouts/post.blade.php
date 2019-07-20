@@ -6,7 +6,7 @@
                 <div class="p-b-20">
                     <!-- Entertainment -->
                     <div class="row p-t-35">
-                    @foreach($getAllArticle->take(4) as $getAllArticles)
+                    @foreach($featuredArticle->take(6) as $getAllArticles)
                         <!-- Tab panes -->
                             <div class="col-sm-6 p-r-25 p-r-15-sr991">
                                 <!-- Item latest -->
