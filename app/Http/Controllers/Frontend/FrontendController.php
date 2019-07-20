@@ -47,8 +47,6 @@ class FrontendController extends Controller
         $getAllArticle = $this->articleRepositories->getArticle();
 
         $getAllTags = $this->tagRepositories->getAllArticleTag();
-//        dd($getAllTags);
-
 
         return view('frontend.index', compact('categoryName', 'instagrams', 'featuredArticle', 'getAllArticle', 'getAllTags'));
     }

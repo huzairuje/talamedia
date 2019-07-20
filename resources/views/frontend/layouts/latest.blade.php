@@ -3,13 +3,18 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-8 p-b-20">
-{{--                <div class="how2 how2-cl4 flex-s-c m-r-10 m-r-0-sr991">--}}
-{{--                    <h3 class="f1-m-2 cl3 tab01-title">--}}
-{{--                        Latest Articles--}}
-{{--                    </h3>--}}
-{{--                </div>--}}
-
-                <div class="row">
+                @if($pageCategory->name=="Event")
+                    <div class="row m-rl--1">
+                        <div class="col-md-12">
+                            <div class="panel panel-body center-block">
+                                <iframe src="https://open.spotify.com/embed/playlist/4rueyzHScOtzdR5xkNBmZU"
+                                        width="100%" height="500" frameborder="0" allowtransparency="true" allow="encrypted-media">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <div class="row">
                     @foreach($articleByCategory as $articleByCategories)
                     <div class="col-sm-6 p-r-25 p-r-15-sr991">
                         <!-- Item latest -->
@@ -46,8 +51,8 @@
                     @endforeach
 
                 </div>
+                @endif
             </div>
-
             <div class="col-md-10 col-lg-4">
                 <div class="p-l-10 p-rl-0-sr991 p-b-20">
                     <!-- Video -->
