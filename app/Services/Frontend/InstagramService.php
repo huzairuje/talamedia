@@ -29,7 +29,7 @@ class InstagramService
         /**
          * get recent media
          */
-        $media = $instagram->media();
+        $media = $instagram->media(['count' => 12]);
 
         return $media;
 

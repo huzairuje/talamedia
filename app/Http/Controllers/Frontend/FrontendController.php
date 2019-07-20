@@ -76,7 +76,7 @@ class FrontendController extends Controller
         }elseif (empty($pageCategory->instagram_access_token_2)) {
 
             $contentInstagramFirst = new Instagram($pageCategory->instagram_access_token_1);
-            $imageInstagramFirst = $contentInstagramFirst->media(['count' => 14]);
+            $imageInstagramFirst = $contentInstagramFirst->media(['count' => 12]);
 
             return view('frontend.pages.index',
                 compact('pageCategory', 'categoryName', 'imageInstagramFirst' , 'articleByCategory', 'getAllTags'));
@@ -88,8 +88,8 @@ class FrontendController extends Controller
             $contentInstagramSecond = new Instagram($pageCategory->instagram_access_token_2);
 
             //for recent media  upload by user
-            $imageInstagramFirst = $contentInstagramFirst->media(['count' => 14]);
-            $imageInstagramSecond = $contentInstagramSecond->media(['count' => 14]);
+            $imageInstagramFirst = $contentInstagramFirst->media(['count' => 6]);
+            $imageInstagramSecond = $contentInstagramSecond->media(['count' => 6]);
 
             return view('frontend.pages.index',
                 compact('pageCategory', 'categoryName', 'imageInstagramFirst', 'imageInstagramSecond', 'articleByCategory', 'getAllTags'));
