@@ -59,8 +59,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <strong>Slug :</strong>
-                        <input type="text" name="slug"  class="form-control" placeholder="Slug" value="{{$data->slug}}">
+                        <strong>Link Advert :</strong>
+                        <input type="text" name="slug"  class="form-control" placeholder="Link Advert" value="{{$data->slug}}">
                     </div>
                 </div>
                 <div class="col-md-6">

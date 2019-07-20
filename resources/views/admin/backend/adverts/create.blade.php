@@ -66,8 +66,8 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <strong>Slug :</strong>
-                <input type="text" name="slug"  class="form-control" placeholder="Slug">
+                <strong>Link Advert :</strong>
+                <input type="text" name="slug"  class="form-control" placeholder="Link Advert">
             </div>
         </div>
         <div class="col-md-6">
