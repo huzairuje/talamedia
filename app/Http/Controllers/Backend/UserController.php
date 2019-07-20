@@ -4,14 +4,25 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
+use App\Models\Role;
 use App\Models\User;
 //use App\Services\Backend\User\UserService;
+use App\Models\UserRole;
 use function foo\func;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
+
+    protected $userRole;
+    protected $userModel;
+
+    public function __construct(UserRole $userRole, User $userModel)
+    {
+        $this->userRole = $userRole;
+        $this->userModel = $userModel;
+    }
 
     /** get data table to show on method @index
      * @return mixed
@@ -43,7 +54,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.backend.users.create');
+        $roles = Role::all();
+        return view('admin.backend.users.create', compact('roles'));
     }
 
     /**
@@ -55,20 +67,22 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:8|confirmed',
             'role_id' => 'required',
         ]);
 
-
-        $data = new User([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => $request->get('password'),
-            'role_id' => $request->get('role_id'),
-        ]);
-
+        $data = $this->userModel;
+        $data->name = $request->get('name');
+        $data->email = $request->get('email');
+        $data->password = bcrypt($request->get('password'));
         $data->save();
 
+        $userRoles = $this->userRole;
+        foreach ($userRoles as $userRole) {
+            $userRoles = $request['role_id'];
+            $role = Role::findOrFail($userRoles);
+        }
+        $data->role()->attach($userRoles);
         return redirect()->route('user.index')
             ->with('user created successfully.');
     }
@@ -105,10 +119,16 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|max:255|email||unique:users,email,'.$data->id.',id',
-            'password' => 'required|min:8',
-            'role_id' => 'required|numeric'
+            'password' => 'required|min:8|confirmed',
         ]);
         $data->update($request->all());
+
+        $userRoles = $this->userRole;
+        foreach ($userRoles as $userRole) {
+            $userRole = $request['role_id'];
+            $role = Role::findOrFail($userRole);
+        }
+        $data->role()->sync($userRoles);
         return redirect('/user')->with('success', 'User has been updated');
     }
 

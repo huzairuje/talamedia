@@ -48,14 +48,14 @@
             <strong>Confirmed Password:</strong>
             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
         </div>
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
-                <strong>Role:</strong>
-                <select class="form-control" name="role_id">
-                    <option>---Role---</option>
-                    <option value="1">Super Admin</option>
-                    <option value="2">Admin Article </option>
-                    <option value="3">Admin Advert</option>
+                <strong>Role Sebagai:</strong>
+                <select multiple="true" class="form-control select2" data-placeholder="Roles" name="role_id[]">
+                    <option></option>
+                    @foreach($roles as $role)
+                        <option value="{{$role->id}}">{{ $role->name }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>

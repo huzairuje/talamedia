@@ -27,11 +27,6 @@ class Role extends Model
             );
     }
 
-    public function user_role()
-    {
-        return $this->hasMany(UserRole::class);
-    }
-
     public function menuRole()
     {
         return $this->hasMany(MenuRole::class);
@@ -39,6 +34,6 @@ class Role extends Model
 
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class, 'user_role');
     }
 }

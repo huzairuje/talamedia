@@ -90,8 +90,6 @@ class ArticleController extends Controller
             'article_category_id' => 'required',
         ]);
 
-//        $image = $request->file('featured_image')->store('public/images');
-
         DB::beginTransaction();
         $data = $this->model;
         $data->name = $request->get('name');
@@ -99,7 +97,6 @@ class ArticleController extends Controller
         if ($request->hasFile('featured_image')) {
             $data->featured_image = $this->uploadFeaturedImage($request);
         }
-//        $data->featured_image = ;
         $data->content = $request->get('content');
         $data->meta_title = $request->get('meta_title');
         $data->slug = $request->get('slug');
@@ -171,8 +168,6 @@ class ArticleController extends Controller
             'article_tag_id' => 'required',
         ]);
 
-
-//        $image = $request->hasFile('featured_image')->store('public/images');
         $data->name = $request->get('name');
         $data->publish_datetime = Carbon::now();
 
@@ -181,7 +176,6 @@ class ArticleController extends Controller
             $data->featured_image = $this->uploadFeaturedImage($request);
         }
 
-//        $data->featured_image = $image;
         $data->content = $request->get('content');
         $data->meta_title = $request->get('meta_title');
         $data->slug = $request->get('slug');
