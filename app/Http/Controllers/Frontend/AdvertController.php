@@ -19,7 +19,7 @@ class AdvertController extends Controller
         $this->advertCategoriesRepositories = $advertCategoriesRepositories;
     }
 
-    public function findArticleById($id)
+    public function findAdvertById($id)
     {
         $advert = $this->advertRepositories->getAdvertById($id);
 //        $categoryName = $this->advertCategoriesRepositories->getAdvertCategory();
@@ -27,7 +27,7 @@ class AdvertController extends Controller
         return view('frontend.advert.index', compact('advert', 'categoryName'));
     }
 
-    public function findArticleBySlug($slug)
+    public function findAdvertBySlug($slug)
     {
         $advert = $this->advertRepositories->getAdvertBySlug($slug);
 //        $categoryName = $this->advertCategoriesRepositories->getAdvertCategory();

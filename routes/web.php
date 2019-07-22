@@ -25,11 +25,11 @@ Route::group(['prefix' => 'pages'], function () {
 });
 
 #Article Front
-    Route::get('article/{id}', 'Frontend\ArticleController@findArticleById')->name('article');
-    Route::get('articleSlug/{slug}', 'Frontend\ArticleController@findArticleBySlug')->name('articleSlug');
+    Route::get('article/{id}', 'Frontend\ArticleController@findAdvertById')->name('article');
+    Route::get('articleSlug/{slug}', 'Frontend\ArticleController@findAdvertBySlug')->name('articleSlug');
 
     Route::get('advert/{id}', 'Frontend\AdvertController@findAdvertById')->name('advert');
-//    Route::get('advertSlug/{slug}', 'Frontend\AdvertController@findAdvertBySlug')->name('advertSlug');
+    Route::get('advertSlug/{slug}', 'Frontend\AdvertController@findAdvertBySlug')->name('advertSlug');
 
 Route::group(['prefix' => 'admin' ,'middleware' => 'auth'], function() {
     Route::get('dashboard', 'HomeController@index')->name('dashboard');
