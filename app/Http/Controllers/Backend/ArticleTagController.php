@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\ArticleCategory;
 use App\Models\ArticleTag;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +21,7 @@ class ArticleTagController extends Controller
     }
 
     /** get data table to show on method @index
+     * @throws
      * @return mixed
      */
     public function dataTables()
@@ -38,7 +41,7 @@ class ArticleTagController extends Controller
     }
 
     /** show datatable
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return View
      */
     public function index()
     {
@@ -47,7 +50,7 @@ class ArticleTagController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function create()
     {
@@ -55,12 +58,11 @@ class ArticleTagController extends Controller
     }
 
     /**
-     * @param CreateUserRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
-//        dd($request);
         $request->validate([
             'name' => 'required',
             'status' => 'required',
@@ -77,8 +79,8 @@ class ArticleTagController extends Controller
     }
 
     /**
-     * @param User $data
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param $id
+     * @return View
      */
     public function show($id)
     {
@@ -88,8 +90,8 @@ class ArticleTagController extends Controller
     }
 
     /**
-     * @param User $user
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param $id
+     * @return View
      */
     public function edit($id)
     {
@@ -100,8 +102,8 @@ class ArticleTagController extends Controller
 
     /**
      * @param Request $request
-     * @param User $data
-     * @return \Illuminate\Http\RedirectResponse
+     * @param $id
+     * @return RedirectResponse
      */
     public function update(Request $request, $id)
     {
@@ -120,7 +122,7 @@ class ArticleTagController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy($id)
     {

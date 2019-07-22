@@ -50,15 +50,13 @@
 
                 <div class="col-sm-6 col-lg-4 p-b-20">
                     <div class="size-h-3 flex-s-c">
-                        <h5 class="f1-m-7 cl0">
-                            <a href="{{route('front')}}">
-                                <img class="max-s-full" src="{{asset('images/icons/talamedia-wallpaper.png')}}" alt="LOGO">
-                            </a>
-                        </h5>
+                        <a href="{{route('front')}}">
+                            <img class="max-s-full" src="{{asset('images/icons/talamedia-wallpaper.png')}}" alt="LOGO">
+                        </a>
                     </div>
 
                     <ul class="m-t--12">
-                        <li class="how-bor1 p-rl-80 p-tb-10">
+                        <li class="how-bor1 p-rl-80 p-tb-10 text-center">
                             <a href="https://www.instagram.com/talamedia.id/" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
                                 <span class="fab fa-instagram"></span>
                             </a>
@@ -84,7 +82,7 @@
                             </a>
 
                         </li>
-                        <li class="how-bor1 p-rl-80 p-tb-10">
+                        <li class="how-bor1 p-rl-80 p-tb-10 text-center">
                             <a href="{{route('front')}}" class="f1-s-1 cl10 hov-link1">
                                 <a href="{{route('front')}}" target="_blank">talamedia.id</a>
                                 &copy;<script>document.write(new Date().getFullYear());</script>

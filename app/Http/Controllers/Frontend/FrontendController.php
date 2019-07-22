@@ -48,7 +48,8 @@ class FrontendController extends Controller
 
         $getAllTags = $this->tagRepositories->getAllArticleTag();
 
-        return view('frontend.index', compact('categoryName', 'instagrams', 'featuredArticle', 'getAllArticle', 'getAllTags'));
+        return view('frontend.index', compact('categoryName', 'instagrams', 'featuredArticle',
+            'getAllArticle', 'getAllTags'));
     }
 
     public function findCategoryBySlug($slug)
@@ -92,7 +93,8 @@ class FrontendController extends Controller
             $imageInstagramSecond = $contentInstagramSecond->media(['count' => 6]);
 
             return view('frontend.pages.index',
-                compact('pageCategory', 'categoryName', 'imageInstagramFirst', 'imageInstagramSecond', 'articleByCategory', 'getAllTags'));
+                compact('pageCategory', 'categoryName', 'imageInstagramFirst', 'imageInstagramSecond',
+                    'articleByCategory', 'getAllTags'));
 
         }
 

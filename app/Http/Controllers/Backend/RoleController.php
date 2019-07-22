@@ -7,12 +7,15 @@ use App\Http\Requests\Backend\Role\CreateRoleRequest;
 use App\Models\Role;
 use App\Services\Backend\Role\RoleService;
 use function foo\func;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Yajra\DataTables\Facades\DataTables;
 
 class RoleController extends Controller
 {
     /** get data table to show on method @index
+     * @throws
      * @return mixed
      */
     public function dataTables()
@@ -30,7 +33,7 @@ class RoleController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return View
      */
     public function index()
     {
@@ -38,7 +41,7 @@ class RoleController extends Controller
     }
 
     /** Show the form for creating a new resource.
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function create()
     {
@@ -46,10 +49,10 @@ class RoleController extends Controller
     }
 
     /**
-     * @param CreateRoleRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function store(CreateRoleRequest $request)
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
@@ -69,8 +72,8 @@ class RoleController extends Controller
     }
 
     /**
-     * @param Role $role
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param $id
+     * @return View
      */
     public function show($id)
     {
@@ -81,7 +84,7 @@ class RoleController extends Controller
 
     /**
      * @param Role $role
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return View
      */
     public function edit(Role $role)
     {
@@ -91,7 +94,7 @@ class RoleController extends Controller
     /**
      * @param Request $request
      * @param Role $role
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(Request $request, Role $role)
     {
@@ -107,7 +110,7 @@ class RoleController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy($id)
     {

@@ -8,11 +8,13 @@ use App\Models\ArticleArticletag;
 use App\Models\ArticleCategory;
 use App\Models\ArticleTag;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\View\View;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,9 +22,7 @@ use Illuminate\Support\Facades\Storage;
 class ArticleController extends Controller
 {
 
-    /** get data table to show on method @index
-     * @return mixed
-     */
+
     protected $model;
     protected $articletag;
 
@@ -33,6 +33,10 @@ class ArticleController extends Controller
         $this->articletag = new ArticleArticletag;
     }
 
+    /** get data table to show on method @index
+     * @throws
+     * @return mixed
+     */
     public function dataTables()
     {
         $data = numrows(Article::all());
@@ -53,7 +57,7 @@ class ArticleController extends Controller
     }
 
     /** show datatable
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return View
      */
     public function index()
     {
@@ -62,7 +66,7 @@ class ArticleController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function create()
     {
@@ -72,8 +76,8 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param CreateUserRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
@@ -124,8 +128,8 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param User $data
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param $id
+     * @return View
      */
     public function show($id)
     {
@@ -136,8 +140,8 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param User $user
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param $id
+     * @return View
      */
     public function edit($id)
     {
@@ -149,8 +153,8 @@ class ArticleController extends Controller
 
     /**
      * @param Request $request
-     * @param User $data
-     * @return \Illuminate\Http\RedirectResponse
+     * @param $id
+     * @return RedirectResponse
      */
     public function update(Request $request, $id)
     {
@@ -196,7 +200,7 @@ class ArticleController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy($id)
     {
@@ -207,6 +211,11 @@ class ArticleController extends Controller
             ->with('article deleted successfully');
     }
 
+    /**
+     * Upload Image Method, store and update using this method
+     * @param Request $request
+     * @return string
+     */
     public function uploadFeaturedImage(Request $request)
     {
         $featuredImage = $request->file('featured_image');

@@ -5,13 +5,12 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Advert;
 use App\Models\AdvertCategory;
-use App\Models\Article;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\View;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-
 
 class AdvertController extends Controller
 {
@@ -55,7 +54,7 @@ class AdvertController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function create()
     {
@@ -64,7 +63,7 @@ class AdvertController extends Controller
     }
 
     /**
-     * @param CreateUserRequest $request
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -82,8 +81,6 @@ class AdvertController extends Controller
             'is_featured_advert' => 'required',
             'advert_category_id' => 'required',
         ]);
-
-        $image = $request->file('featured_image')->store('public/images');
 
         $data = $this->model;
         $data->name = $request->get('name');
@@ -109,8 +106,8 @@ class AdvertController extends Controller
     }
 
     /**
-     * @param User $data
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param $id
+     * @return View
      */
     public function show($id)
     {
@@ -120,8 +117,8 @@ class AdvertController extends Controller
     }
 
     /**
-     * @param User $user
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param $id
+     * @return View
      */
     public function edit($id)
     {
@@ -134,8 +131,8 @@ class AdvertController extends Controller
 
     /**
      * @param Request $request
-     * @param User $data
-     * @return \Illuminate\Http\RedirectResponse
+     * @param $id
+     * @return View
      */
     public function update(Request $request, $id)
     {
@@ -184,6 +181,11 @@ class AdvertController extends Controller
             ->with('advert deleted successfully');
     }
 
+    /**
+     * Upload Image Method, store and update using this method
+     * @param Request $request
+     * @return string
+     */
     public function uploadFeaturedImage(Request $request)
     {
         $featuredImage = $request->file('featured_image');

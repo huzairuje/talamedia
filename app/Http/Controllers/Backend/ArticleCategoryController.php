@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\ArticleCategory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +20,7 @@ class ArticleCategoryController extends Controller
     }
 
     /** get data table to show on method @index
+     * @throws
      * @return mixed
      */
     public function dataTables()
@@ -37,7 +40,7 @@ class ArticleCategoryController extends Controller
     }
 
     /** show datatable
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return View
      */
     public function index()
     {
@@ -46,7 +49,7 @@ class ArticleCategoryController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function create()
     {
@@ -54,12 +57,11 @@ class ArticleCategoryController extends Controller
     }
 
     /**
-     * @param CreateUserRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
-//        dd($request);
         $request->validate([
             'name' => 'required',
             'status' => 'required',
@@ -69,11 +71,6 @@ class ArticleCategoryController extends Controller
         $data->name = $request->get('name');
         $data->status = $request->get('status');
         $data->created_by= Auth::id();
-//        $data->status = $request->get('status');
-//        $data = new ArticleCategory([
-//            'name' => $request->get('name'),
-//            'status' => $request->get('status'),
-//        ]);
 
         $data->save();
 
@@ -82,8 +79,8 @@ class ArticleCategoryController extends Controller
     }
 
     /**
-     * @param User $data
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param $id
+     * @return View
      */
     public function show($id)
     {
@@ -93,8 +90,8 @@ class ArticleCategoryController extends Controller
     }
 
     /**
-     * @param User $user
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param $id
+     * @return View
      */
     public function edit($id)
     {
@@ -105,8 +102,8 @@ class ArticleCategoryController extends Controller
 
     /**
      * @param Request $request
-     * @param User $data
-     * @return \Illuminate\Http\RedirectResponse
+     * @param $id
+     * @return RedirectResponse
      */
     public function update(Request $request, $id)
     {
@@ -125,7 +122,7 @@ class ArticleCategoryController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy($id)
     {

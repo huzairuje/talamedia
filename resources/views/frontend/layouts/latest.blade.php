@@ -133,34 +133,6 @@
                                 {{$getAllTag->name}}
                             </a>
                             @endforeach
-
-{{--                            <a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">--}}
-{{--                                Lifestyle--}}
-{{--                            </a>--}}
-
-{{--                            <a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">--}}
-{{--                                Denim--}}
-{{--                            </a>--}}
-
-{{--                            <a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">--}}
-{{--                                Streetstyle--}}
-{{--                            </a>--}}
-
-{{--                            <a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">--}}
-{{--                                Crafts--}}
-{{--                            </a>--}}
-
-{{--                            <a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">--}}
-{{--                                Magazine--}}
-{{--                            </a>--}}
-
-{{--                            <a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">--}}
-{{--                                News--}}
-{{--                            </a>--}}
-
-{{--                            <a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">--}}
-{{--                                Blogs--}}
-{{--                            </a>--}}
                         </div>
                     </div>
                 </div>

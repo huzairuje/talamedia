@@ -9,7 +9,9 @@ use App\Models\User;
 //use App\Services\Backend\User\UserService;
 use App\Models\UserRole;
 use function foo\func;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
@@ -25,6 +27,7 @@ class UserController extends Controller
     }
 
     /** get data table to show on method @index
+     * @throws
      * @return mixed
      */
     public function dataTables()
@@ -41,7 +44,7 @@ class UserController extends Controller
     }
 
     /** show datatable
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return View
      */
     public function index()
     {
@@ -50,7 +53,7 @@ class UserController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function create()
     {
@@ -59,8 +62,8 @@ class UserController extends Controller
     }
 
     /**
-     * @param CreateUserRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
@@ -88,8 +91,8 @@ class UserController extends Controller
     }
 
     /**
-     * @param User $data
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param $id
+     * @return View
      */
     public function show($id)
     {
@@ -99,8 +102,8 @@ class UserController extends Controller
     }
 
     /**
-     * @param User $user
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param $id
+     * @return View
      */
     public function edit($id)
     {
@@ -112,7 +115,7 @@ class UserController extends Controller
     /**
      * @param Request $request
      * @param User $data
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(Request $request, User $data)
     {
@@ -134,7 +137,7 @@ class UserController extends Controller
 
     /**
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy($id)
     {
