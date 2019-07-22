@@ -88,8 +88,9 @@ class AdvertController extends Controller
         $data = $this->model;
         $data->name = $request->get('name');
         $data->publish_datetime = Carbon::now();
-        $data->featured_image = $image;
-        $data->content = $request->get('content');
+        if ($request->hasFile('featured_image')) {
+            $data->featured_image = $this->uploadFeaturedImage($request);
+        }        $data->content = $request->get('content');
         $data->meta_title = $request->get('meta_title');
         $data->cannonical_link = $request->get('cannonical_link');
         $data->slug = $request->get('slug');
@@ -139,7 +140,6 @@ class AdvertController extends Controller
     public function update(Request $request, $id)
     {
         $data = $this->model->findOrFail($id);
-
         $request->validate([
             'name' => 'required',
             'featured_image' => 'required|max:2048',
@@ -152,18 +152,23 @@ class AdvertController extends Controller
             'status' => 'required',
             'advert_category_id' => 'required',
         ]);
-        $data->update([
-            'name' => $request->name,
-            'featured_image' => $request->featured_image,
-            'content' => $request->get('content'),
-            'meta_title' => $request->meta_title,
-            'cannonical_link' => $request->cannonical_link,
-            'slug' => $request->slug,
-            'meta_description' => $request->meta_description,
-            'meta_keywords' => $request->meta_keywords,
-            'status' => $request->status,
-            'advert_category_id' => $request->advert_category_id,
-        ]);        return redirect('/article')->with( 'Advert has been updated');
+        $data->name = $request->get('name');
+        if ($request->hasFile('featured_image')) {
+            File::delete('public/images/'.$data->featured_image);
+            $data->featured_image = $this->uploadFeaturedImage($request);
+        }
+        $data->content = $request->get('content');
+        $data->meta_title = $request->get('meta_title');
+        $data->cannonical_link = $request->get('cannonical_link');
+        $data->slug = $request->get('slug');
+        $data->meta_description = $request->get('meta_description');
+        $data->meta_keywords = $request->get('meta_keywords');
+        $data->status = $request->get('status');
+        $data->advert_category_id = $request->get('advert_category_id');
+
+        $data->update();
+
+        return redirect()->route('advert.index')->with('Advert has been updated');
     }
 
     /**
@@ -177,5 +182,15 @@ class AdvertController extends Controller
 
         return redirect()->route('advert.index')
             ->with('advert deleted successfully');
+    }
+
+    public function uploadFeaturedImage(Request $request)
+    {
+        $featuredImage = $request->file('featured_image');
+        $initialImageName = $featuredImage->getClientOriginalName();
+        $getDate = Carbon::now();
+        $imageName = $getDate.$initialImageName;
+        $request->file('featured_image')->storeAs('public/images/', $imageName);
+        return $imageName;
     }
 }

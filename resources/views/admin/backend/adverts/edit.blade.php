@@ -37,8 +37,16 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <strong>Picture:</strong>
-                        <input type="file" class="form-control" name="featured_image" placeholder="Image" value="{{$data->image}}">
+                        <input type="file" class="hidden img-responsive" name="featured_image" id="featured_image"
+                               value="{{ old($data->featured_image) }}"
+                               placeholder="Foto"  accept="image/*">
+                        <div class="input-file-pk">
+                            <input type="file" name="featured_image" value="{{ $data->featured_image}}">
+                            <input type="hidden" name="featured_image" value="{{ $data->featured_image}}">
+                            <img id="preview-foto" width="150" height="150"
+                                 class="img-responsive"{!! $data->featured_image!=null ? ' src="'.asset(Storage::url('images/'.$data->featured_image)).'"' : ' data-src="holder.js/150x150?text=Klik untuk meng-upload gambar"' !!}>
+                        </div>
+                        <p>Klik gambar untuk mengedit</p>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -52,7 +60,7 @@
                             tinymce.init({
                                 selector: '#ckview',
                                 height: 300,
-                                plugins:'wordcount fullscreen link image code preview media instagram',
+                                plugins:'wordcount fullscreen link image code preview media',
                                 toolbar1:'preview code',
                             });
                         </script>
@@ -85,14 +93,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <strong>Cannocial Link :</strong>
-                        <input type="text" name="cannonical_link"  class="form-control" placeholder="Cannonical Link" value="{{$data->cannoncial_link}}">
+                        <input type="text" name="cannonical_link"  class="form-control" placeholder="Cannonical Link" value="{{$data->cannonical_link}}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <strong>Status :</strong>
-                        <select class="status form-control select2" name="status" data-placeholder="Status" id="status" value="{{$data->status}}">
-                            <option>---Status---</option>
+                        <select class="status form-control " name="status" data-placeholder="Status" id="status" value="{{$data->status}}">
+                            <option value="{{$data->status}}">{{$data->status}}</option>
                             <option value="Published">Published</option>
                             <option value="Draft">Draft</option>
                             <option value="InActive">InActive</option>
