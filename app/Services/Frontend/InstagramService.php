@@ -48,7 +48,7 @@ class InstagramService
         $accessToken = $accessToken->instagram_access_token_1;
 
         $instagram = new VinklaInstagram($accessToken);
-        $media = $instagram->media();
+        $media = $instagram->media(['count' => 6]);
 
         return $media;
 
@@ -66,7 +66,7 @@ class InstagramService
         $accessToken = $accessToken->instagram_access_token_2;
 
         $instagram = new VinklaInstagram($accessToken);
-        $media = $instagram->media();
+        $media = $instagram->media(['count' => 6]);
 
         return $media;
 
@@ -84,7 +84,7 @@ class InstagramService
         $accessToken = $accessToken->instagram_access_token_1;
 
         $instagram = new VinklaInstagram($accessToken);
-        $media = $instagram->media();
+        $media = $instagram->media(['count' => 6]);
 
         return $media;
     }
@@ -101,7 +101,7 @@ class InstagramService
         $accessToken = $accessToken->instagram_access_token_2;
 
         $instagram = new VinklaInstagram($accessToken);
-        $media = $instagram->media();
+        $media = $instagram->media(['count' => 6]);
 
         return $media;
     }
@@ -118,7 +118,7 @@ class InstagramService
         $accessToken = $accessToken->instagram_access_token_1;
 
         $instagram = new VinklaInstagram($accessToken);
-        $media = $instagram->media();
+        $media = $instagram->media(['count' => 12]);
 
         return $media;
     }

@@ -40,11 +40,11 @@ class FrontendController extends Controller
     {
         $instagrams = $this->instagramService->getRecentPostTalamedia();
 
-        $categoryName = $this->articleCategoriesRepositories->getArticleCategory();
+        $categoryName = $this->articleCategoriesRepositories->getArticleCategory()->get();
 
-        $featuredArticle = $this->articleRepositories->getArticleFeatured();
+        $featuredArticle = $this->articleRepositories->getArticleFeatured()->get();
 
-        $getAllArticle = $this->articleRepositories->getArticle();
+        $getAllArticle = $this->articleRepositories->getArticle()->get();
 
         $getAllTags = $this->tagRepositories->getAllArticleTag();
 
@@ -64,7 +64,7 @@ class FrontendController extends Controller
         /**
          * get Category Navbar Name
          */
-        $categoryName = $this->articleCategoriesRepositories->getArticleCategory();
+        $categoryName = $this->articleCategoriesRepositories->getArticleCategory()->get();
 
         /**
          * get Instagram Post

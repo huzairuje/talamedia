@@ -25,7 +25,7 @@ class ArticleCategoriesRepositories
 
     public function getArticleCategory()
     {
-        $category = ArticleCategory::all();
+        $category = $this->articleCategory->orderBy('created_at', 'desc');
         return $category;
     }
 

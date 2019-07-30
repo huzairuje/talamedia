@@ -29,7 +29,7 @@ class ArticleController extends Controller
     public function findArticleBySlug($slug)
     {
         $article = $this->articleRepositories->getArticleBySlug($slug);
-        $categoryName = $this->articleCategoriesRepositories->getArticleCategory();
+        $categoryName = $this->articleCategoriesRepositories->getArticleCategory()->get();
 
         return view('frontend.articles.index', compact('article', 'categoryName'));
     }
