@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Thomzee\Laramap\LaramapServiceProvider::class,
 
 
     ],
@@ -231,6 +232,7 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Laramap' => Thomzee\Laramap\Facades\Laramap::class,
 
 
     ],

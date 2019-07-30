@@ -3,19 +3,20 @@
 namespace App\Http\Controllers\API\Front;
 
 use App\Http\Library\ApiBaseResponse;
+use App\Mappers\ArticleCategoryMapper;
+use App\Mappers\ArticleMapper;
 use App\Models\Article;
 use App\Repositories\Frontend\AdvertRepositories;
 use App\Repositories\Frontend\ArticleCategoriesRepositories;
 use App\Repositories\Frontend\ArticleRepositories;
 use App\Repositories\Frontend\TagRepositories;
-use App\Services\Frontend\InstagramService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Exception;
+use Thomzee\Laramap\Facades\Laramap;
 
 class ArticleController extends Controller
 {
-    protected $instagramService;
     protected $articleCategory;
     protected $articleCategoriesRepositories;
     protected $article;
@@ -24,15 +25,13 @@ class ArticleController extends Controller
     protected $tagRepositories;
     protected $apiBaseResponse;
 
-    public function __construct(InstagramService $instagramService,
-                                Article $article,
+    public function __construct(Article $article,
                                 ArticleRepositories $articleRepositories,
                                 TagRepositories $tagRepositories,
                                 AdvertRepositories $advertRepositories,
                                 ArticleCategoriesRepositories $articleCategoriesRepositories,
                                 ApiBaseResponse $apiBaseResponse)
     {
-        $this->instagramService = $instagramService;
         $this->articleCategoriesRepositories = $articleCategoriesRepositories;
         $this->articleRepositories = $articleRepositories;
         $this->advertRepositories = $advertRepositories;
@@ -45,8 +44,7 @@ class ArticleController extends Controller
     {
         try {
             $data = $this->articleRepositories->getArticleBySlug($slug);
-            $response = $this->apiBaseResponse->singleData($data, []);
-            return response($response, Response::HTTP_OK);
+            return Laramap::single(ArticleMapper::class, $data);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -57,9 +55,8 @@ class ArticleController extends Controller
     {
         try {
             $articleByCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug)
-                ->articles()->orderBy('created_at', 'desc');
-            $response = $this->apiBaseResponse->listPaginate($articleByCategory, 10);
-            return response($response, Response::HTTP_OK);
+                ->articles()->orderBy('created_at', 'desc')->paginate(10);
+            return Laramap::paged(ArticleMapper::class, $articleByCategory);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -69,9 +66,8 @@ class ArticleController extends Controller
     public function getArticleFeatured()
     {
         try {
-            $featuredArticle = $this->articleRepositories->getArticleFeatured();
-            $response = $this->apiBaseResponse->listPaginate($featuredArticle, 10);
-            return response($response, Response::HTTP_OK);
+            $featuredArticle = $this->articleRepositories->getArticleFeatured()->paginate(10);
+            return Laramap::paged(ArticleMapper::class, $featuredArticle);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -81,9 +77,8 @@ class ArticleController extends Controller
     public function getArticleCategory()
     {
         try {
-            $articleCategory = $this->articleCategoriesRepositories->getArticleCategory();
-            $response = $this->apiBaseResponse->listPaginate($articleCategory, 10);
-            return response($response, Response::HTTP_OK);
+            $articleCategory = $this->articleCategoriesRepositories->getArticleCategory()->paginate(10);
+            return Laramap::paged(ArticleCategoryMapper::class, $articleCategory);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -95,8 +90,7 @@ class ArticleController extends Controller
     {
         try {
             $articles = $this->articleRepositories->getArticle();
-            $response = $this->apiBaseResponse->listPaginate($articles, 10);
-            return response($response, Response::HTTP_OK);
+            return Laramap::paged(ArticleMapper::class, $articles);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);

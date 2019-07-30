@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99f77b3e8d33e1988615845bcb5ae022",
+    "content-hash": "8f09b88cce0288c4be849558b4aa9336",
     "packages": [
         {
             "name": "binsoul/net-mqtt",
@@ -4383,6 +4383,52 @@
             "time": "2019-06-17T17:37:00+00:00"
         },
         {
+            "name": "thomzee/laramap",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thomzee/laramap.git",
+                "reference": "c9f42220b1e45c82b46cbe56347625216980fdaa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thomzee/laramap/zipball/c9f42220b1e45c82b46cbe56347625216980fdaa",
+                "reference": "c9f42220b1e45c82b46cbe56347625216980fdaa",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.2.x|5.3.x|5.4.x|5.5.x|5.6.x|5.7.x|5.8.x",
+                "illuminate/http": "5.2.x|5.3.x|5.4.x|5.5.x|5.6.x|5.7.x|5.8.x",
+                "illuminate/support": "5.2.x|5.3.x|5.4.x|5.5.x|5.6.x|5.7.x|5.8.x",
+                "php": ">=5.4"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Thomzee\\Laramap\\LaramapServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Thomzee\\Laramap\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Andrianto",
+                    "email": "thomaskayu@gmail.com"
+                }
+            ],
+            "description": "Laravel REST API response mapper.",
+            "time": "2019-07-13T17:29:01+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.1",
             "source": {
@@ -6477,7 +6523,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "thomzee/laramap": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

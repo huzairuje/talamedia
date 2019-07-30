@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\Front;
 
 use App\Http\Library\ApiBaseResponse;
+use App\Mappers\InstagramMapper;
 use App\Models\Article;
 use App\Repositories\Frontend\AdvertRepositories;
 use App\Repositories\Frontend\ArticleCategoriesRepositories;
@@ -12,6 +13,7 @@ use App\Services\Frontend\InstagramService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Exception;
+use Thomzee\Laramap\Facades\Laramap;
 
 class InstagramController extends Controller
 {
@@ -45,8 +47,7 @@ class InstagramController extends Controller
     {
         try {
             $data = $this->instagramService->getRecentPostTalamedia();
-            $response = $this->apiBaseResponse->singleData($data, []);
-            return response($response, Response::HTTP_OK);
+            return Laramap::list(InstagramMapper::class, $data);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -58,8 +59,7 @@ class InstagramController extends Controller
     {
         try {
             $data = $this->instagramService->getRecentPostInfoUnpad();
-            $response = $this->apiBaseResponse->singleData($data, []);
-            return response($response, Response::HTTP_OK);
+            return Laramap::list(InstagramMapper::class, $data);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -71,8 +71,7 @@ class InstagramController extends Controller
     {
         try {
             $data = $this->instagramService->getRecentPostInfoItb();
-            $response = $this->apiBaseResponse->singleData($data, []);
-            return response($response, Response::HTTP_OK);
+            return Laramap::list(InstagramMapper::class, $data);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -84,8 +83,7 @@ class InstagramController extends Controller
     {
         try {
             $data = $this->instagramService->getRecentPostBdgNet();
-            $response = $this->apiBaseResponse->singleData($data, []);
-            return response($response, Response::HTTP_OK);
+            return Laramap::list(InstagramMapper::class, $data);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -97,8 +95,7 @@ class InstagramController extends Controller
     {
         try {
             $data = $this->instagramService->getRecentPostNangorInfo();
-            $response = $this->apiBaseResponse->singleData($data, []);
-            return response($response, Response::HTTP_OK);
+            return Laramap::list(InstagramMapper::class, $data);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -110,8 +107,7 @@ class InstagramController extends Controller
     {
         try {
             $data = $this->instagramService->getRecentPostTrifantasia();
-            $response = $this->apiBaseResponse->singleData($data, []);
-            return response($response, Response::HTTP_OK);
+            return Laramap::list(InstagramMapper::class, $data);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
