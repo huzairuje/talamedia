@@ -89,7 +89,7 @@ class ArticleController extends Controller
     public function getAllArticle()
     {
         try {
-            $articles = $this->articleRepositories->getArticle();
+            $articles = $this->articleRepositories->getArticle()->paginate(10);
             return Laramap::paged(ArticleMapper::class, $articles);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
