@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Front;
 
 use App\Http\Library\ApiBaseResponse;
 use App\Mappers\ArticleCategoryMapper;
+use App\Mappers\ArticleDetailMapper;
 use App\Mappers\ArticleMapper;
 use App\Models\Article;
 use App\Repositories\Frontend\AdvertRepositories;
@@ -44,7 +45,7 @@ class ArticleController extends Controller
     {
         try {
             $data = $this->articleRepositories->getArticleBySlug($slug);
-            return Laramap::single(ArticleMapper::class, $data);
+            return Laramap::single(ArticleDetailMapper::class, $data);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -66,7 +67,7 @@ class ArticleController extends Controller
     public function getArticleFeatured()
     {
         try {
-            $featuredArticle = $this->articleRepositories->getArticleFeatured()->paginate(10);
+            $featuredArticle = $this->articleRepositories->getArticleFeatured()->paginate(4);
             return Laramap::paged(ArticleMapper::class, $featuredArticle);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
