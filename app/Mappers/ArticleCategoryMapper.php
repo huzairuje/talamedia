@@ -18,6 +18,7 @@ class ArticleCategoryMapper extends BaseMapper implements MapperContract
     function single($articleCategory)
     {
         return [
+            "id" => $articleCategory->id,
             "name" => $articleCategory->name,
             "status" => $articleCategory->status,
             "instagram_access_token_1" => $articleCategory->instagram_access_token_1,

@@ -18,6 +18,7 @@ class ArticleMapper extends BaseMapper implements MapperContract
     function single($article)
     {
         return [
+            "id" => $article->id,
             "name" => $article->name,
             "publish_datetime" => $article->publish_datetime,
             "featured_image" => url('/').Storage::url('images/'.$article->featured_image),
@@ -27,7 +28,10 @@ class ArticleMapper extends BaseMapper implements MapperContract
             "meta_keywords" => $article->meta_keywords,
             "meta_description" => $article->meta_description,
             "status" => $article->status,
-            "article_category_id" => $article->article_category_id,
+            "article_category" => $article->category->name,
+            "created_at" => $article->created_at,
+            "updated_at" => $article->updated_at,
+            "created_by" => $article->user->name,
 
         ];
     }
