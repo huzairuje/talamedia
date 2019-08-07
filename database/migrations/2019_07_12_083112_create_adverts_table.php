@@ -27,6 +27,8 @@ class CreateAdvertsTable extends Migration
             $table->enum('status', ['Published', 'Draft', 'InActive', 'Scheduled']);
             $table->bigInteger('advert_category_id')->unsigned();
             $table->boolean('is_featured_advert')->default(0);
+            $table->boolean('is_on_category_page')->default(0);
+            $table->boolean('is_on_article_page')->default(0);
             $table->bigInteger('created_by')->unsigned();
             $table->bigInteger('updated_by')->unsigned()->nullable();
             $table->softDeletes();

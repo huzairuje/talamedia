@@ -6,11 +6,8 @@ use App\Http\Library\ApiBaseResponse;
 use App\Mappers\ArticleCategoryMapper;
 use App\Mappers\ArticleDetailMapper;
 use App\Mappers\ArticleMapper;
-use App\Models\Article;
-use App\Repositories\Frontend\AdvertRepositories;
 use App\Repositories\Frontend\ArticleCategoriesRepositories;
 use App\Repositories\Frontend\ArticleRepositories;
-use App\Repositories\Frontend\TagRepositories;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Exception;
@@ -18,26 +15,16 @@ use Thomzee\Laramap\Facades\Laramap;
 
 class ArticleController extends Controller
 {
-    protected $articleCategory;
     protected $articleCategoriesRepositories;
-    protected $article;
     protected $articleRepositories;
-    protected $advertRepositories;
-    protected $tagRepositories;
     protected $apiBaseResponse;
 
-    public function __construct(Article $article,
-                                ArticleRepositories $articleRepositories,
-                                TagRepositories $tagRepositories,
-                                AdvertRepositories $advertRepositories,
+    public function __construct(ArticleRepositories $articleRepositories,
                                 ArticleCategoriesRepositories $articleCategoriesRepositories,
                                 ApiBaseResponse $apiBaseResponse)
     {
         $this->articleCategoriesRepositories = $articleCategoriesRepositories;
         $this->articleRepositories = $articleRepositories;
-        $this->advertRepositories = $advertRepositories;
-        $this->article = $article;
-        $this->tagRepositories = $tagRepositories;
         $this->apiBaseResponse = $apiBaseResponse;
     }
 

@@ -95,9 +95,10 @@ class AdvertController extends Controller
         $data->meta_keywords = $request->get('meta_keywords');
         $data->status = $request->get('status');
         $data->is_featured_advert = $request->get('is_featured_advert');
+        $data->is_featured_advert = $request->get('is_on_category_page');
+        $data->is_featured_advert = $request->get('is_on_article_page');
         $data->advert_category_id = $request->get('advert_category_id');
         $data->created_by= Auth::id();
-
 
         $data->save();
 

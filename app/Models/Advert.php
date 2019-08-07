@@ -28,7 +28,9 @@ class Advert extends Authenticatable
         'meta_description',
         'meta_keywords',
         'status',
-        'advert_category_id'
+        'advert_category_id',
+        'is_on_category_page',
+        'is_on_article_page'
     ];
 
     public function category()

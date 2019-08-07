@@ -4,11 +4,6 @@ namespace App\Http\Controllers\API\Front;
 
 use App\Http\Library\ApiBaseResponse;
 use App\Mappers\InstagramMapper;
-use App\Models\Article;
-use App\Repositories\Frontend\AdvertRepositories;
-use App\Repositories\Frontend\ArticleCategoriesRepositories;
-use App\Repositories\Frontend\ArticleRepositories;
-use App\Repositories\Frontend\TagRepositories;
 use App\Services\Frontend\InstagramService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
@@ -18,28 +13,12 @@ use Thomzee\Laramap\Facades\Laramap;
 class InstagramController extends Controller
 {
     protected $instagramService;
-    protected $articleCategory;
-    protected $articleCategoriesRepositories;
-    protected $article;
-    protected $articleRepositories;
-    protected $advertRepositories;
-    protected $tagRepositories;
     protected $apiBaseResponse;
 
     public function __construct(InstagramService $instagramService,
-                                ApiBaseResponse $apiBaseResponse,
-                                Article $article,
-                                ArticleRepositories $articleRepositories,
-                                TagRepositories $tagRepositories,
-                                AdvertRepositories $advertRepositories,
-                                ArticleCategoriesRepositories $articleCategoriesRepositories)
+                                ApiBaseResponse $apiBaseResponse)
     {
         $this->instagramService = $instagramService;
-        $this->articleCategoriesRepositories = $articleCategoriesRepositories;
-        $this->articleRepositories = $articleRepositories;
-        $this->advertRepositories = $advertRepositories;
-        $this->article = $article;
-        $this->tagRepositories = $tagRepositories;
         $this->apiBaseResponse = $apiBaseResponse;
     }
 

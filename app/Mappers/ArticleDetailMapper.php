@@ -3,7 +3,6 @@
 
 namespace App\Mappers;
 
-
 use Illuminate\Support\Facades\Storage;
 use Thomzee\Laramap\BaseMapper;
 use Thomzee\Laramap\MapperContract;

@@ -28,7 +28,8 @@ class Article extends Authenticatable
         'meta_description',
         'meta_keywords',
         'status',
-        'article_category_id'
+        'article_category_id',
+        'is_featured_article'
     ];
     public function tag()
     {

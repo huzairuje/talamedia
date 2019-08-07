@@ -33,4 +33,22 @@ class AdvertRepositories
         return $advertPageId;
     }
 
+    public function getAdvertFeatured()
+    {
+        $article = $this->advert->where('is_featured_advert', '=', 1)->orderBy('created_at', 'desc');
+        return $article;
+    }
+
+    public function getAdvertOnArticlePage()
+    {
+        $advert = $this->advert->where('is_on_article_page', '=', 1)->orderBy('created_at', 'desc');
+        return $advert;
+    }
+
+    public function getAdvertOnCategoryPage()
+    {
+        $advert = $this->advert->where('is_on_category_page', '=', 1)->orderBy('created_at', 'desc');
+        return $advert;
+    }
+
 }

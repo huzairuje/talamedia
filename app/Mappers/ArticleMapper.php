@@ -24,6 +24,7 @@ class ArticleMapper extends BaseMapper implements MapperContract
             "featured_image" => url('/').Storage::url('images/'.$article->featured_image),
             "slug" => $article->slug,
             "created_by" => $article->user->name,
+            "is_featured" => $article->is_featured_article
         ];
     }
 
