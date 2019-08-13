@@ -18,13 +18,15 @@ class TrifantasiaPodcastMapper extends BaseMapper implements MapperContract
     {
         return [
             "id" => $trifantasia->id,
+            "listen_note_podcast_id" => $trifantasia->listen_note_podcast_id,
             "title" => $trifantasia->title,
             "publisher" => $trifantasia->publisher,
-            "image" => $trifantasia->image,
-            "thumbnail" => $trifantasia->thumbnail,
+            "image_url_listen_note" => $trifantasia->thumbnail_url_listen_note,
+            "thumbnail_url_listen_note" => $trifantasia->thumbnail_url_listen_note,
             "description" => $trifantasia->description,
             "country" => $trifantasia->country,
-            "language" => $trifantasia->language
+            "language" => $trifantasia->language,
+            "explicit_content" => $trifantasia->explicit_content == 1 ? true : false
         ];
     }
 }
