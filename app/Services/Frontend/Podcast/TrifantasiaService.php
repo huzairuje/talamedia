@@ -105,4 +105,13 @@ class TrifantasiaService
         }
     }
 
+    /**
+     * get and update data to database from response listen note API.
+     * this method will be triggered by admin OR cron job.
+     */
+    public function getAndUpdateMetaDataTrifantasia()
+    {
+        //TODO
+    }
+
 }
