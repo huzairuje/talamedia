@@ -14,23 +14,9 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/', 'Frontend\FrontendController@index')->name('front');
-Route::get('/{slug}', 'Frontend\FrontendController@findCategoryBySlug')->name('category');
-
-#Static Page
-Route::group(['prefix' => 'pages'], function () {
-    Route::get('faq', 'Frontend\FAQController@index')->name('faq');
-    Route::get('privacy-policy', 'Frontend\PrivacyPolicyController@index')->name('privacyPolicy');
-    Route::get('tentang-kami', 'Frontend\TentangKamiController@index')->name('tentangKami');
+Route::get('/', function () {
+   return redirect()->route('login');
 });
-
-#Article Front
-    Route::get('article/{id}', 'Frontend\ArticleController@findArticleById')->name('article');
-    Route::get('articleSlug/{slug}', 'Frontend\ArticleController@findArticleBySlug')->name('articleSlug');
-
-#Advert Front
-    Route::get('advert/{id}', 'Frontend\AdvertController@findAdvertById')->name('advert');
-    Route::get('advertSlug/{slug}', 'Frontend\AdvertController@findAdvertBySlug')->name('advertSlug');
 
 Route::group(['prefix' => 'admin' ,'middleware' => 'auth'], function() {
     Route::get('dashboard', 'HomeController@index')->name('dashboard');
