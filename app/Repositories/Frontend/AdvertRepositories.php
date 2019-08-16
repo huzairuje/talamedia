@@ -3,16 +3,21 @@
 
 namespace App\Repositories\Frontend;
 
+use App\Http\Library\ApiBaseResponse;
 use App\Models\Advert;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Response;
 
 class AdvertRepositories
 {
     protected $advert;
+    protected $responseLib;
 
-    public function __construct(Advert $advert)
+    public function __construct(Advert $advert, ApiBaseResponse $responseLib)
     {
         $this->advert = $advert;
+        $this->responseLib = $responseLib;
     }
 
     public function getAdvert()
@@ -25,6 +30,7 @@ class AdvertRepositories
     {
         $advertPage = Advert::where('name', '=', $slug)->firstOrFail();
         return $advertPage;
+
     }
 
     public function getAdvertById($id)

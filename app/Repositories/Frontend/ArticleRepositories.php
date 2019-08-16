@@ -3,16 +3,18 @@
 
 namespace App\Repositories\Frontend;
 
-use Illuminate\Support\Facades\DB;
+use App\Http\Library\ApiBaseResponse;
 use App\Models\Article;
 
 class ArticleRepositories
 {
     protected $article;
+    protected $responseLib;
 
-    public function __construct(Article $article)
+    public function __construct(Article $article, ApiBaseResponse $responseLib)
     {
         $this->article = $article;
+        $this->responseLib = $responseLib;
     }
 
     public function getArticle()
@@ -23,13 +25,13 @@ class ArticleRepositories
 
     public function getArticleBySlug($slug)
     {
-        $articlePage = Article::where('slug', '=', $slug)->firstOrFail();
-        return $articlePage;
+        $article = Article::where('name', '=', $slug)->first();
+        return $article;
     }
 
     public function getArticleById($id)
     {
-        $articlePageId = Article::findOrFail($id);
+        $articlePageId = Article::find($id);
         return $articlePageId;
     }
 

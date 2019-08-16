@@ -32,7 +32,26 @@ class ArticleController extends Controller
     {
         try {
             $data = $this->articleRepositories->getArticleBySlug($slug);
-            return Laramap::single(ArticleDetailMapper::class, $data);
+            if (!empty($data)) {
+                return Laramap::single(ArticleDetailMapper::class, $data);
+            }
+            $response = $this->apiBaseResponse->notFoundResponse();
+            return response($response, Response::HTTP_NOT_FOUND);
+        } catch (Exception $e) {
+            $response = $this->apiBaseResponse->errorResponse($e);
+            return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public function getArticleById($id)
+    {
+        try {
+            $data = $this->articleRepositories->getArticleById($id);
+            if (!empty($data)) {
+                return Laramap::single(ArticleDetailMapper::class, $data);
+            }
+            $response = $this->apiBaseResponse->notFoundResponse();
+            return response($response, Response::HTTP_NOT_FOUND);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix'=>'v1','namespace'=>'API\Front'], function () {
     Route::get('articles', 'ArticleController@getAllArticle')->name('articles');
     Route::get('articles/{slug}', 'ArticleController@getArticleBySlug')->name('articleBySlug');
+    Route::get('article/{id}', 'ArticleController@getArticleById')->name('articleById');
     Route::get('articles-by-category/{slug}', 'ArticleController@getArticleByCategory')->name('articleByCategory');
     Route::get('articles-featured', 'ArticleController@getArticleFeatured')->name('articleByCategory');
     Route::get('articles-category', 'ArticleController@getArticleCategory')->name('articleCategory');

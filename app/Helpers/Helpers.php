@@ -8,7 +8,7 @@
 
 namespace App\Helpers;
 
-use App\Library\ApiBaseResponse;
+use App\Http\Library\ApiBaseResponse;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\ValidationException;

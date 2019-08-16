@@ -9,6 +9,7 @@ use App\Repositories\Frontend\AdvertRepositories;
 use App\Http\Controllers\Controller;
 use Thomzee\Laramap\Facades\Laramap;
 use Exception;
+use Illuminate\Http\Response;
 
 class AdvertController extends Controller
 {
@@ -59,7 +60,11 @@ class AdvertController extends Controller
     {
         try {
             $data = $this->advertRepositories->getAdvertBySlug($slug);
-            return Laramap::paged(AdvertFrontMapper::class, $data);
+            if (!empty($data)) {
+                return Laramap::single(AdvertFrontMapper::class, $data);
+            }
+            $response = $this->apiBaseResponse->notFoundResponse();
+            return response($response, Response::HTTP_NOT_FOUND);
         } catch (Exception $e) {
             return Laramap::error($e);
         }
