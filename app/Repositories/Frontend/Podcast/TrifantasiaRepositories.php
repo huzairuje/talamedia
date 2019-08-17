@@ -21,6 +21,24 @@ class TrifantasiaRepositories
     }
 
     /**
+     * get All Podcasts
+     */
+    public function getAllPodcasts()
+    {
+        $data = Podcast::orderBy('created_at', 'desc')->paginate(10);
+        return $data;
+    }
+
+    /**
+     * get All Podcasts
+     */
+    public function getPodcastsById($id)
+    {
+        $data = Podcast::find($id);
+        return $data;
+    }
+
+    /**
      * get meta data Trifantasia from database
      */
     public function getTrifantasiaProfile()

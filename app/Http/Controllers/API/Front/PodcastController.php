@@ -27,6 +27,32 @@ class PodcastController extends Controller
         $this->apiBaseResponse = $apiBaseResponse;
     }
 
+    public function getAllPodcast()
+    {
+        try {
+            $data = $this->trifantasiaRepositories->getAllPodcasts();
+            return Laramap::paged(TrifantasiaPodcastMapper::class, $data);
+        } catch (Exception $e) {
+            $response = $this->apiBaseResponse->errorResponse($e);
+            return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public function getPodcastById($id)
+    {
+        try {
+            $data = $this->trifantasiaRepositories->getPodcastsById($id);
+            if (!empty($data)) {
+                return Laramap::single(TrifantasiaPodcastMapper::class, $data);
+            }
+            $response = $this->apiBaseResponse->notFoundResponse();
+            return response($response, Response::HTTP_NOT_FOUND);
+        } catch (Exception $e) {
+            $response = $this->apiBaseResponse->errorResponse($e);
+            return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
     public function getTrifantasiaProfile()
     {
         try {

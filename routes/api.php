@@ -32,6 +32,8 @@ Route::group(['prefix'=>'v1','namespace'=>'API\Front'], function () {
     Route::get('instagram-trifantasia', 'InstagramController@getInstagramTrifantasia')->name('instagramTrifantasia');
 
     //Podcast
+    Route::get('podcasts', 'PodcastController@getAllPodcast')->name('allPodcast');
+    Route::get('podcasts/{id}', 'PodcastController@getPodcastById')->name('PodcastById');
     Route::get('podcast-trifantasia', 'PodcastController@getTrifantasiaProfile')->name('podcastTrifantasia');
     Route::get('podcast-trifantasia-episodes', 'PodcastController@getTrifantasiaEpisodes')->name('podcastTrifantasiaEpisodes');
     Route::get('podcast-trifantasia-episodes/{id}', 'PodcastController@getTrifantasiaEpisodeById')->name('podcastTrifantasiaEpisodeById');

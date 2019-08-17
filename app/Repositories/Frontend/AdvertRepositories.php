@@ -5,9 +5,6 @@ namespace App\Repositories\Frontend;
 
 use App\Http\Library\ApiBaseResponse;
 use App\Models\Advert;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpFoundation\Response;
 
 class AdvertRepositories
 {
@@ -22,7 +19,7 @@ class AdvertRepositories
 
     public function getAdvert()
     {
-        $advert = DB::table('advert')->select('*')->get();
+        $advert = Advert::orderBy('created_at', 'desc')->paginate(10);
         return $advert;
     }
 
