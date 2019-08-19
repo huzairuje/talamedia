@@ -147,6 +147,8 @@ Request Url
 https://talamedia.web.id/api/v1/podcasts/{title}/episodes/
 ```
 
+{title} = is the string value from Podcast properties "title"
+
 Example Request Url
 ```$xslt
 https://talamedia.web.id/api/v1/podcasts/Trifantasia/episodes/
@@ -298,7 +300,7 @@ https://talamedia.web.id/api/v1/podcasts/{title}/episodes/{id}
 
 {title} = string Value from Podcast properties "title"
 
-{id} = integer Value from Episode Properties
+{id} = integer Value from Episode properties "id"
 
 Example Request Url
 ```$xslt

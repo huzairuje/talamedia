@@ -31,7 +31,7 @@ class ArticleCategoriesRepositories
 
     public function getArticleCategoryBySlug($slug)
     {
-        $pageCategory = ArticleCategory::where('name', '=', $slug)->firstOrFail();
+        $pageCategory = ArticleCategory::where('name', 'like', '%' . $slug . '%')->first();
         return $pageCategory;
     }
 

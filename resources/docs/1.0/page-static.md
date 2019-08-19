@@ -76,7 +76,7 @@ Request Url
 https://talamedia.web.id/api/v1/pages/{name}
 ```
 
-{name} = String Value from Page Static Properties
+{name} = String Value from Page Static properties "name"
 
 Example Request
 ```$xslt

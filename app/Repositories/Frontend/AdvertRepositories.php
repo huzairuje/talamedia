@@ -32,7 +32,7 @@ class AdvertRepositories
 
     public function getAdvertById($id)
     {
-        $advertPageId = Advert::findOrFail($id);
+        $advertPageId = Advert::find($id);
         return $advertPageId;
     }
 
