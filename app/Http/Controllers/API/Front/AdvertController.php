@@ -26,10 +26,20 @@ class AdvertController extends Controller
         $this->apiBaseResponse = $apiBaseResponse;
     }
 
+    public function getAllAdvert()
+    {
+        try {
+            $data = $this->advertRepositories->getAdvert();
+            return Laramap::paged(AdvertFrontMapper::class, $data);
+        } catch (Exception $e) {
+            return Laramap::error($e);
+        }
+    }
+
     public function getAdvertFeatured()
     {
         try {
-            $data = $this->advertRepositories->getAdvertFeatured()->paginate(6);
+            $data = $this->advertRepositories->getAdvertFeatured();
             return Laramap::paged(AdvertFrontMapper::class, $data);
         } catch (Exception $e) {
             return Laramap::error($e);
@@ -39,7 +49,7 @@ class AdvertController extends Controller
     public function getAdvertOnArticlePage()
     {
         try {
-            $data = $this->advertRepositories->getAdvertOnArticlePage()->paginate(5);
+            $data = $this->advertRepositories->getAdvertOnArticlePage();
             return Laramap::paged(AdvertFrontMapper::class, $data);
         } catch (Exception $e) {
             return Laramap::error($e);
@@ -49,7 +59,7 @@ class AdvertController extends Controller
     public function getAdvertOnCategory()
     {
         try {
-            $data = $this->advertRepositories->getAdvertOnCategoryPage()->paginate(4);
+            $data = $this->advertRepositories->getAdvertOnCategoryPage();
             return Laramap::paged(AdvertFrontMapper::class, $data);
         } catch (Exception $e) {
             return Laramap::error($e);
@@ -60,6 +70,20 @@ class AdvertController extends Controller
     {
         try {
             $data = $this->advertRepositories->getAdvertBySlug($slug);
+            if (!empty($data)) {
+                return Laramap::single(AdvertFrontMapper::class, $data);
+            }
+            $response = $this->apiBaseResponse->notFoundResponse();
+            return response($response, Response::HTTP_NOT_FOUND);
+        } catch (Exception $e) {
+            return Laramap::error($e);
+        }
+    }
+
+    public function getAdvertById($id)
+    {
+        try {
+            $data = $this->advertRepositories->getAdvertById($id);
             if (!empty($data)) {
                 return Laramap::single(AdvertFrontMapper::class, $data);
             }
