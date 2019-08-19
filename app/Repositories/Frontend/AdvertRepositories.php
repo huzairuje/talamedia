@@ -25,7 +25,7 @@ class AdvertRepositories
 
     public function getAdvertBySlug($slug)
     {
-        $advertPage = Advert::where('name', '=', $slug)->firstOrFail();
+        $advertPage = Advert::where('name', 'like', '%' . $slug . '%')->firstOrFail();
         return $advertPage;
 
     }
