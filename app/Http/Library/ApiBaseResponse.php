@@ -12,7 +12,8 @@ class ApiBaseResponse
         $return = [];
         $paginated = $collection->paginate($limit);
         $return['meta']['error'] = 0;
-        $return['meta']['status'] = 200;
+        $return['meta']['code'] = 200;
+        $return['meta']['status'] = 'OK';
         $return['meta']['message'] = trans('message.api.success');
         $return['meta']['total'] = $paginated->total();
         $return['meta']['per_page'] = $paginated->perPage();
@@ -32,7 +33,8 @@ class ApiBaseResponse
     {
         $return = [];
         $return['meta']['error'] = 0;
-        $return['meta']['status'] = 200;
+        $return['meta']['code'] = 200;
+        $return['meta']['status'] = 'OK';
         $return['meta']['message'] = trans('message.api.success');
         $return['data'] = $data;
         $return = $this->generateRelations($return, $relations);
@@ -53,7 +55,8 @@ class ApiBaseResponse
     {
         $return = [];
         $return['meta']['error'] = 0;
-        $return['meta']['status'] = 200;
+        $return['meta']['code'] = 200;
+        $return['meta']['status'] = 'OK';
         $return['meta']['message'] = trans('message.api.success');
         $return['data']['id'] = $id;
         return $return;
@@ -62,7 +65,8 @@ class ApiBaseResponse
     public function errorResponse(\Exception $e)
     {
         $return = [];
-        $return['meta']['status'] = 500;
+        $return['meta']['code'] = 500;
+        $return['meta']['status'] = 'Error';
         $return['meta']['message'] = trans('message.api.error');
         $return['meta']['error'] = $e->getMessage();
         return $return;
@@ -71,7 +75,8 @@ class ApiBaseResponse
     public function notFoundResponse()
     {
         $return = [];
-        $return['meta']['status'] = 404;
+        $return['meta']['code'] = 404;
+        $return['meta']['status'] = 'not_found';
         $return['meta']['message'] = trans('message.api.notFound');
         return $return;
     }
@@ -79,7 +84,8 @@ class ApiBaseResponse
     public function validationFailResponse($errors)
     {
         $return = [];
-        $return['meta']['status'] = 400;
+        $return['meta']['code'] = 400;
+        $return['meta']['status'] = 'validation_error';
         $return['meta']['message'] = trans('message.api.badRequest');
         $return['data'] = $errors;
         return $return;
@@ -88,7 +94,8 @@ class ApiBaseResponse
     public function unauthorizedResponse()
     {
         $return = [];
-        $return['meta']['status'] = 401;
+        $return['meta']['code'] = 401;
+        $return['meta']['status'] = 'unauthorized';
         $return['meta']['message'] = trans('message.api.unauthorized');
         return $return;
     }
@@ -96,7 +103,8 @@ class ApiBaseResponse
     public function whereDoYouGo()
     {
         $return = [];
-        $return['meta']['status'] = 401;
+        $return['meta']['code'] = 401;
+        $return['meta']['status'] = '';
         $return['meta']['message'] = trans('message.api.whereDoYouGo');
         return $return;
     }
@@ -104,7 +112,8 @@ class ApiBaseResponse
     public function badRequest($errors)
     {
         $return = [];
-        $return['meta']['status'] = 400;
+        $return['meta']['code'] = 400;
+        $return['meta']['status'] = 'bad_request';
         $return['meta']['message'] = trans('message.api.badRequest');
         $return['data'] = $errors;
         return $return;
@@ -113,7 +122,8 @@ class ApiBaseResponse
     public function invalidToken($errors)
     {
         $return = [];
-        $return['meta']['status'] = 401;
+        $return['meta']['code'] = 401;
+        $return['meta']['status'] = 'invalid_token';
         $return['meta']['message'] = trans('message.api.invalidToken');
         $return['data'] = $errors;
         return $return;
@@ -122,7 +132,8 @@ class ApiBaseResponse
     public function unProcessableEntity($errors)
     {
         $return = [];
-        $return['meta']['status'] = 422;
+        $return['meta']['code'] = 422;
+        $return['meta']['status'] = 'unprocessable_entity';
         $return['meta']['message'] = trans('message.api.unProcessableEntity');
         $return['data'] = $errors;
         return $return;
