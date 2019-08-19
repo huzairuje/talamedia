@@ -70,11 +70,11 @@ class AdvertController extends Controller
     {
         try {
             $data = $this->advertRepositories->getAdvertBySlug($slug);
-            if (!empty($data)) {
-                return Laramap::single(AdvertFrontMapper::class, $data);
+            if (empty($data)) {
+                $response = $this->apiBaseResponse->notFoundResponse();
+                return response($response, Response::HTTP_NOT_FOUND);
             }
-            $response = $this->apiBaseResponse->notFoundResponse();
-            return response($response, Response::HTTP_NOT_FOUND);
+            return Laramap::single(AdvertFrontMapper::class, $data);
         } catch (Exception $e) {
             return Laramap::error($e);
         }
@@ -84,11 +84,11 @@ class AdvertController extends Controller
     {
         try {
             $data = $this->advertRepositories->getAdvertById($id);
-            if (!empty($data)) {
-                return Laramap::single(AdvertFrontMapper::class, $data);
+            if (empty($data)) {
+                $response = $this->apiBaseResponse->notFoundResponse();
+                return response($response, Response::HTTP_NOT_FOUND);
             }
-            $response = $this->apiBaseResponse->notFoundResponse();
-            return response($response, Response::HTTP_NOT_FOUND);
+            return Laramap::single(AdvertFrontMapper::class, $data);
         } catch (Exception $e) {
             return Laramap::error($e);
         }

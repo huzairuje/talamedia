@@ -25,14 +25,14 @@ class AdvertRepositories
 
     public function getAdvertBySlug($slug)
     {
-        $advertPage = Advert::where('name', 'like', '%' . $slug . '%')->firstOrFail();
+        $advertPage = Advert::where('name', 'like', '%' . $slug . '%')->first();
         return $advertPage;
 
     }
 
     public function getAdvertById($id)
     {
-        $advertPageId = Advert::find($id);
+        $advertPageId = Advert::find($id)->first();
         return $advertPageId;
     }
 
