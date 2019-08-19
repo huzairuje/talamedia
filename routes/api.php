@@ -24,11 +24,11 @@ Route::group(['prefix'=>'v1','namespace'=>'API\Front'], function () {
 
     //Advert
     Route::get('adverts', 'AdvertController@getAllAdvert');
-    Route::get('adverts/featured', 'AdvertController@getAdvertFeatured');
-    Route::get('adverts/category', 'AdvertController@getAdvertOnCategory');
-    Route::get('adverts/article', 'AdvertController@getAdvertOnArticlePage');
     Route::get('adverts/{slug}', 'AdvertController@getAdvertSingle');
     Route::get('advert/{id}', 'AdvertController@getAdvertById');
+    Route::get('adverts-featured', 'AdvertController@getAdvertFeatured');
+    Route::get('adverts-category', 'AdvertController@getAdvertOnCategory');
+    Route::get('adverts-article', 'AdvertController@getAdvertOnArticlePage');
 
     //Instagram
     Route::get('instagram/talamedia', 'InstagramController@getInstagramTalamedia')->name('instagramTalamedia');
