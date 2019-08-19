@@ -33,6 +33,7 @@ class ArticleDetailMapper extends BaseMapper implements MapperContract
             "created_at" => $article->created_at,
             "updated_at" => $article->updated_at,
             "created_by" => $article->user->name,
+            "created_by_instagram_account" => $article->user->username_instagram,
 
         ];
     }
