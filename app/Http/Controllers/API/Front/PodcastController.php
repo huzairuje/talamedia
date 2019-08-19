@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\API\Front;
 
 use App\Http\Library\ApiBaseResponse;
-use App\Mappers\TrifantasiaListEpisodeMapper;
-use App\Mappers\TrifantasiaPodcastMapper;
+use App\Mappers\PodcastEpisodeMapper;
+use App\Mappers\PodcastMapper;
+use App\Repositories\Frontend\Podcast\BasePodcastRepositories;
 use App\Repositories\Frontend\Podcast\TrifantasiaRepositories;
 use App\Services\Frontend\Podcast\TrifantasiaService;
 use App\Http\Controllers\Controller;
@@ -16,22 +17,25 @@ class PodcastController extends Controller
 {
     protected $trifantasiaService;
     protected $trifantasiaRepositories;
+    protected $basePodcastRepositories;
     protected $apiBaseResponse;
 
     public function __construct(TrifantasiaService $trifantasiaService,
                                 TrifantasiaRepositories $trifantasiaRepositories,
+                                BasePodcastRepositories $basePodcastRepositories,
                                 ApiBaseResponse $apiBaseResponse)
     {
         $this->trifantasiaService = $trifantasiaService;
         $this->trifantasiaRepositories = $trifantasiaRepositories;
+        $this->basePodcastRepositories = $basePodcastRepositories;
         $this->apiBaseResponse = $apiBaseResponse;
     }
 
     public function getAllPodcast()
     {
         try {
-            $data = $this->trifantasiaRepositories->getAllPodcasts();
-            return Laramap::paged(TrifantasiaPodcastMapper::class, $data);
+            $data = $this->basePodcastRepositories->getAllPodcasts();
+            return Laramap::paged(PodcastMapper::class, $data);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -41,9 +45,9 @@ class PodcastController extends Controller
     public function getPodcastById($id)
     {
         try {
-            $data = $this->trifantasiaRepositories->getPodcastsById($id);
+            $data = $this->basePodcastRepositories->getPodcastsById($id);
             if (!empty($data)) {
-                return Laramap::single(TrifantasiaPodcastMapper::class, $data);
+                return Laramap::single(PodcastMapper::class, $data);
             }
             $response = $this->apiBaseResponse->notFoundResponse();
             return response($response, Response::HTTP_NOT_FOUND);
@@ -53,37 +57,56 @@ class PodcastController extends Controller
         }
     }
 
-    public function getTrifantasiaProfile()
+    public function getPodcastsByTitle($title)
     {
         try {
-            $data = $this->trifantasiaRepositories->getTrifantasiaProfile();
-            return Laramap::single(TrifantasiaPodcastMapper::class, $data);
+            $data = $this->basePodcastRepositories->getPodcastsByTitle($title);
+            if (!empty($data)) {
+                return Laramap::single(PodcastMapper::class, $data);
+            }
+            $response = $this->apiBaseResponse->notFoundResponse();
+            return response($response, Response::HTTP_NOT_FOUND);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
-    public function getTrifantasiaEpisodes()
+    public function getAllEpisodesByPodcastTitle($title)
     {
         try {
-            $data = $this->trifantasiaRepositories->getTrifantasiaAllEpisodes();
-            return Laramap::paged(TrifantasiaListEpisodeMapper::class, $data);
+            $data = $this->basePodcastRepositories->getPodcastsByTitle($title);
+            if (empty($data)) {
+                $response = $this->apiBaseResponse->notFoundResponse();
+                return response($response, Response::HTTP_NOT_FOUND);
+            }
+            $dataEpisodes = $data->episode()->orderBy('created_at', 'desc')->paginate(10);
+            return Laramap::paged(PodcastEpisodeMapper::class, $dataEpisodes);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
-    public function getTrifantasiaEpisodeById($id)
+    public function getEpisodePodcastById($title, $id)
     {
         try {
-            $data = $this->trifantasiaRepositories->getTrifantasiaEpisodeById($id);
-            return Laramap::single(TrifantasiaListEpisodeMapper::class, $data);
+            $data = $this->basePodcastRepositories->getPodcastsByTitle($title);
+            if (empty($data)) {
+                $response = $this->apiBaseResponse->notFoundResponse();
+                return response($response, Response::HTTP_NOT_FOUND);
+            }
+            $data = $this->basePodcastRepositories->getPodcastEpisodeById($id);
+            if (empty($data)) {
+                $response = $this->apiBaseResponse->notFoundResponse();
+                return response($response, Response::HTTP_NOT_FOUND);
+            }
+            return Laramap::single(PodcastEpisodeMapper::class, $data);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
         }
+
     }
 
     public function saveMetaDataTrifantasia()

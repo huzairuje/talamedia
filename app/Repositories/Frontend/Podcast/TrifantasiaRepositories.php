@@ -6,36 +6,14 @@ namespace App\Repositories\Frontend\Podcast;
 use App\Models\Podcast;
 use App\Models\PodcastEpisode;
 
-class TrifantasiaRepositories
+class TrifantasiaRepositories extends BasePodcastRepositories
 {
-    private $podcastModel;
-    private $podcastEpisodeModel;
     private $listenNotePodcastId;
 
-    public function __construct(Podcast $podcastModel,
-                                PodcastEpisode $podcastEpisodeModel)
+    public function __construct(Podcast $podcastModel, PodcastEpisode $podcastEpisodeModel)
     {
-        $this->podcastModel = $podcastModel;
-        $this->podcastEpisodeModel = $podcastEpisodeModel;
+        parent::__construct($podcastModel, $podcastEpisodeModel);
         $this->listenNotePodcastId = env('LISTEN_NOTE_TRIFANTASIA_PODCAST_ID');
-    }
-
-    /**
-     * get All Podcasts
-     */
-    public function getAllPodcasts()
-    {
-        $data = Podcast::orderBy('created_at', 'desc')->paginate(10);
-        return $data;
-    }
-
-    /**
-     * get All Podcasts
-     */
-    public function getPodcastsById($id)
-    {
-        $data = Podcast::find($id);
-        return $data;
     }
 
     /**
@@ -46,7 +24,6 @@ class TrifantasiaRepositories
         $trifantasiaPodcastId = $this->listenNotePodcastId;
         $trifantasiaProfile = Podcast::where('listen_note_podcast_id', '=', $trifantasiaPodcastId)->firstOrFail();
         return $trifantasiaProfile;
-
     }
 
     /**

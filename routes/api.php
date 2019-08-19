@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -21,26 +20,31 @@ Route::group(['prefix'=>'v1','namespace'=>'API\Front'], function () {
     Route::get('articles-category', 'ArticleController@getArticleCategory')->name('articleCategory');
 
 
-    Route::get('instagram-talamedia', 'InstagramController@getInstagramTalamedia')->name('instagramTalamedia');
+    Route::get('instagram/talamedia', 'InstagramController@getInstagramTalamedia')->name('instagramTalamedia');
 
-    Route::get('instagram-info-unpad', 'InstagramController@getInstagramInfoUnpad')->name('instagramInfoUnpad');
-    Route::get('instagram-info-itb', 'InstagramController@getInstagramInfoItb')->name('instagramInfoItb');
+    Route::get('instagram/info-unpad', 'InstagramController@getInstagramInfoUnpad')->name('instagramInfoUnpad');
+    Route::get('instagram/info-itb', 'InstagramController@getInstagramInfoItb')->name('instagramInfoItb');
 
-    Route::get('instagram-nangor-info', 'InstagramController@getInstagramNangorInfo')->name('instagramNangorInfo');
-    Route::get('instagram-bdg-net', 'InstagramController@getInstagramBdgNet')->name('instagramBdgNet');
+    Route::get('instagram/nangor-info', 'InstagramController@getInstagramNangorInfo')->name('instagramNangorInfo');
+    Route::get('instagram/bdg-net', 'InstagramController@getInstagramBdgNet')->name('instagramBdgNet');
 
-    Route::get('instagram-trifantasia', 'InstagramController@getInstagramTrifantasia')->name('instagramTrifantasia');
+    Route::get('instagram/trifantasia', 'InstagramController@getInstagramTrifantasia')->name('instagramTrifantasia');
 
     //Podcast
     Route::get('podcasts', 'PodcastController@getAllPodcast')->name('allPodcast');
-    Route::get('podcasts/{id}', 'PodcastController@getPodcastById')->name('PodcastById');
-    Route::get('podcast-trifantasia', 'PodcastController@getTrifantasiaProfile')->name('podcastTrifantasia');
-    Route::get('podcast-trifantasia-episodes', 'PodcastController@getTrifantasiaEpisodes')->name('podcastTrifantasiaEpisodes');
-    Route::get('podcast-trifantasia-episodes/{id}', 'PodcastController@getTrifantasiaEpisodeById')->name('podcastTrifantasiaEpisodeById');
+    Route::get('podcasts/{title}', 'PodcastController@getPodcastsByTitle')->name('getPodcastByTitle');
+    Route::get('podcast/{id}', 'PodcastController@getPodcastById')->name('PodcastById');
+    Route::get('podcasts/{title}/episodes', 'PodcastController@getAllEpisodesByPodcastTitle')->name('PodcastByTitle');
+    Route::get('podcasts/{title}/episodes/{id}', 'PodcastController@getEpisodePodcastById')->name('PodcastByTitle');
     Route::get('save-podcast-trifantasia', 'PodcastController@saveMetaDataTrifantasia')->name('podcastTrifantasiaEpisodes');
 
 //    Route::get('adverts/{slug}', 'AdvertController');
 //    Route::get('adverts/{slug}', 'AdvertController');
 //    Route::get('adverts/{slug}', 'AdvertController');
+
+    Route::get('pages', 'PageStaticController@getAllPageStatic')->name('getAllPageStatic');
+    Route::get('pages/{name}', 'PageStaticController@getPageStaticByName')->name('getPageStaticBySlug');
+    Route::get('page/{id}', 'PageStaticController@getPageStaticById')->name('getPageStaticById');
+
 });
 

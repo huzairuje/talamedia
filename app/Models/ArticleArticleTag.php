@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ArticleArticletag extends Model
+class ArticleArticleTag extends Model
 {
-    public $table = 'article_articletags';
+    public $table = 'article_article_tag';
 
     protected $dates = ['created_at', 'updated_at'];
 

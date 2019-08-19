@@ -3,9 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Passport\HasApiTokens;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Article extends Authenticatable
@@ -48,7 +45,7 @@ class Article extends Authenticatable
 
     public function articleTags()
     {
-        return $this->belongsToMany(ArticleTag::class, 'article_articletags');
+        return $this->belongsToMany(ArticleTag::class, 'article_article_tag');
     }
 
     public function scopeIsFeaturedArticle($query)

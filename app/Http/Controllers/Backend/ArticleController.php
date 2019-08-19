@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
-use App\Models\ArticleArticletag;
+use App\Models\ArticleArticleTag;
 use App\Models\ArticleCategory;
 use App\Models\ArticleTag;
-use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -16,7 +15,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 use Yajra\DataTables\Facades\DataTables;
-use Illuminate\Support\Facades\Storage;
 
 
 class ArticleController extends Controller
@@ -30,7 +28,7 @@ class ArticleController extends Controller
     public function __construct(Article $model)
     {
         $this->model = $model;
-        $this->articletag = new ArticleArticletag;
+        $this->articletag = new ArticleArticleTag;
     }
 
     /** get data table to show on method @index

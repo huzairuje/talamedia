@@ -28,6 +28,6 @@ class PodcastEpisode extends Model
 
     public function podcast()
     {
-        return $this->belongsTo(Podcast::class, 'podcast_id', 'id');
+        return $this->belongsTo(Podcast::class, 'podcast_id');
     }
 }

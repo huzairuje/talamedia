@@ -3,10 +3,11 @@
 
 namespace App\Mappers;
 
+
 use Thomzee\Laramap\BaseMapper;
 use Thomzee\Laramap\MapperContract;
 
-class TrifantasiaListEpisodeMapper extends BaseMapper implements MapperContract
+class PodcastEpisodeMapper extends BaseMapper implements MapperContract
 {
     /**
      * Map single object to desired result.

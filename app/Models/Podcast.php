@@ -29,6 +29,6 @@ class Podcast extends Model
     ];
     public function episode()
     {
-        return $this->belongsToMany(PodcastEpisode::class);
+        return $this->hasMany(PodcastEpisode::class);
     }
 }

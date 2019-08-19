@@ -29,6 +29,7 @@ class ArticleDetailMapper extends BaseMapper implements MapperContract
             "meta_description" => $article->meta_description,
             "status" => $article->status,
             "article_category" => $article->category->name,
+            "article_tag" => $article->tag,
             "created_at" => $article->created_at,
             "updated_at" => $article->updated_at,
             "created_by" => $article->user->name,
