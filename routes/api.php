@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::group(['prefix'=>'v1','namespace'=>'API\Front'], function () {
     Route::get('articles', 'ArticleController@getAllArticle')->name('articles');
     Route::get('articles/{slug}', 'ArticleController@getArticleBySlug')->name('articleBySlug');

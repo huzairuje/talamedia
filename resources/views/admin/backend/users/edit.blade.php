@@ -3,11 +3,11 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="float-left">
-                <h2>Edit </h2>
-            </div>
-            <div class="float-right">
+            <div class="col-lg-2 float-right">
                 <a class="btn btn-primary" href="{{ route('user.index') }}"> Back</a>
+            </div>
+            <div class="col-lg-12 float-left">
+                <h2>Edit User</h2>
             </div>
         </div>
     </div>
@@ -33,7 +33,6 @@
                 <div class="form-group">
                     <strong> Name:</strong>
                     <input type="text" name="name" id="name" class="form-control" placeholder="Name" value="{{ $data->name }}">
-                    </input>
                 </div>
             </div>
             <div class="col-lg-7">
@@ -44,16 +43,28 @@
             </div>
             <div class="col-lg-7">
                 <div class="form-group">
-                    <strong> Password:</strong>
-                    <input type="password" name="password" value="{{ old('password')!==null ? old('password') : $data->password }}" class="form-control" placeholder="Password">
+                    <strong> Username Instagram :</strong>
+                    <input type="text" name="username_instagram" value="{{ old('username_instagram')!==null ? old('username_instagram') : $data->username_instagram }}" class="form-control" placeholder="username instagram">
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-lg-7">
+                <div class="form-group">
+                    <strong> Password:</strong>
+                    <input type="password" name="password" value="" class="form-control" placeholder="Password">
+                </div>
+            </div>
+            <div class="col-md-7">
+                <strong>Confirmed Password:</strong>
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
+            </div>
+            <div class="col-md-7">
                 <div class="form-group">
                     <strong>Role:</strong>
-                    <select class="form-control" value="{{old('role_id')!==null ? old('role_id') : $data->role_id}}" name="role_id">
-                        <option value="1">1</option>
-                        <option value="1">2</option>
+                    <select multiple="true" class="form-control select2" data-placeholder="Roles" name="role_id[]">
+                        <option></option>
+                        @foreach($roles as $role)
+                            <option value="{{$role->id}}">{{ $role->name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

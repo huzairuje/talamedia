@@ -77,7 +77,6 @@ Route::group(['prefix' => 'admin' ,'middleware' => 'auth'], function() {
     Route::get('articlecategory/delete/{id}', ['as' => 'articlecategory.delete', 'uses' => 'Backend\ArticleCategoryController@destroy']);
     Route::resource('articlecategory', 'Backend\ArticleCategoryController');
 
-
 # ArticleTagController
     Route::get('articletag', ['as' => 'articletag.index', 'uses' => 'Backend\ArticleTagController@index']);
     Route::get('articletag/datatables', ['as' => 'articletag.datatables', 'uses' => 'Backend\ArticleTagController@dataTables']);
@@ -110,4 +109,15 @@ Route::group(['prefix' => 'admin' ,'middleware' => 'auth'], function() {
     Route::put('advertcategory/update/{id}', ['as' => 'advertcategory.update', 'uses' => 'Backend\AdvertCategoryController@update']);
     Route::get('advertcategory/delete/{id}', ['as' => 'advertcategory.delete', 'uses' => 'Backend\AdvertCategoryController@destroy']);
     Route::resource('advertcategory', 'Backend\AdvertCategoryController');
+
+# PageStaticController
+    Route::get('pagestatic',  ['as' => 'pagestatic.index', 'uses' => 'Backend\PageStaticController@index']);
+    Route::get('pagestatic/datatables',  ['as' => 'pagestatic.datatables', 'uses' => 'Backend\PageStaticController@dataTables']);
+    Route::get('pagestatic/show/{id}',  ['as' => 'pagestatic.show', 'uses' => 'Backend\PageStaticController@show']);
+    Route::get('pagestatic/create',  ['as' => 'pagestatic.create', 'uses' => 'Backend\PageStaticController@create']);
+    Route::post('pagestatic/create',  ['as' => 'pagestatic.store', 'uses' => 'Backend\PageStaticController@store']);
+    Route::get('pagestatic/edit/{id}',  ['as' => 'pagestatic.edit', 'uses' => 'Backend\PageStaticController@edit']);
+    Route::put('pagestatic/update/{id}',  ['as' => 'pagestatic.update', 'uses' => 'Backend\PageStaticController@update']);
+    Route::get('pagestatic/delete/{id}',  ['as' => 'pagestatic.delete', 'uses' => 'Backend\PageStaticController@destroy']);
+
 });

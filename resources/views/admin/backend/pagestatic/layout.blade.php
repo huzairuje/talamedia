@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
-@section('title', 'Article')
+@section('title', 'Page Static')
 
 @section('content')
 
-@yield('content')
+    @yield('content')
 @endsection

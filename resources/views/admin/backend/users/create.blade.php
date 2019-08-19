@@ -45,6 +45,12 @@
             </div>
         </div>
         <div class="col-md-6">
+            <div class="form-group">
+                <strong>Username Instagram :</strong>
+                <input type="text" class="form-control" name="username_instagram" placeholder="username instagram">
+            </div>
+        </div>
+        <div class="col-md-6">
             <strong>Confirmed Password:</strong>
             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
         </div>

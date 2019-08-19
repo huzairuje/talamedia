@@ -26,38 +26,11 @@
             </span>
                 </a>
             </li>
-            @admin
-                <li class="active treeview">
-                    <a href="#">
-                        <i class="fas fa-users"></i> <span>User Management</span>
-                        <span class="pull-right-container"></span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="active"><a href="{{route('user.index')}}"><i class="fas fa-user-circle"></i> User </a></li>
-                        <li><a href="{{route('role.index')}}"><i class="fas fa-user-tag"></i> Role </a></li>
-                        <li><a href="{{route('menu.index')}}"><i class="fas fa-link"></i> Menu </a></li>
-                    </ul>
-                </li>
-            @endadmin
-{{--            <li class="active treeview">--}}
-{{--                <a href="#">--}}
-{{--                    <i class="fas fa-users"></i> <span>User Management</span>--}}
-{{--                    <span class="pull-right-container">--}}
-{{--              <i class="fas fa-user-left pull-right"></i>--}}
-{{--            </span>--}}
-{{--                </a>--}}
-{{--                <ul class="treeview-menu">--}}
-{{--                    <li class="active"><a href="{{route('user.index')}}"><i class="fas fa-user-circle"></i> User </a></li>--}}
-{{--                    <li><a href="{{route('role.index')}}"><i class="fas fa-user-tag"></i> Role </a></li>--}}
-{{--                    <li><a href="{{route('menu.index')}}"><i class="fas fa-link"></i> Menu </a></li>--}}
-{{--                </ul>--}}
-{{--            </li>--}}
-{{--                @endif--}}
             @article
             <li class="active treeview">
                 <a href="#">
                     <i class="fas fa-newspaper"></i>
-                    <span>Article</span>
+                    <span>Article Management</span>
                     <span class="pull-right-container">
 {{--              <span class="label label-primary pull-right">4</span>--}}
             </span>
@@ -75,7 +48,7 @@
             <li class="active treeview">
                 <a href="#">
                     <i class="fas fa-ad"></i>
-                    <span>Advertisement</span>
+                    <span>Advertisement Management</span>
                     <span class="pull-right-container">
 {{--              <span class="label label-primary pull-right">4</span>--}}
             </span>
@@ -87,6 +60,30 @@
                 </ul>
             </li>
             @endadvert
+            @admin
+            <li class="active treeview">
+                <a href="#">
+                    <i class="fas fa-users"></i> <span>Page Static Management</span>
+                    <span class="pull-right-container"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('pagestatic.index')}}"><i class="fas fa-file-alt"></i> Page Static </a></li>
+                </ul>
+            </li>
+            @endadmin
+            @admin
+            <li class="active treeview">
+                <a href="#">
+                    <i class="fas fa-users"></i> <span>User Management</span>
+                    <span class="pull-right-container"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="active"><a href="{{route('user.index')}}"><i class="fas fa-user-circle"></i> User </a></li>
+                    <li><a href="{{route('role.index')}}"><i class="fas fa-user-tag"></i> Role </a></li>
+                    <li><a href="{{route('menu.index')}}"><i class="fas fa-link"></i> Menu </a></li>
+                </ul>
+            </li>
+            @endadmin
         </ul>
 {{--@endif--}}
     </section>

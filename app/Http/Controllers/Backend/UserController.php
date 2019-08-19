@@ -69,7 +69,7 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users,email',
             'password' => 'required|min:8|confirmed',
             'role_id' => 'required',
         ]);
@@ -77,6 +77,7 @@ class UserController extends Controller
         $data = $this->userModel;
         $data->name = $request->get('name');
         $data->email = $request->get('email');
+        $data->username_instagram = $request->get('username_instagram');
         $data->password = bcrypt($request->get('password'));
         $data->save();
 
@@ -85,6 +86,7 @@ class UserController extends Controller
             $userRoles = $request['role_id'];
             $role = Role::findOrFail($userRoles);
         }
+        $userRoles = $request['role_id'];
         $data->role()->attach($userRoles);
         return redirect()->route('user.index')
             ->with('user created successfully.');
@@ -108,31 +110,40 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = new User();
+        $roles = Role::all();
         $data = $user->findOrFail($id);
-        return view('admin.backend.users.edit',compact('data'));
+
+        return view('admin.backend.users.edit',compact('data', 'roles'));
     }
 
     /**
      * @param Request $request
-     * @param User $data
+     * @param $id
      * @return RedirectResponse
      */
-    public function update(Request $request, User $data)
+    public function update(Request $request, $id)
     {
+
         $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|max:255|email||unique:users,email,'.$data->id.',id',
+            'name' => 'max:255',
+            'email' => 'max:255|email',
             'password' => 'required|min:8|confirmed',
         ]);
-        $data->update($request->all());
+        $data = $this->userModel->findOrFail($id);
+        $data->name = $request->get('name');
+        $data->email = $request->get('email');
+        $data->username_instagram = $request->get('username_instagram');
+        $data->password = bcrypt($request->get('password'));
+        $data->update();
 
         $userRoles = $this->userRole;
         foreach ($userRoles as $userRole) {
-            $userRole = $request['role_id'];
-            $role = Role::findOrFail($userRole);
+            $userRoles = $request['role_id'];
+            $role = Role::findOrFail($userRoles);
         }
+        $userRoles = $request['role_id'];
         $data->role()->sync($userRoles);
-        return redirect('/user')->with('success', 'User has been updated');
+        return redirect()->route('user.index')->with('success', 'User has been updated');
     }
 
     /**
