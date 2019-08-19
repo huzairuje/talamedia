@@ -22,6 +22,19 @@ Route::get('/', function () {
    return redirect()->route('login');
 });
 
+Route::get('admin', function () {
+    return redirect()->route('login');
+});
+
+Route::get('dashboard', function () {
+    return redirect()->route('login');
+});
+
+Route::get('admin/dashboard', function () {
+    return redirect()->route('login');
+});
+
+
 Route::group(['prefix' => 'admin' ,'middleware' => 'auth'], function() {
     Route::get('dashboard', 'HomeController@index')->name('dashboard');
 
