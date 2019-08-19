@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Front;
 
 use App\Http\Controllers\Controller;
 use App\Http\Library\ApiBaseResponse;
+use App\Mappers\ListPageStaticMapper;
 use App\Mappers\PageStaticMapper;
 use App\Repositories\Frontend\PageStaticRepositories;
 use Exception;
@@ -26,7 +27,7 @@ class PageStaticController extends Controller
     {
         try {
             $data = $this->pageStaticRepositories->getAllPageStatic();
-            return Laramap::paged(PageStaticMapper::class, $data);
+            return Laramap::paged(ListPageStaticMapper::class, $data);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);

@@ -12,13 +12,18 @@ class ListPageStaticMapper extends BaseMapper implements MapperContract
     /**
      * Map single object to desired result.
      *
-     * @param $item
+     * @param $page
      * @return array|mixed
      */
-    function single($item)
+    function single($page)
     {
         return [
-            "foo" => $item->bar
+            "name" => $page->name,
+            "featured_image" => $page->featured_image,
+            "created_by" => $page->user->name,
+            "created_by_username_instagram" => $page->user->username_instagram,
+            "status" => $page->status,
+            "created_at" => $page->created_at,
         ];
     }
 }
