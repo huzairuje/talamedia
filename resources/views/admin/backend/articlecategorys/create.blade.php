@@ -22,13 +22,31 @@
     </div>
 @endif
    
-<form action="{{ route('articlecategory.store') }}" method="POST">
+<form action="{{ route('articlecategory.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 <strong>Name:</strong>
                 <input type="text" name="name" class="form-control" placeholder="Name">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <strong>Picture On the Page:</strong>
+                <input type="file" class="form-control" name="featured_image" placeholder="Image">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <strong>Instagram access token 1:</strong>
+                <input type="text" name="instagram_access_token_1" class="form-control" placeholder="Instagram Token 1">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <strong>Instagram access token 2:</strong>
+                <input type="text" name="instagram_access_token_2" class="form-control" placeholder="Instagram Token 2">
             </div>
         </div>
         <div class="col-md-6">

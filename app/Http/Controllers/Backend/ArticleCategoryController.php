@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\ArticleCategory;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Auth;
@@ -65,11 +67,18 @@ class ArticleCategoryController extends Controller
         $request->validate([
             'name' => 'required',
             'status' => 'required',
+            'featured_image' => 'required',
         ]);
 
         $data = $this->model;
         $data->name = $request->get('name');
+        if ($request->hasFile('featured_image')) {
+            $data->featured_image = $this->uploadFeaturedImage($request);
+        }
         $data->status = $request->get('status');
+        $data->instagram_access_token_1 = $request->get('instagram_access_token_1');
+        $data->instagram_access_token_2 = $request->get('instagram_access_token_2');
+        $data->instagram_access_token_3 = $request->get('instagram_access_token_3');
         $data->created_by= Auth::id();
 
         $data->save();
@@ -113,11 +122,19 @@ class ArticleCategoryController extends Controller
             'name' => 'required|max:255',
             'status' => 'required',
         ]);
-        $data->update([
-            'name' => $request->name,
-            'status' => $request->status,
-        ]);
-        return redirect('/articlecategory')->with( 'Category has been updated');
+
+        $data->name = $request->get('name');
+        $data->status = $request->get('status');
+        if ($request->hasFile('featured_image')) {
+            File::delete('public/images/'.$data->featured_image);
+            $data->featured_image = $this->uploadFeaturedImage($request);
+        }
+        $data->instagram_access_token_1 = $request->get('instagram_access_token_1');
+        $data->instagram_access_token_2 = $request->get('instagram_access_token_2');
+
+        $data->update();
+
+        return redirect()->route('articlecategory.index')->with( 'Category has been updated');
     }
 
     /**
@@ -131,5 +148,20 @@ class ArticleCategoryController extends Controller
 
         return redirect()->route('articlecategory.index')
             ->with('Category deleted successfully');
+    }
+
+    /**
+     * Upload Image Method, store and update using this method
+     * @param Request $request
+     * @return string
+     */
+    public function uploadFeaturedImage(Request $request)
+    {
+        $featuredImage = $request->file('featured_image');
+        $initialImageName = $featuredImage->getClientOriginalName();
+        $getDate = Carbon::now();
+        $imageName = $getDate.$initialImageName;
+        $request->file('featured_image')->storeAs('public/images/', $imageName);
+        return $imageName;
     }
 }

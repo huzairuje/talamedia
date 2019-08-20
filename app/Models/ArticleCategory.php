@@ -11,7 +11,11 @@ class ArticleCategory extends Authenticatable
 {
 
     protected $fillable = [
-        'name', 'status',
+        'name',
+        'status',
+        'instagram_access_token_1',
+        'instagram_access_token_2',
+        'featured_image'
     ];
 
     public function sql()

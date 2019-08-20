@@ -52,7 +52,6 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group" data-provide="content">
                         <strong>Content :</strong>
-{{--                        {{dd($data->content)}}--}}
                         <textarea name="content" id="ckview">{{$data->content}}</textarea>
                         <script src="{{url('themes/tinymce/jquery.tinymce.min.js')}}"></script>
                         <script src="{{url('themes/tinymce/tinymce.min.js')}}"></script>
