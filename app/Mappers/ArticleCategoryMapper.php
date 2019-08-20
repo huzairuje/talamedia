@@ -20,6 +20,7 @@ class ArticleCategoryMapper extends BaseMapper implements MapperContract
         return [
             "id" => $articleCategory->id,
             "name" => $articleCategory->name,
+            "featured_image" => $articleCategory->featured_image,
             "status" => $articleCategory->status,
             "instagram_access_token_1" => $articleCategory->instagram_access_token_1,
             "instagram_access_token_2" => $articleCategory->instagram_access_token_2,
