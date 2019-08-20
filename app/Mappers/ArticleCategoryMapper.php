@@ -3,7 +3,7 @@
 
 namespace App\Mappers;
 
-
+use Illuminate\Support\Facades\Storage;
 use Thomzee\Laramap\BaseMapper;
 use Thomzee\Laramap\MapperContract;
 
@@ -20,8 +20,8 @@ class ArticleCategoryMapper extends BaseMapper implements MapperContract
         return [
             "id" => $articleCategory->id,
             "name" => $articleCategory->name,
-            "featured_image" => $articleCategory->featured_image,
-            "status" => $articleCategory->status,
+            "featured_image" => url('/').Storage::url('images/'.$articleCategory->featured_image),
+            "status" => $articleCategory->status == 1 ? true : false,
             "instagram_access_token_1" => $articleCategory->instagram_access_token_1,
             "instagram_access_token_2" => $articleCategory->instagram_access_token_2,
             "instagram_access_token_3" => $articleCategory->instagram_access_token_3,

@@ -21,7 +21,7 @@ class AdvertFrontMapper extends BaseMapper implements MapperContract
             "name" => $advert->name,
             "featured_image" => $advert->featured_image,
             "created_at" => $advert->created_at,
-            "is_featured" => $advert->is_featured_advert
+            "is_featured" => $advert->is_featured_advert == 1 ? true : false
         ];
     }
 }

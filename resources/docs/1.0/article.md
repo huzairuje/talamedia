@@ -188,7 +188,8 @@ Response
         {
             "id": 1,
             "name": "BeritaBaik",
-            "status": 1,
+            "featured_image": null,
+            "status": true,
             "instagram_access_token_1": null,
             "instagram_access_token_2": null,
             "instagram_access_token_3": null,
@@ -199,7 +200,8 @@ Response
         {
             "id": 2,
             "name": "InfoKampus",
-            "status": 1,
+            "featured_image": null,
+            "status": true,
             "instagram_access_token_1": "4302286755.1677ed0.5c2e5e61c3d84efa9ee8920ac2b1cc89",
             "instagram_access_token_2": "5427535868.1677ed0.b5435eed4d624002aa696941ae678c76",
             "instagram_access_token_3": null,
@@ -210,7 +212,8 @@ Response
         {
             "id": 3,
             "name": "RuangKota",
-            "status": 1,
+            "featured_image": null,
+            "status": true,
             "instagram_access_token_1": "2512571853.1677ed0.e01dd7ec0f4047f38475552924875c23",
             "instagram_access_token_2": "5326334945.1677ed0.f47f75244a4e4715a7bfca086f80f9c1",
             "instagram_access_token_3": null,
@@ -221,7 +224,8 @@ Response
         {
             "id": 4,
             "name": "Podcast",
-            "status": 1,
+            "featured_image": null,
+            "status": true,
             "instagram_access_token_1": "2160507790.1677ed0.3b66615cbb6843f28b6d741fdecf1961",
             "instagram_access_token_2": null,
             "instagram_access_token_3": null,
@@ -232,7 +236,8 @@ Response
         {
             "id": 5,
             "name": "Event",
-            "status": 1,
+            "featured_image": null,
+            "status": true,
             "instagram_access_token_1": null,
             "instagram_access_token_2": null,
             "instagram_access_token_3": null,
@@ -243,7 +248,8 @@ Response
         {
             "id": 6,
             "name": "Kerjasama",
-            "status": 1,
+            "featured_image": null,
+            "status": true,
             "instagram_access_token_1": null,
             "instagram_access_token_2": null,
             "instagram_access_token_3": null,
@@ -297,7 +303,7 @@ Response
             "featured_image": "https://talamedia.web.id/storage/images/2019-08-17 16:48:05Instagram-on-iPhone-Featured.jpg",
             "slug": "10 Akun Instagram Terpopuler untuk Pelaku Startup",
             "created_by": "Probo Agung Laksono",
-            "is_featured": 1
+            "is_featured": true
         },
         {
             "id": 1,
@@ -306,7 +312,7 @@ Response
             "featured_image": "https://talamedia.web.id/storage/images/2019-08-16 22:17:382019-07-23 03_29_43jokowi-prabowo.jpg",
             "slug": "test_artikel",
             "created_by": "admin",
-            "is_featured": 1
+            "is_featured": true
         }
     ]
 }
@@ -352,7 +358,7 @@ Response
             "featured_image": "https://talamedia.web.id/storage/images/2019-08-17 17:00:43itb2.jpg",
             "slug": "Ini 13 Perguruan Tinggi Negeri Terbaik di Indonesia 2019, ITB Nomor 1",
             "created_by": "Probo Agung Laksono",
-            "is_featured": 1
+            "is_featured": true
         },
         {
             "id": 5,
@@ -361,7 +367,7 @@ Response
             "featured_image": "https://talamedia.web.id/storage/images/2019-08-17 16:48:05Instagram-on-iPhone-Featured.jpg",
             "slug": "10 Akun Instagram Terpopuler untuk Pelaku Startup",
             "created_by": "Probo Agung Laksono",
-            "is_featured": 1
+            "is_featured": true
         },
         {
             "id": 3,
@@ -370,7 +376,7 @@ Response
             "featured_image": "https://talamedia.web.id/storage/images/2019-08-17 16:22:462310-tips-teknologi_feat.jpg",
             "slug": "Mengenal Podcast Dan Kelebihannya Dibandingkan Radio Dan Video",
             "created_by": "Probo Agung Laksono",
-            "is_featured": 1
+            "is_featured": true
         },
         {
             "id": 2,
@@ -379,7 +385,7 @@ Response
             "featured_image": "https://talamedia.web.id/storage/images/2019-08-17 15:15:160_bmi5KFt3_sZcvr_b.png",
             "slug": "Kenapa Podcast Semakin Ramai?",
             "created_by": "Probo Agung Laksono",
-            "is_featured": 1
+            "is_featured": true
         }
     ]
 }

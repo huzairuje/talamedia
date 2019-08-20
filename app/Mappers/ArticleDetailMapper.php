@@ -34,6 +34,7 @@ class ArticleDetailMapper extends BaseMapper implements MapperContract
             "updated_at" => $article->updated_at,
             "created_by" => $article->user->name,
             "created_by_instagram_account" => $article->user->username_instagram,
+            "is_featured" => $article->is_featured == 1 ? true : false,
 
         ];
     }

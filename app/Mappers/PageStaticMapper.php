@@ -4,6 +4,7 @@
 namespace App\Mappers;
 
 
+use Illuminate\Support\Facades\Storage;
 use Thomzee\Laramap\BaseMapper;
 use Thomzee\Laramap\MapperContract;
 
@@ -19,7 +20,7 @@ class PageStaticMapper extends BaseMapper implements MapperContract
     {
         return [
             "name" => $page->name,
-            "featured_image" => $page->featured_image,
+            "featured_image" => url('/').Storage::url('images/'.$page->featured_image),
             "content" => $page->content,
             "seo_title" => $page->seo_title,
             "seo_keyword" => $page->seo_keyword,

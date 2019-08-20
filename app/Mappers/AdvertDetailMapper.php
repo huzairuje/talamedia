@@ -23,6 +23,7 @@ class AdvertDetailMapper extends BaseMapper implements MapperContract
             "featured_image" => $advert->featured_image,
             "created_at" => $advert->created_at,
             "publish_datetime" => $advert->publish_datetime,
+            "is_featured" => $advert->is_featured_advert == 1 ? true : false
         ];
     }
 }
