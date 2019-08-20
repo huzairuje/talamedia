@@ -19,6 +19,7 @@ class PageStaticMapper extends BaseMapper implements MapperContract
     function single($page)
     {
         return [
+            "id" => $page->id,
             "name" => $page->name,
             "featured_image" => url('/').Storage::url('images/'.$page->featured_image),
             "content" => $page->content,
