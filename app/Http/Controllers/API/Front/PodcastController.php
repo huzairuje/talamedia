@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\Front;
 
 use App\Http\Library\ApiBaseResponse;
+use App\Http\Requests\API\Front\RedirectUriRequest;
 use App\Mappers\PodcastEpisodeMapper;
 use App\Mappers\PodcastMapper;
 use App\Repositories\Frontend\Podcast\BasePodcastRepositories;
@@ -10,6 +11,7 @@ use App\Repositories\Frontend\Podcast\TrifantasiaRepositories;
 use App\Services\Frontend\Podcast\TrifantasiaService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 use Thomzee\Laramap\Facades\Laramap;
 use Exception;
 
@@ -113,6 +115,21 @@ class PodcastController extends Controller
     {
         try {
             $data = $this->trifantasiaService->getAndSaveMetaDataTrifantasia();
+            $response = $this->apiBaseResponse->singleData($data, []);
+            return response($response, Response::HTTP_OK);
+        } catch (Exception $e) {
+            $response = $this->apiBaseResponse->errorResponse($e);
+            return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public function redirectUriPodcast(Request $request)
+    {
+        try {
+            $request->validate([
+                'url' => 'required',
+            ]);
+            $data = $this->trifantasiaService->redirectUriListenNote($request->get('url'));
             $response = $this->apiBaseResponse->singleData($data, []);
             return response($response, Response::HTTP_OK);
         } catch (Exception $e) {

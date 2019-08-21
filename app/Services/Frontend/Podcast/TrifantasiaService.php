@@ -6,6 +6,7 @@ namespace App\Services\Frontend\Podcast;
 use App\Models\Podcast;
 use App\Models\PodcastEpisode;
 use GuzzleHttp\Client;
+use GuzzleHttp\RedirectMiddleware;
 
 class TrifantasiaService
 {
@@ -34,6 +35,19 @@ class TrifantasiaService
      * or the API docs https://www.listennotes.com/api/docs/
      * @return mixed
      */
+
+    /**
+     * @param $url
+     * @return string[]
+     */
+    public function redirectUriListenNote($url)
+    {
+        $response = $this->client
+            ->get($url, ['allow_redirects' => false]);
+        $headersRedirect = $response->getHeader('Location');
+        return $headersRedirect;
+    }
+
     public function getAllMetaDataTrifantasia()
     {
         $response = $this->client
