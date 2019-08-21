@@ -46,7 +46,7 @@ Route::group(['prefix'=>'v1','namespace'=>'API\Front'], function () {
     Route::get('podcasts/{title}/episodes/{id}', 'PodcastController@getEpisodePodcastById')->name('PodcastByTitle');
     Route::get('save-podcast-trifantasia', 'PodcastController@saveMetaDataTrifantasia')->name('podcastTrifantasiaEpisodes');
 
-    Route::get('redirect-uri-podcast', 'PodcastController@redirectUriPodcast')->name('redirectUriPodcast');
+    Route::post('redirect-uri-podcast', 'PodcastController@redirectUriPodcast')->name('redirectUriPodcast');
 
     //Page Static
     Route::get('pages', 'PageStaticController@getAllPageStatic')->name('getAllPageStatic');
