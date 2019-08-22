@@ -137,4 +137,23 @@ Route::group(['prefix' => 'admin' ,'middleware' => 'auth'], function() {
     Route::put('pagestatic/update/{id}',  ['as' => 'pagestatic.update', 'uses' => 'Backend\PageStaticController@update']);
     Route::get('pagestatic/delete/{id}',  ['as' => 'pagestatic.delete', 'uses' => 'Backend\PageStaticController@destroy']);
 
+# PodcastController
+    Route::get('podcasts',  ['as' => 'podcasts.index', 'uses' => 'Backend\PodcastController@index']);
+    Route::get('podcasts/datatables',  ['as' => 'podcasts.datatables', 'uses' => 'Backend\PodcastController@dataTables']);
+    Route::get('podcasts/create',  ['as' => 'podcasts.create', 'uses' => 'Backend\PodcastController@create']);
+    Route::post('podcasts/create',  ['as' => 'podcasts.store', 'uses' => 'Backend\PodcastController@store']);
+    Route::get('podcasts/edit/{id}',  ['as' => 'podcasts.edit', 'uses' => 'Backend\PodcastController@edit']);
+    Route::put('podcasts/update/{id}',  ['as' => 'podcasts.update', 'uses' => 'Backend\PodcastController@update']);
+    Route::get('podcasts/delete/{id}',  ['as' => 'podcasts.delete', 'uses' => 'Backend\PodcastController@destroy']);
+
+# PodcastEpisodeController
+    Route::get('podcastepisodes',  ['as' => 'podcastepisodes.index', 'uses' => 'Backend\PodcastEpisodeController@index']);
+    Route::get('podcastepisodes/datatables',  ['as' => 'podcastepisodes.datatables', 'uses' => 'Backend\PodcastEpisodeController@dataTables']);
+    Route::get('podcastepisodes/show/{id}',  ['as' => 'podcastepisodes.show', 'uses' => 'Backend\PodcastEpisodeController@show']);
+    Route::get('podcastepisodes/create',  ['as' => 'podcastepisodes.create', 'uses' => 'Backend\PodcastEpisodeController@create']);
+    Route::post('podcastepisodes/create',  ['as' => 'podcastepisodes.store', 'uses' => 'Backend\PodcastEpisodeController@store']);
+    Route::get('podcastepisodes/edit/{id}',  ['as' => 'podcastepisodes.edit', 'uses' => 'Backend\PodcastEpisodeController@edit']);
+    Route::put('podcastepisodes/update/{id}',  ['as' => 'podcastepisodes.update', 'uses' => 'Backend\PodcastEpisodeController@update']);
+    Route::get('podcastepisodes/delete/{id}',  ['as' => 'podcastepisodes.delete', 'uses' => 'Backend\PodcastEpisodeController@destroy']);
+
 });

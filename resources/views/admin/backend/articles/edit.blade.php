@@ -104,7 +104,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <strong>Category :</strong>
-                        <select class="form-control" name="article_category_id" value="{{$data->article_category_id}}">
+                        <select class="form-control" name="article_category_id">
                             <option></option>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}"{{ old('article_category_id') ? (old('article_category_id') == $category->id ? ' selected' : '') : ($data->article_category_id == $category->id ? ' selected' : '') }}>{{ $category->name }}</option>
@@ -115,7 +115,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <strong>Tag :</strong>
-                        <select class="form-control select2" name="article_tag_id" value="{{$data->article_tag_id}}" multiple data-placeholder="Tag">
+                        <select class="form-control select2" name="article_tag_id" multiple data-placeholder="Tag">
 {{--                            <option></option>--}}
                             @foreach($tags as $tag)
                                 <option value="{{ $tag->id }}"{{ old('article_tag_id') ? (old('article_tag_id') == $tag->id ? ' selected' : '') : ($data->article_tag_id == $tag->id ? ' selected' : '') }}>{{ $tag->name }}</option>

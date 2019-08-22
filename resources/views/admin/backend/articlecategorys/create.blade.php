@@ -59,7 +59,6 @@
                     <input type="checkbox" name="status" value=0>
                     <span class="checkmark"></span>
                 </label>
-            </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

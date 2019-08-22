@@ -63,6 +63,20 @@
             @admin
             <li class="active treeview">
                 <a href="#">
+                    <i class="fas fa-podcast"></i> <span>Podcast Management</span>
+                    <span class="pull-right-container"></span>
+                </a>
+                <ul class="treeview-menu">
+                        <li><a href="{{route('podcasts.index')}}"><i class="fas fa-microphone-alt"></i> Podcast Management</a></li>
+                </ul>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('podcastepisodes.index')}}"><i class="fas fa-microphone"></i> Podcast Episode</a></li>
+                </ul>
+            </li>
+            @endadmin
+            @admin
+            <li class="active treeview">
+                <a href="#">
                     <i class="fas fa-users"></i> <span>Page Static Management</span>
                     <span class="pull-right-container"></span>
                 </a>
