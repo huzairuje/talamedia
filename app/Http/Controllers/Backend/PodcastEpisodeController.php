@@ -30,8 +30,8 @@ class PodcastEpisodeController extends Controller
         return DataTables::of($data)
             ->addColumn('action', function ($data) {
                 return
-                    '<a href="'.route('pagestatic.edit', $data->id).'" class="btn btn-success btn-circle btn-sm"><i class="fas fa-edit"></i></a>
-                     <a href="'.route('pagestatic.delete', $data->id).'" class="btn btn-danger btn-circle btn-sm "><i class="fas fa-trash"></i></a>';
+                    '<a href="'.route('podcastepisodes.edit', $data->id).'" class="btn btn-success btn-circle btn-sm"><i class="fas fa-edit"></i></a>
+                     <a href="'.route('podcastepisodes.delete', $data->id).'" class="btn btn-danger btn-circle btn-sm "><i class="fas fa-trash"></i></a>';
             })
             ->editColumn('podcast_id', function ($data){
                 return $data->podcast->title;
