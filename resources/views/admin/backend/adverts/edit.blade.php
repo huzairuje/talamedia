@@ -59,7 +59,7 @@
                         <script>
                             tinymce.init({
                                 selector: '#ckview',
-                                height: 300,
+                                height: 600,
                                 plugins:'wordcount fullscreen link image code preview media',
                                 toolbar1:'preview code',
                             });

@@ -19,7 +19,7 @@ class ArticleCategoriesTableDataSeeder extends Seeder
             [
                 'name' => 'BeritaBaik',
                 'status' => 1,
-                'instagram_access_token_1' => null,
+                'instagram_access_token_1' => '5356087785.e92ff04.598dc31af5a04c67900bf6b47c9f5b02',
                 'instagram_access_token_2' => null,
                 'instagram_access_token_3' => null,
                 'created_by' => 1,
@@ -57,7 +57,7 @@ class ArticleCategoriesTableDataSeeder extends Seeder
             [
                 'name' => 'Event',
                 'status' => 1,
-                'instagram_access_token_1' => null,
+                'instagram_access_token_1' => '5356087785.e92ff04.598dc31af5a04c67900bf6b47c9f5b02',
                 'instagram_access_token_2' => null,
                 'instagram_access_token_3' => null,
                 'created_by' => 1,
@@ -67,7 +67,7 @@ class ArticleCategoriesTableDataSeeder extends Seeder
             [
                 'name' => 'Kerjasama',
                 'status' => 1,
-                'instagram_access_token_1' => null,
+                'instagram_access_token_1' => '5356087785.e92ff04.598dc31af5a04c67900bf6b47c9f5b02',
                 'instagram_access_token_2' => null,
                 'instagram_access_token_3' => null,
                 'created_by' => 1,

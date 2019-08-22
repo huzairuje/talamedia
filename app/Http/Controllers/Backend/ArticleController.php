@@ -37,21 +37,29 @@ class ArticleController extends Controller
      */
     public function dataTables()
     {
-        $data = numrows(Article::all());
-        return DataTables::of($data)
-            ->addColumn('action', function ($data) {
-                return
-                '<a href="'.route('article.show', $data->id).'" class="btn btn-primary btn-circle btn-sm "><i class="fas fa-search"></i></a>
+        $userRole = Auth::user()->role()->get();
+        foreach ($userRole as $role) {
+            $nameRole = $role->name;
+            if ($nameRole == 'super_admin') {
+                $data = numrows(Article::all());
+            } else {
+                $data = numrows(Article::all()->where('created_by', Auth::id()));
+            }
+            return DataTables::of($data)
+                ->addColumn('action', function ($data) {
+                    return
+                        '<a href="'.route('article.show', $data->id).'" class="btn btn-primary btn-circle btn-sm "><i class="fas fa-search"></i></a>
                 <a href="'.route('article.edit', $data->id).'" class="btn btn-success btn-circle btn-sm"><i class="fas fa-edit"></i></a>
                 <a href="'.route('article.delete', $data->id).'" class="btn btn-danger btn-circle btn-sm "><i class="fas fa-trash"></i></a>';
-            })
-            ->editColumn('created_by', function ($data){
-                return $data->user->name;
-            })
-            ->editColumn('is_featured_article', function ($data){
-                return $data->is_featured_article == 1 ? 'Yes' : 'No';
-            })
-            ->make(true);
+                })
+                ->editColumn('created_by', function ($data){
+                    return $data->user->name;
+                })
+                ->editColumn('is_featured_article', function ($data){
+                    return $data->is_featured_article == 1 ? 'Yes' : 'No';
+                })
+                ->make(true);
+        }
     }
 
     /** show datatable

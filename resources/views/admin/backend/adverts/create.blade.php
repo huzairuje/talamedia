@@ -52,7 +52,7 @@
                 <script>
                     tinymce.init({
                         selector: '#ckview',
-                        height: 300,
+                        height: 600,
                         menubar: 'file edit insert view format table tools help',
                         plugins:'link imagetools table spellchecker preview code image',
                         contextmenu: "link image imagetools table spellchecker",
