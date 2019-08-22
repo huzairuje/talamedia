@@ -9,6 +9,7 @@
                 <th>No</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Role</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -27,6 +28,7 @@
                 { data: 'no', searchable: false, width: '5%', className: 'center'},
                 { data: 'name', name: 'name' },
                 { data: 'email', name: 'email' },
+                { data: 'roles', name: 'roles' },
                 { data: 'action', orderable: false, searchable: false, width: '15%', className: 'center action'},
             ]
         });

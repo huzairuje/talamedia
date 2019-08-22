@@ -32,13 +32,21 @@ class UserController extends Controller
      */
     public function dataTables()
     {
-        $data = numrows(User::all());
+        $data = numrows(User::with('role')->get());
         return DataTables::of($data)
             ->addColumn('action', function ($data) {
                 return
                 '<a href="'.route('user.show', $data->id).'" class="btn btn-primary btn-circle btn-sm "><i class="fas fa-search"></i></a>
                 <a href="'.route('user.edit', $data->id).'" class="btn btn-success btn-circle btn-sm"><i class="fas fa-edit"></i></a>
                 <a href="'.route('user.delete', $data->id).'" class="btn btn-danger btn-circle btn-sm "><i class="fas fa-trash"></i></a>';
+            })
+            ->editColumn('roles', function ($data){
+                $firstRole = $data->role;
+                foreach ($firstRole as $role)
+                {
+                    $namaRole = $role->name;
+                }
+                return array($namaRole);
             })
             ->make(true);
     }
