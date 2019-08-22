@@ -28,7 +28,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <strong>Podcast By :</strong>
-                    <select class="form-control" name="article_category_id">
+                    <select class="form-control" name="podcast_id">
                         <option></option>
                         @foreach($podcasts as $podcast)
                             <option value="{{ $podcast->id }}"{{ old('podcasts')==$podcast->id ? ' selected' : '' }}>{{ $podcast->title }}</option>
