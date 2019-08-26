@@ -345,7 +345,7 @@ https://talamedia.web.id/api/v1/search/podcast?keyword={string title or string c
 Example Url
 
 ```$xslt
-https://talamedia.web.id/api/v1/search/article?keyword=Trifantasia
+https://talamedia.web.id/api/v1/search/podcast?keyword=Trifantasia
 ```
 
 Response
