@@ -3,6 +3,7 @@
 ---
 
 - [Get All Podcast](#section-get-all-podcast)
+- [Search Podcast](#section-search-podcast)
 - [Get Podcast By Id](#section-get-podcast-by-id)
 - [Get Podcast By Title](#section-get-podcast-by-title)
 - [Get All Episode By Podcast Title](#section-get-all-episode-by-podcast-title)
@@ -330,6 +331,61 @@ Response
 }
 ```
 
+<a name="section-search-podcast"></a>
+## Search Podcast
+
+This Section search all Podcast
+
+Request Url 
+
+```$xslt
+https://talamedia.web.id/api/v1/search/podcast?keyword={string title or string content}
+```
+
+Example Url
+
+```$xslt
+https://talamedia.web.id/api/v1/search/article?keyword=Trifantasia
+```
+
+Response
+
+```$xslt
+{
+    "meta": {
+        "code": 200,
+        "status": "success",
+        "message": "Operation successfully executed."
+    },
+    "pages": {
+        "per_page": 15,
+        "current_page": 1,
+        "last_page": 1,
+        "has_more_pages": false,
+        "from": 1,
+        "to": 1
+    },
+    "links": {
+        "self": "https://talamedia.web.id/api/v1/search/podcast?keyword=Trif",
+        "next": null,
+        "prev": null
+    },
+    "data": [
+        {
+            "id": 4,
+            "listen_note_podcast_id": "41db8df60df342bc87d9054989d29a10",
+            "title": "Trifantasia Indonesia",
+            "publisher": "Trifantasia",
+            "image_url_listen_note": "https://cdn-images-1.listennotes.com/podcasts/trifantasia-podcast-trifantasia-B2XcxnKNsDF-wa6OgfPVS9q.300x300.jpg",
+            "thumbnail_url_listen_note": "https://cdn-images-1.listennotes.com/podcasts/trifantasia-podcast-trifantasia-B2XcxnKNsDF-wa6OgfPVS9q.300x300.jpg",
+            "description": "Trifantasia adalah sebuah podcast tentang seni dan sastra dari Talamedia Networks. Kami membahas dan memutar rekaman-rekaman literasi berupa seni dan sastra. Surel ke talamedia.id@gmail.com dan follow instagram kami @trifantasia dan @talamedia.id",
+            "country": "Indonesia",
+            "language": "Indonesian",
+            "explicit_content": false
+        }
+    ]
+}
+```
 
 
 

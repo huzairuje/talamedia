@@ -3,6 +3,7 @@
 ---
 
 - [Get All Article](#section-get-all-article)
+- [Search Article](#section-search-article)
 - [Get Article By Id](#section-get-article-by-id)
 - [Get Article By Slug](#section-get-article-by-slug)
 - [Get Article Category](#section-get-article-category)
@@ -385,6 +386,59 @@ Response
             "featured_image": "https://talamedia.web.id/storage/images/2019-08-17 15:15:160_bmi5KFt3_sZcvr_b.png",
             "slug": "Kenapa Podcast Semakin Ramai?",
             "created_by": "Probo Agung Laksono",
+            "is_featured": true
+        }
+    ]
+}
+```
+
+<a name="section-search-article"></a>
+## Search Article
+
+This Section search all 
+
+Request Url 
+
+```$xslt
+https://talamedia.web.id/api/v1/search/article?keyword={string title or string content}
+```
+
+Example Url
+
+```$xslt
+https://talamedia.web.id/api/v1/search/article?keyword=jokowi
+```
+
+Response
+
+```$xslt
+{
+    "meta": {
+        "code": 200,
+        "status": "success",
+        "message": "Operation successfully executed."
+    },
+    "pages": {
+        "per_page": 15,
+        "current_page": 1,
+        "last_page": 1,
+        "has_more_pages": false,
+        "from": 1,
+        "to": 1
+    },
+    "links": {
+        "self": "https://talamedia.web.id/api/v1/search/article?keyword=jokowi",
+        "next": null,
+        "prev": null
+    },
+    "data": [
+        {
+            "id": 12,
+            "name": "Jokowi Perintahkan Kapolri Tindak Tegas Pelaku Rasisme ke Mahasiswa Papua",
+            "publish_datetime": "2019-08-23 08:15:54",
+            "featured_image": "https://talamedia.web.id/storage/images/2019-08-23 08:15:54315DE2A3-7BFC-4C98-A667-7233AE54D9CD.jpeg",
+            "slug": "Jokowi Perintahkan Kapolri Tindak Tegas Pelaku Rasisme ke Mahasiswa Papua",
+            "created_by": "Agung Laksono",
             "is_featured": true
         }
     ]
