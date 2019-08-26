@@ -57,4 +57,17 @@ class BasePodcastRepositories
         return $data;
     }
 
+    public function searchPodcast($keyword)
+    {
+        $data = Podcast::when($keyword, function ($query) use ($keyword) {
+            $query->where('title', 'like', '%' .  $keyword . '%')
+                ->orWhere('publisher', 'like', '%' . $keyword . '%')
+                ->orWhere('description', 'like', '%' . $keyword . '%')
+                ->orWhere('country', 'like', '%' . $keyword . '%')
+                ->orWhere('language', 'like', '%' . $keyword . '%');
+        })->paginate();
+
+        return $data;
+    }
+
 }

@@ -29,6 +29,17 @@ class ArticleRepositories
         return $article;
     }
 
+    public function searchArticle($keyword)
+    {
+        $data = Article::when($keyword, function ($query) use ($keyword) {
+            $query->where('name', 'like', '%' .  $keyword . '%')
+                ->orWhere('content', 'like', '%' . $keyword . '%')
+                ->orWhere('slug', 'like', '%' . $keyword . '%');
+        })->paginate();
+
+        return $data;
+    }
+
     public function getArticleById($id)
     {
         $articlePageId = Article::find($id);

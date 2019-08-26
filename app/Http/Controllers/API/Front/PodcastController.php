@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\API\Front;
 
 use App\Http\Library\ApiBaseResponse;
-use App\Http\Requests\API\Front\RedirectUriRequest;
 use App\Mappers\PodcastEpisodeMapper;
 use App\Mappers\PodcastMapper;
 use App\Repositories\Frontend\Podcast\BasePodcastRepositories;

@@ -53,5 +53,9 @@ Route::group(['prefix'=>'v1','namespace'=>'API\Front'], function () {
     Route::get('pages/{name}', 'PageStaticController@getPageStaticByName')->name('getPageStaticBySlug');
     Route::get('page/{id}', 'PageStaticController@getPageStaticById')->name('getPageStaticById');
 
+    //search Article
+    Route::get('search/article', 'SearchController@searchArticle')->name('searchArticle');
+    Route::get('search/podcast', 'SearchController@searchPodcast')->name('searchPodcast');
+
 });
 

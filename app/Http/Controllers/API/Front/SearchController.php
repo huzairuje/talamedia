@@ -2,21 +2,35 @@
 
 namespace App\Http\Controllers\API\Front;
 
+use App\Mappers\ArticleMapper;
+use App\Mappers\PodcastMapper;
+use App\Repositories\Frontend\ArticleRepositories;
+use App\Repositories\Frontend\Podcast\BasePodcastRepositories;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Thomzee\Laramap\Facades\Laramap;
 
 class SearchController extends Controller
 {
-    protected $searchRepositories;
+    protected $articleRepositories;
+    protected $basePodcastRepositories;
 
-    public function __construct()
+    public function __construct(ArticleRepositories $articleRepositories,
+                                BasePodcastRepositories $basePodcastRepositories)
     {
-        //TODO
+        $this->articleRepositories = $articleRepositories;
+        $this->basePodcastRepositories = $basePodcastRepositories;
     }
 
-
-    public function search($keywords)
+    public function searchArticle(Request $request)
     {
-        //TODO
+        $data = $this->articleRepositories->searchArticle($request->keyword);
+        return Laramap::paged(ArticleMapper::class, $data);
+    }
+
+    public function searchPodcast(Request $request)
+    {
+        $data = $this->basePodcastRepositories->searchPodcast($request->keyword);
+        return Laramap::paged(PodcastMapper::class, $data);
     }
 }
