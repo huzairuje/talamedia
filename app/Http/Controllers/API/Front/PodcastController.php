@@ -81,7 +81,7 @@ class PodcastController extends Controller
                 $response = $this->apiBaseResponse->notFoundResponse();
                 return response($response, Response::HTTP_NOT_FOUND);
             }
-            $dataEpisodes = $data->episode()->orderBy('created_at', 'desc')->paginate(10);
+            $dataEpisodes = $data->episode()->orderBy('created_at', 'desc')->paginate();
             return Laramap::paged(PodcastEpisodeMapper::class, $dataEpisodes);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
