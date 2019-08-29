@@ -61,9 +61,14 @@ class ArticleController extends Controller
     public function getArticleByCategory($slug)
     {
         try {
-            $articleByCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug)
-                ->articles()->orderBy('created_at', 'desc')->paginate(10);
-            return Laramap::paged(ArticleMapper::class, $articleByCategory);
+            $articleCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug);
+            if (!empty($articleCategory)){
+                $articleByCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug)
+                    ->articles()->orderBy('created_at', 'desc')->paginate(10);
+                return Laramap::paged(ArticleMapper::class, $articleByCategory);
+            }
+            $response = $this->apiBaseResponse->notFoundResponse();
+            return response($response, Response::HTTP_NOT_FOUND);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -84,19 +89,18 @@ class ArticleController extends Controller
     public function getArticleCategory()
     {
         try {
-            $articleCategory = $this->articleCategoriesRepositories->getArticleCategory()->paginate(10);
+            $articleCategory = $this->articleCategoriesRepositories->getArticleCategory()->paginate();
             return Laramap::paged(ArticleCategoryMapper::class, $articleCategory);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
         }
-
     }
 
     public function getAllArticle()
     {
         try {
-            $articles = $this->articleRepositories->getArticle()->paginate(10);
+            $articles = $this->articleRepositories->getArticle()->paginate();
             return Laramap::paged(ArticleMapper::class, $articles);
         } catch (Exception $e) {
             $response = $this->apiBaseResponse->errorResponse($e);
