@@ -5,17 +5,14 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use function foo\func;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Yajra\DataTables\Facades\DataTables;
 
 
 class MenuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
     public function datatables()
     {
@@ -41,7 +38,7 @@ class MenuController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function create()
     {
@@ -50,9 +47,8 @@ class MenuController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
@@ -71,9 +67,8 @@ class MenuController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Role  $role
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return View
      */
     public function show($id)
     {
@@ -84,9 +79,7 @@ class MenuController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  \App\Aov  $aov
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function edit($id)
     {
@@ -98,9 +91,8 @@ class MenuController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Aov  $aov
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return RedirectResponse
      */
     public function update(Request $request, Menu $menu)
     {
@@ -115,9 +107,8 @@ class MenuController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Aov  $aov
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return RedirectResponse
      */
     public function destroy($id)
     {

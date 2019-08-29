@@ -169,7 +169,6 @@ class PodcastEpisodeController extends Controller
     {
         $data = $this->model->findOrFail($id);
         $data->delete();
-
         return redirect()->route('podcastepisodes.index')
             ->with('Page deleted successfully');
     }

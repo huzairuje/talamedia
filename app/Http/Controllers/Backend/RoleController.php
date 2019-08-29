@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Role\CreateRoleRequest;
 use App\Models\Role;
-use App\Services\Backend\Role\RoleService;
-use function foo\func;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -58,17 +55,13 @@ class RoleController extends Controller
             'name' => 'required',
             'description' => 'required',
         ]);
-
-
         $data = new Role([
             'name' => $request->get('name'),
             'description' => $request->get('description'),
         ]);
-
         $data->save();
-
-        return redirect()->route('user.index')
-            ->with('user created successfully.');
+        return redirect()->route('role.index')
+            ->with('role created successfully.');
     }
 
     /**
@@ -77,8 +70,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $user = new Role();
-        $data = $user->findOrFail($id);
+        $data = Role::findOrFail($id);
         return view('admin.backend.roles.show',compact('data'));
     }
 
@@ -102,10 +94,8 @@ class RoleController extends Controller
             'name'=>'required',
             'description'=> 'required'
           ]);
-
         $role->update($request->all());
-    
-          return redirect('/role')->with('success', 'Role has been updated');
+          return redirect()->route('role.index')->with('success', 'Role has been updated');
     }
 
     /**
@@ -114,7 +104,8 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        $this->roleService->deleteRole($id);
+        $data = Role::find($id);
+        $data->delete();
         return redirect()->route('role.index')
             ->with('success','role deleted successfully');
     }

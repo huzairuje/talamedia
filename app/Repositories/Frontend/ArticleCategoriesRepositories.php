@@ -4,7 +4,6 @@
 namespace App\Repositories\Frontend;
 
 use App\Models\ArticleCategory;
-use Illuminate\Support\Facades\DB;
 
 class ArticleCategoriesRepositories
 {
