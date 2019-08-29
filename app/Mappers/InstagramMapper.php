@@ -20,7 +20,8 @@ class InstagramMapper extends BaseMapper implements MapperContract
             return [
                 "id" => $instagram->id,
                 "username" => $instagram->user->username,
-                "images" => $instagram->images->thumbnail->url,
+                "thumbnail" => $instagram->images->thumbnail->url,
+                "images" => $instagram->images->standard_resolution->url,
                 "link" => $instagram->link,
             ];
     }
