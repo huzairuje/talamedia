@@ -64,7 +64,7 @@ class ArticleController extends Controller
             $articleCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug);
             if (!empty($articleCategory)){
                 $articleByCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug)
-                    ->articles()->orderBy('created_at', 'desc')->paginate(10);
+                    ->articles()->orderBy('created_at', 'desc')->paginate();
                 return Laramap::paged(ArticleMapper::class, $articleByCategory);
             }
             $response = $this->apiBaseResponse->notFoundResponse();
