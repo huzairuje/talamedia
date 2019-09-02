@@ -4,6 +4,8 @@
 namespace App\Http\Library;
 
 
+use Illuminate\Support\Facades\Storage;
+
 class ApiBaseResponse
 {
     protected $LIMIT = 10;
@@ -157,8 +159,16 @@ class ApiBaseResponse
         $return['links']['self'] = url()->full();
         $return['links']['next'] = $paginated->nextPageUrl();
         $return['links']['prev'] = $paginated->previousPageUrl();
-        $return['category'] = $category;
-        $return['featured_article'] = $featured_article;
+        $return['category']['id'] = $category->id;
+        $return['category']['name'] = $category->name;
+        $return['category']['status'] = $category->status == 1 ? true : false;
+        $return['category']['featured_image'] = url('/').Storage::url('images/'.$category->featured_image);
+        $return['featured_article']['id'] = $featured_article->id;
+        $return['featured_article']['name'] = $featured_article->name;
+        $return['featured_article']['publish_datetime'] = $featured_article->publish_datetime;
+        $return['featured_article']['featured_image'] = url('/').Storage::url('images/'.$featured_article->featured_image);
+        $return['featured_article']['slug'] = $featured_article->slug;
+        $return['featured_article']['is_featured_article'] = $featured_article->is_featured_article == 1 ? true : false;;
         $return['data'] = $paginated->items();
         return $return;
     }

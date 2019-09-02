@@ -48,7 +48,7 @@ class Article extends Authenticatable
         return $this->belongsToMany(ArticleTag::class, 'article_article_tag');
     }
 
-    public function scopeIsFeaturedArticle($query)
+    public function scopeFeaturedArticle($query)
     {
         return $query->where('is_featured_article', 1);
     }
