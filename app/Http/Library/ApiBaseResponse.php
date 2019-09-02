@@ -139,4 +139,28 @@ class ApiBaseResponse
         return $return;
     }
 
+    public function articleByCategory($category, $featured_article, $collection, $limit)
+    {
+        $return = [];
+        $paginated = $collection->paginate($limit);
+        $return['meta']['error'] = 0;
+        $return['meta']['code'] = 200;
+        $return['meta']['status'] = 'OK';
+        $return['meta']['message'] = trans('message.api.success');
+        $return['meta']['total'] = $paginated->total();
+        $return['meta']['per_page'] = $paginated->perPage();
+        $return['meta']['current_page'] = $paginated->currentPage();
+        $return['meta']['last_page'] = $paginated->lastPage();
+        $return['meta']['has_more_pages'] = $paginated->hasMorePages();
+        $return['meta']['from'] = $paginated->firstItem();
+        $return['meta']['to'] = $paginated->lastItem();
+        $return['links']['self'] = url()->full();
+        $return['links']['next'] = $paginated->nextPageUrl();
+        $return['links']['prev'] = $paginated->previousPageUrl();
+        $return['category'] = $category;
+        $return['featured_article'] = $featured_article;
+        $return['data'] = $paginated->items();
+        return $return;
+    }
+
 }

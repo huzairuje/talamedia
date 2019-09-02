@@ -61,11 +61,24 @@ class ArticleController extends Controller
     public function getArticleByCategory($slug)
     {
         try {
+            /**
+             * find Article Category
+             */
             $articleCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug);
             if (!empty($articleCategory)){
+                /**
+                 * featured_article
+                 */
+                $featuredArticleByCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug)
+                    ->articles()->first();
+                /**
+                 * list_article by category
+                 */
                 $articleByCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug)
-                    ->articles()->orderBy('created_at', 'desc')->paginate();
-                return Laramap::paged(ArticleMapper::class, $articleByCategory);
+                    ->articles()->orderBy('created_at', 'desc');
+
+                $response = $this->apiBaseResponse->articleByCategory($articleCategory, $featuredArticleByCategory, $articleByCategory, 15);
+                return response($response, Response::HTTP_OK);
             }
             $response = $this->apiBaseResponse->notFoundResponse();
             return response($response, Response::HTTP_NOT_FOUND);
