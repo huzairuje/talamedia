@@ -33,7 +33,20 @@ class ArticleController extends Controller
         try {
             $data = $this->articleRepositories->getArticleBySlug($slug);
             if (!empty($data)) {
-                return Laramap::single(ArticleDetailMapper::class, $data);
+                $articles = Laramap::single(ArticleDetailMapper::class, $data);
+                $mapsArticles = $articles->original;
+
+                /**
+                 * related Articles
+                 */
+                $dataRelatedArticles = $this->articleRepositories->getArticle()->paginate();
+                $relatedArticles = Laramap::paged(ArticleMapper::class, $dataRelatedArticles);
+                $mapsRelatedArticles = $relatedArticles->original;
+
+                return response([
+                    'article' => $mapsArticles,
+                    'related_articles' => $mapsRelatedArticles
+                ]);
             }
             $response = $this->apiBaseResponse->notFoundResponse();
             return response($response, Response::HTTP_NOT_FOUND);
@@ -75,10 +88,24 @@ class ArticleController extends Controller
                  * list_article by category
                  */
                 $articleByCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug)
-                    ->articles()->orderBy('created_at', 'desc');
+                    ->articles()->orderBy('created_at', 'desc')->paginate();
+                /**
+                 * add object to custom response to paginate data
+                 */
+                $dataArticleCategory = Laramap::single(ArticleCategoryMapper::class, $articleCategory);
+                $mapsDataArticleCategory = $dataArticleCategory->original;
 
-                $response = $this->apiBaseResponse->articleByCategory($articleCategory, $featuredArticleByCategory, $articleByCategory, 15);
-                return response($response, Response::HTTP_OK);
+                $dataFeaturedArticleCategory = Laramap::single(ArticleMapper::class, $featuredArticleByCategory);
+                $mapsFeaturedArticleCategory = $dataFeaturedArticleCategory->original;
+
+                $dataArticleByCategory = Laramap::paged(ArticleMapper::class, $articleByCategory);
+                $mapsDataArticleByCategory = $dataArticleByCategory->original;
+
+                return response([
+                    'category' => $mapsDataArticleCategory,
+                    'featured_article'=> $mapsFeaturedArticleCategory,
+                    'article_by_category' => $mapsDataArticleByCategory
+                ]);
             }
             $response = $this->apiBaseResponse->notFoundResponse();
             return response($response, Response::HTTP_NOT_FOUND);

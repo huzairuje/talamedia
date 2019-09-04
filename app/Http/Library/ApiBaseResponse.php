@@ -141,10 +141,10 @@ class ApiBaseResponse
         return $return;
     }
 
-    public function articleByCategory($category, $featured_article, $collection, $limit)
+    public function articleByCategory($category, $featured_article, $collection)
     {
         $return = [];
-        $paginated = $collection->paginate($limit);
+        $paginated = $collection->paginate();
         $return['meta']['error'] = 0;
         $return['meta']['code'] = 200;
         $return['meta']['status'] = 'OK';
