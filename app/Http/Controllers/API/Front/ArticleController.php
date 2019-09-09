@@ -39,7 +39,11 @@ class ArticleController extends Controller
                 /**
                  * related Articles
                  */
-                $dataRelatedArticles = $this->articleRepositories->getArticle()->paginate();
+                $dataRelatedArticles = $this->articleRepositories->getArticle()
+                    ->where('id', '!=', $data->id)
+                    ->orderBy('created_at', 'desc')
+                    ->paginate();
+
                 $relatedArticles = Laramap::paged(ArticleMapper::class, $dataRelatedArticles);
                 $mapsRelatedArticles = $relatedArticles->original;
 
