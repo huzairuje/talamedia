@@ -25,7 +25,7 @@ class ArticleRepositories
 
     public function getArticleBySlug($slug)
     {
-        $article = Article::where('name', 'like', '%' . $slug . '%')->first();
+        $article = Article::where('slug', 'like', '%' . $slug . '%')->first();
         return $article;
     }
 

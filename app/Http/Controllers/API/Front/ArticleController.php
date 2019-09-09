@@ -83,7 +83,7 @@ class ArticleController extends Controller
                  * featured_article
                  */
                 $featuredArticleByCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug)
-                    ->articles()->where('is_featured_article', '=', '1')->first();
+                    ->articles()->orderBy('created_at', 'desc')->where('is_featured_article', '=', '1')->first();
                 /**
                  * list_article by category
                  */
