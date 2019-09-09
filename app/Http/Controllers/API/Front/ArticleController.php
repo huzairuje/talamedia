@@ -87,8 +87,9 @@ class ArticleController extends Controller
                 /**
                  * list_article by category
                  */
-                $articleByCategory = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug)
+                $articleByCategoryAllCollection = $this->articleCategoriesRepositories->getArticleCategoryBySlug($slug)
                     ->articles()->orderBy('created_at', 'desc')->paginate();
+                $articleByCategory = $articleByCategoryAllCollection->shift();
                 /**
                  * add object to custom response to paginate data
                  */
