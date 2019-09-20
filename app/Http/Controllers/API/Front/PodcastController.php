@@ -107,7 +107,26 @@ class PodcastController extends Controller
             $response = $this->apiBaseResponse->errorResponse($e);
             return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
         }
+    }
 
+    public function getEpisodePodcastByTitle($title, $episodeTitle)
+    {
+        try {
+            $data = $this->basePodcastRepositories->getPodcastsByTitle($title);
+            if (empty($data)) {
+                $response = $this->apiBaseResponse->notFoundResponse();
+                return response($response, Response::HTTP_NOT_FOUND);
+            }
+            $data = $this->basePodcastRepositories->getPodcastEpisodeByTitle($episodeTitle);
+            if (empty($data)) {
+                $response = $this->apiBaseResponse->notFoundResponse();
+                return response($response, Response::HTTP_NOT_FOUND);
+            }
+            return Laramap::single(PodcastEpisodeMapper::class, $data);
+        } catch (Exception $e) {
+            $response = $this->apiBaseResponse->errorResponse($e);
+            return response($response, Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
     public function saveMetaDataTrifantasia()

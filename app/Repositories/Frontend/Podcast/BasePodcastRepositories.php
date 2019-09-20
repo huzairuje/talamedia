@@ -57,6 +57,12 @@ class BasePodcastRepositories
         return $data;
     }
 
+    public function getPodcastEpisodeByTitle($title)
+    {
+        $data = PodcastEpisode::where('title', 'like', '%' . $title . '%')->first();
+        return $data;
+    }
+
     public function searchPodcast($keyword)
     {
         $data = Podcast::when($keyword, function ($query) use ($keyword) {

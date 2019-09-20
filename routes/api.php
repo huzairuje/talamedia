@@ -43,7 +43,8 @@ Route::group(['prefix'=>'v1','namespace'=>'API\Front'], function () {
     Route::get('podcasts/{title}', 'PodcastController@getPodcastsByTitle')->name('getPodcastByTitle');
     Route::get('podcast/{id}', 'PodcastController@getPodcastById')->name('PodcastById');
     Route::get('podcasts/{title}/episodes', 'PodcastController@getAllEpisodesByPodcastTitle')->name('PodcastByTitle');
-    Route::get('podcasts/{title}/episodes/{id}', 'PodcastController@getEpisodePodcastById')->name('PodcastByTitle');
+    Route::get('podcasts/{title}/episodes/{id}', 'PodcastController@getEpisodePodcastById')->name('PodcastEpisodeById');
+    Route::get('podcasts/{title}/episode/{episodeTitle}', 'PodcastController@getEpisodePodcastByTitle')->name('PodcastEpisodeByTitle');
     Route::get('save-podcast-trifantasia', 'PodcastController@saveMetaDataTrifantasia')->name('podcastTrifantasiaEpisodes');
 
     Route::post('redirect-uri-podcast', 'PodcastController@redirectUriPodcast')->name('redirectUriPodcast');
@@ -55,6 +56,8 @@ Route::group(['prefix'=>'v1','namespace'=>'API\Front'], function () {
 
     //search Article
     Route::get('search/article', 'SearchController@searchArticle')->name('searchArticle');
+
+    //search Podcast
     Route::get('search/podcast', 'SearchController@searchPodcast')->name('searchPodcast');
 
 });
